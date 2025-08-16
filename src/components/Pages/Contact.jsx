@@ -170,13 +170,13 @@ const Contact = () => {
               </div>
               <div className="w-100"></div>
               <div className="col-md-3">
-                <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+                <p><span>Address:</span> Krishnarajapuram, Bangalore, India - 560049</p>
               </div>
               <div className="col-md-3">
-                <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                <p><span>Phone:</span> <a href="tel://1234567920">+91 8951663446</a></p>
               </div>
               <div className="col-md-3">
-                <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                <p><span>Email:</span> <a href="mailto:infinitewavexofficial@gmail.com">infinitewavexofficial@gmail.com</a></p>
               </div>
               <div className="col-md-3">
                 <p><span>Website</span> <a href="#">yoursite.com</a></p>
