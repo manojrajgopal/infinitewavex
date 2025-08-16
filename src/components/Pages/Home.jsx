@@ -1,88 +1,204 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, NavLink } from 'react-router-dom';
 
-
 const Home = () => {
   const [showMore, setShowMore] = useState(false);
-    useEffect(() => {
+  const threeJsContainer = useRef(null);
+
+  useEffect(() => {
+    // Load Three.js and related scripts dynamically
+    const loadThreeJS = () => {
+      return new Promise((resolve) => {
+        if (window.THREE) return resolve();
+        
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+        script.onload = () => {
+          // Define THREE for ESLint
+          /* global THREE */
+          // Load additional Three.js components if needed
+          const script2 = document.createElement('script');
+          script2.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js';
+          document.body.appendChild(script2);
+          resolve();
+        };
+        document.body.appendChild(script);
+      });
+    };
+
+    // Initialize Three.js scene
+    const initThreeJS = async () => {
+      await loadThreeJS();
       
+      // Only initialize if container exists and Three.js is loaded
+      if (!threeJsContainer.current || !window.THREE) return;
+
+      // Reference THREE from window
+      const { THREE } = window;
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75, 
+        window.innerWidth / window.innerHeight, 
+        0.1, 
+        1000
+      );
+      camera.position.z = 30;
+
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setClearColor(0x000000, 0);
+      threeJsContainer.current.appendChild(renderer.domElement);
+
+      // Create particle system
+      const particlesGeometry = new THREE.BufferGeometry();
+      const particleCount = 1500;
+
+      const posArray = new Float32Array(particleCount * 3);
+      for (let i = 0; i < particleCount * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 100;
+      }
+
+      particlesGeometry.setAttribute(
+        'position',
+        new THREE.BufferAttribute(posArray, 3)
+      );
+
+      const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.2,
+        color: 0x4a9eff,
+        transparent: true,
+        opacity: 0.8,
+        blending: THREE.AdditiveBlending
+      });
+
+      const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+      scene.add(particlesMesh);
+
+      // Add glowing center sphere
+      const sphereGeometry = new THREE.SphereGeometry(3, 32, 32);
+      const sphereMaterial = new THREE.MeshBasicMaterial({ 
+        color: 0x4a9eff,
+        transparent: true,
+        opacity: 0.3
+      });
+      const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+      scene.add(sphere);
+
+      // Animation loop
+      const animate = () => {
+        requestAnimationFrame(animate);
+        
+        particlesMesh.rotation.x += 0.0005;
+        particlesMesh.rotation.y += 0.0005;
+        
+        sphere.scale.x = 1 + Math.sin(Date.now() * 0.001) * 0.1;
+        sphere.scale.y = 1 + Math.sin(Date.now() * 0.001) * 0.1;
+        sphere.scale.z = 1 + Math.sin(Date.now() * 0.001) * 0.1;
+
+        renderer.render(scene, camera);
+      };
+      animate();
+
+      // Handle resize
+      const handleResize = () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      };
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+        if (threeJsContainer.current && renderer.domElement) {
+          threeJsContainer.current.removeChild(renderer.domElement);
+        }
+      };
+    };
+
+    initThreeJS();
+
+
+    // Original script loading logic
     const scriptElements = [];
-    
     const loadScript = (src) => {
-        return new Promise((resolve, reject) => {
-        // Skip if already loaded
+      return new Promise((resolve, reject) => {
         if (document.querySelector(`script[src="${src}"]`)) {
-            resolve();
-            return;
+          resolve();
+          return;
         }
 
         const script = document.createElement('script');
         script.src = src;
         script.async = false;
-        
-        // Add error handling
         script.onerror = () => {
-            console.error(`Failed to load script: ${src}`);
-            reject(new Error(`Script load error for ${src}`));
+          console.error(`Failed to load script: ${src}`);
+          reject(new Error(`Script load error for ${src}`));
         };
-        
         script.onload = resolve;
         document.body.appendChild(script);
         scriptElements.push(script);
-        });
+      });
     };
 
     const scripts = [
-        // Load jQuery first
-        '/js/jquery.min.js',
-        '/js/jquery-migrate-3.0.1.min.js',
-        // Then other dependencies
-        '/js/popper.min.js',
-        '/js/bootstrap.min.js',
-        // Then plugins
-        '/js/jquery.easing.1.3.js',
-        '/js/jquery.waypoints.min.js',
-        '/js/jquery.stellar.min.js',
-        '/js/owl.carousel.min.js',
-        '/js/jquery.magnific-popup.min.js',
-        '/js/aos.js',
-        '/js/jquery.animateNumber.min.js',
-        '/js/bootstrap-datepicker.js',
-        // '/js/jquery.timepicker.min.js',  // Make sure this file exists
-        '/js/scrollax.min.js',
-        // Load Google Maps only if needed
-        // '/js/google-map.js',  // Consider loading this only when needed
-        '/js/main.js'
+      '/js/jquery.min.js',
+      '/js/jquery-migrate-3.0.1.min.js',
+      '/js/popper.min.js',
+      '/js/bootstrap.min.js',
+      '/js/jquery.easing.1.3.js',
+      '/js/jquery.waypoints.min.js',
+      '/js/jquery.stellar.min.js',
+      '/js/owl.carousel.min.js',
+      '/js/jquery.magnific-popup.min.js',
+      '/js/aos.js',
+      '/js/jquery.animateNumber.min.js',
+      '/js/bootstrap-datepicker.js',
+      '/js/scrollax.min.js',
+      '/js/main.js'
     ];
 
     const loadScripts = async () => {
-        try {
-        // Load scripts sequentially
+      try {
         for (const src of scripts) {
-            await loadScript(src).catch(err => {
+          await loadScript(src).catch(err => {
             console.warn(`Skipping ${src} due to load error`);
-            });
+          });
         }
-        } catch (error) {
+      } catch (error) {
         console.error('Script loading error:', error);
-        }
+      }
     };
 
     loadScripts();
 
     return () => {
-        // Cleanup
-        scriptElements.forEach(script => {
+      // Cleanup
+      scriptElements.forEach(script => {
         if (script.parentNode) {
-            script.parentNode.removeChild(script);
+          script.parentNode.removeChild(script);
         }
-        });
+      });
     };
-    }, []);
+  }, []);
 
   return (
     <div id="colorlib-page">
+      {/* Three.js Container - placed first so it's in the background */}
+      <div 
+        ref={threeJsContainer} 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: -1,
+          opacity: 0.7
+        }}
+      />
+
       <Helmet>
         <title>InfiniteWaveX</title>
         <meta charSet="utf-8" />
@@ -93,18 +209,13 @@ const Home = () => {
 
         <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css" />
         <link rel="stylesheet" href="/css/animate.css" />
-        
         <link rel="stylesheet" href="/css/owl.carousel.min.css" />
         <link rel="stylesheet" href="/css/owl.theme.default.min.css" />
         <link rel="stylesheet" href="/css/magnific-popup.css" />
-
         <link rel="stylesheet" href="/css/aos.css" />
-
         <link rel="stylesheet" href="/css/ionicons.min.css" />
-
         <link rel="stylesheet" href="/css/bootstrap-datepicker.css" />
         <link rel="stylesheet" href="/css/jquery.timepicker.css" />
-
         <link rel="stylesheet" href="/css/flaticon.css" />
         <link rel="stylesheet" href="/css/icomoon.css" />
         <link rel="stylesheet" href="/css/style.css" />
@@ -179,8 +290,8 @@ const Home = () => {
         </div>
       </aside>
 
-      <div id="colorlib-main">
-        <div className="hero-wrap js-fullheight" style={{backgroundImage: "url(/images/bg_1.jpg)"}} data-stellar-background-ratio="0.5">
+      <div id="colorlib-main" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="hero-wrap js-fullheight" style={{ background: 'none' }} data-stellar-background-ratio="0.5">
           <div className="overlay"></div>
           <div className="js-fullheight d-flex justify-content-center align-items-center">
             <div className="col-md-8 text text-center">
@@ -210,7 +321,7 @@ const Home = () => {
                     we bridge creativity with technology. Our mission is to deliver cutting-edge digital experiences that help businesses 
                     stay ahead in an ever-evolving digital world.
                   </p>
-                  )}
+                )}
               </div>
             </div>
           </div>
@@ -225,81 +336,76 @@ const Home = () => {
               </div>
             </div>
             <div className="row">
-            <div className="col-md-4">
-              <div className="blog-entry ftco-animate">
-                <div className="img img-2">
-                  <video 
-                    src="/images/ai.mp4" 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
-                    style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
-                  />
-                </div>
-                <div className="text text-2 pt-2 mt-3">
-                  <span className="category mb-3 d-block"><a href="#">AI Technology</a></span>
-                  <h3 className="mb-4"><a href="#">Artificial Intelligence: Powering Innovation and Progress</a></h3>
-                  <p className="mb-4">
-                   Artificial intelligence is a field of science concerned with building computers and machines 
-                   that can reason, learn, and act in such a way that would normally require human intelligence or
-                    that involves data whose scale exceeds what humans can analyze.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-                 <div className="col-md-4">
-              <div className="blog-entry ftco-animate">
-                <div className="img img-2">
-                  <video 
-                    src="/images/2.mp4" 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
-                    style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
-                  />
-                </div>
-                <div className="text text-2 pt-2 mt-3">
-                  <span className="category mb-3 d-block"><a href="#">3D view</a></span>
-                  <h3 className="mb-4"><a href="#">The Newest Technology 3D Visualization</a></h3>
-                  <p className="mb-4">
-                   This AI-powered demo showcases how advanced artificial intelligence 
-                   can create dynamic, realistic visual experiences for modern applications.
-                  </p>
+              <div className="col-md-4">
+                <div className="blog-entry ftco-animate">
+                  <div className="img img-2">
+                    <video 
+                      src="/images/ai.mp4" 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
+                    />
+                  </div>
+                  <div className="text text-2 pt-2 mt-3">
+                    <span className="category mb-3 d-block"><a href="#">AI Technology</a></span>
+                    <h3 className="mb-4"><a href="#">Artificial Intelligence: Powering Innovation and Progress</a></h3>
+                    <p className="mb-4">
+                     Artificial intelligence is a field of science concerned with building computers and machines 
+                     that can reason, learn, and act in such a way that would normally require human intelligence or
+                      that involves data whose scale exceeds what humans can analyze.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-
-             <div className="col-md-4">
-              <div className="blog-entry ftco-animate">
-                <div className="img img-2">
-                  <video 
-                    src="/images/1.mp4" 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
-                    style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
-                  />
-                </div>
-                <div className="text text-2 pt-2 mt-3">
-                  <span className="category mb-3 d-block"><a href="#">Ai Based Fashion System</a></span>
-                  <h3 className="mb-4"><a href="#">AI-Enhanced Fashion Creation System</a></h3>
-                  <p className="mb-4">
-                   AI is rapidly transforming the fashion industry, offering innovative solutions for design, 
-                   production, and customer experience. AI-powered systems can analyze trends, personalize recommendations,
-                    optimize manufacturing processes, and enhance the overall shopping experience. 
-                  </p>
+              <div className="col-md-4">
+                <div className="blog-entry ftco-animate">
+                  <div className="img img-2">
+                    <video 
+                      src="/images/2.mp4" 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
+                    />
+                  </div>
+                  <div className="text text-2 pt-2 mt-3">
+                    <span className="category mb-3 d-block"><a href="#">3D view</a></span>
+                    <h3 className="mb-4"><a href="#">The Newest Technology 3D Visualization</a></h3>
+                    <p className="mb-4">
+                     This AI-powered demo showcases how advanced artificial intelligence 
+                     can create dynamic, realistic visual experiences for modern applications.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            
-
-
+              <div className="col-md-4">
+                <div className="blog-entry ftco-animate">
+                  <div className="img img-2">
+                    <video 
+                      src="/images/1.mp4" 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
+                    />
+                  </div>
+                  <div className="text text-2 pt-2 mt-3">
+                    <span className="category mb-3 d-block"><a href="#">Ai Based Fashion System</a></span>
+                    <h3 className="mb-4"><a href="#">AI-Enhanced Fashion Creation System</a></h3>
+                    <p className="mb-4">
+                     AI is rapidly transforming the fashion industry, offering innovative solutions for design, 
+                     production, and customer experience. AI-powered systems can analyze trends, personalize recommendations,
+                      optimize manufacturing processes, and enhance the overall shopping experience. 
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
