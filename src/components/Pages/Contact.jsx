@@ -38,8 +38,7 @@ const Contact = () => {
       '/js/bootstrap-datepicker.js',
     //   '/js/jquery.timepicker.min.js',
       '/js/scrollax.min.js',
-      'https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false',
-      '/js/google-map.js',
+    //   '/js/google-map.js',
       '/js/main.js'
     ];
 
@@ -205,7 +204,17 @@ const Contact = () => {
               </div>
 
               <div className="col-md-6">
-                <div id="map"></div>
+                <iframe 
+                    width="100%" 
+                    height="100%"
+                    frameBorder="0" 
+                    scrolling="no" 
+                    marginHeight="0" 
+                    marginWidth="0" 
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=77.5366%2C12.9236%2C77.6366%2C13.0236&amp;layer=mapnik&amp;marker=12.9716%2C77.5946" 
+                    style={{border: '1px solid black'}}
+                    >
+                    </iframe>
               </div>
             </div>
           </div>
