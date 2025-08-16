@@ -84,7 +84,7 @@ const Home = () => {
   return (
     <div id="colorlib-page">
       <Helmet>
-        <title>Elen - Free Bootstrap 4 Template by Colorlib</title>
+        <title>InfiniteWaveX</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         
@@ -133,10 +133,10 @@ const Home = () => {
             </li>
             <li>
               <NavLink 
-                to="/travel" 
+                to="/projects" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
-                Travel
+                Projects
               </NavLink>
             </li>
             <li>

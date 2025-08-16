@@ -70,7 +70,7 @@ const Photography = () => {
   return (
     <div id="colorlib-page">
       <Helmet>
-        <title>Elen - Free Bootstrap 4 Template by Colorlib</title>
+        <title>InfiniteWaveX</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         
@@ -98,7 +98,7 @@ const Photography = () => {
 
       <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
       <aside id="colorlib-aside" role="complementary" className="js-fullheight text-center">
-        <h1 id="colorlib-logo"><a href="index.html">elen<span>.</span></a></h1>
+        <h1 id="colorlib-logo"><a href="index.html">InfWX<span>.</span></a></h1>
         <nav id="colorlib-main-menu" role="navigation">
           <ul>
 <li>
@@ -119,10 +119,10 @@ const Photography = () => {
             </li>
             <li>
               <NavLink 
-                to="/travel" 
+                to="/projects" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
-                Travel
+                Projects
               </NavLink>
             </li>
             <li>

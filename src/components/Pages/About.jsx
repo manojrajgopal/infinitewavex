@@ -93,7 +93,7 @@ const About = () => {
 
       <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
       <aside id="colorlib-aside" role="complementary" className="js-fullheight text-center">
-        <h1 id="colorlib-logo"><Link to="/">elen<span>.</span></Link></h1>
+        <h1 id="colorlib-logo"><Link to="/">InfWX<span>.</span></Link></h1>
         <nav id="colorlib-main-menu" role="navigation">
           <ul>
             <li>
@@ -114,10 +114,10 @@ const About = () => {
             </li>
             <li>
               <NavLink 
-                to="/travel" 
+                to="/projects" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
-                Travel
+                Projects
               </NavLink>
             </li>
             <li>
@@ -168,7 +168,7 @@ const About = () => {
               <div className="img mb-4" style={{backgroundImage: "url(/images/author.jpg)"}}></div>
               <div className="desc">
                 <h2 className="subheading">Hello I'm</h2>
-                <h1 className="mb-4">Elen Henderson</h1>
+                <h1 className="mb-4">InfiniteWaveX</h1>
                 <p className="mb-4">I am A Blogger Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
                 <ul className="ftco-social mt-3">
                   <li className="ftco-animate"><a href="#"><span className="icon-twitter"></span></a></li>
