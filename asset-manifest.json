@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/infinitewavex/static/css/main.9af48087.css",
+    "main.js": "/infinitewavex/static/js/main.be35c498.js",
+    "static/js/453.2291aba8.chunk.js": "/infinitewavex/static/js/453.2291aba8.chunk.js",
+    "static/media/owl.video.play.png": "/infinitewavex/static/media/owl.video.play.08c86115a93f79bf37ed.png",
+    "static/media/ionicons.svg?v=4.0.0-19": "/infinitewavex/static/media/ionicons.b26f853631d2fc5d412b.svg",
+    "static/media/ionicons.eot?v=4.0.0-19": "/infinitewavex/static/media/ionicons.82062ff4bc04bebd3953.eot",
+    "static/media/ionicons.ttf?v=4.0.0-19": "/infinitewavex/static/media/ionicons.d4df1d7d4c44ce76dd56.ttf",
+    "static/media/ionicons.woff?v=4.0.0-19": "/infinitewavex/static/media/ionicons.ba380afcae404f46d5ac.woff",
+    "static/media/open-iconic.svg": "/infinitewavex/static/media/open-iconic.f88a8f004d6c024e07ae.svg",
+    "static/media/ionicons.woff2?v=4.0.0-19": "/infinitewavex/static/media/ionicons.07feb1edb7a3f9f4dc78.woff2",
+    "static/media/Flaticon.svg": "/infinitewavex/static/media/Flaticon.3959c0daae1762dec5fc.svg",
+    "static/media/open-iconic.eot": "/infinitewavex/static/media/open-iconic.2442644a7a4429aaf45b.eot",
+    "static/media/open-iconic.ttf": "/infinitewavex/static/media/open-iconic.7f224b54c9aa6dcea763.ttf",
+    "static/media/open-iconic.otf": "/infinitewavex/static/media/open-iconic.bff1e040a7ef4f0d0b47.otf",
+    "static/media/open-iconic.woff": "/infinitewavex/static/media/open-iconic.42125a176cf7bfb24819.woff",
+    "static/media/Flaticon.eot": "/infinitewavex/static/media/Flaticon.ee8e765aaaefd6508c8a.eot",
+    "static/media/Flaticon.ttf": "/infinitewavex/static/media/Flaticon.745f17e8c99590d1e178.ttf",
+    "static/media/Flaticon.woff": "/infinitewavex/static/media/Flaticon.9b87776c6fe46e40f0fa.woff",
+    "index.html": "/infinitewavex/index.html",
+    "main.9af48087.css.map": "/infinitewavex/static/css/main.9af48087.css.map",
+    "main.be35c498.js.map": "/infinitewavex/static/js/main.be35c498.js.map",
+    "453.2291aba8.chunk.js.map": "/infinitewavex/static/js/453.2291aba8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9af48087.css",
+    "static/js/main.be35c498.js"
+  ]
+}
