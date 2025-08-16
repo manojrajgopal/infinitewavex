@@ -220,382 +220,86 @@ const Home = () => {
           <div className="container">
             <div className="row justify-content-center mb-5 pb-2">
               <div className="col-md-7 heading-section text-center ftco-animate">
-                <h2 className="mb-4">Articles</h2>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+                <h2 className="mb-4">Services Overview</h2>
+                <p>From web apps to AI systems, our programmers design and develop solutions tailored to your needs.</p>
               </div>
             </div>
             <div className="row">
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <a href="#" className="img img-2" style={{backgroundImage: "url(/images/image_1.jpg)"}}></a>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Technology</a></span>
-                    <h3 className="mb-4"><a href="#">The Newest Technology On This Year 2019</a></h3>
-                    <p className="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                    <div className="author mb-4 d-flex align-items-center">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/person_2.jpg)"}}></a>
-                      <div className="ml-3 info">
-                        <span>Written by</span>
-                        <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                      </div>
-                    </div>
-                    <div className="meta-wrap align-items-center">
-                      <div className="half order-md-last">
-                        <p className="meta">
-                          <span><i className="icon-heart"></i>3</span>
-                          <span><i className="icon-eye"></i>100</span>
-                          <span><i className="icon-comment"></i>5</span>
-                        </p>
-                      </div>
-                      <div className="half">
-                        <p><a href="#" className="btn py-2">Continue Reading <span className="ion-ios-arrow-forward"></span></a></p>
-                      </div>
-                    </div>
-                  </div>
+            <div className="col-md-4">
+              <div className="blog-entry ftco-animate">
+                <div className="img img-2">
+                  <video 
+                    src="/images/ai.mp4" 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
+                  />
+                </div>
+                <div className="text text-2 pt-2 mt-3">
+                  <span className="category mb-3 d-block"><a href="#">AI Technology</a></span>
+                  <h3 className="mb-4"><a href="#">Artificial Intelligence: Powering Innovation and Progress</a></h3>
+                  <p className="mb-4">
+                   Artificial intelligence is a field of science concerned with building computers and machines 
+                   that can reason, learn, and act in such a way that would normally require human intelligence or
+                    that involves data whose scale exceeds what humans can analyze.
+                  </p>
                 </div>
               </div>
+            </div>
 
-              {/* Repeat for other articles - shortened for brevity */}
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <a href="#" className="img img-2" style={{backgroundImage: "url(/images/image_2.jpg)"}}></a>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Travel</a></span>
-                    <h3 className="mb-4"><a href="#">What to pack when visiting Sea</a></h3>
-                    <p className="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                    <div className="author mb-4 d-flex align-items-center">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/person_1.jpg)"}}></a>
-                      <div className="ml-3 info">
-                        <span>Written by</span>
-                        <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                      </div>
-                    </div>
-                    <div className="meta-wrap align-items-center">
-                      <div className="half order-md-last">
-                        <p className="meta">
-                          <span><i className="icon-heart"></i>3</span>
-                          <span><i className="icon-eye"></i>100</span>
-                          <span><i className="icon-comment"></i>5</span>
-                        </p>
-                      </div>
-                      <div className="half">
-                        <p><a href="#" className="btn py-2">Continue Reading <span className="ion-ios-arrow-forward"></span></a></p>
-                      </div>
-                    </div>
-                  </div>
+                 <div className="col-md-4">
+              <div className="blog-entry ftco-animate">
+                <div className="img img-2">
+                  <video 
+                    src="/images/2.mp4" 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
+                  />
+                </div>
+                <div className="text text-2 pt-2 mt-3">
+                  <span className="category mb-3 d-block"><a href="#">3D view</a></span>
+                  <h3 className="mb-4"><a href="#">The Newest Technology 3D Visualization</a></h3>
+                  <p className="mb-4">
+                   This AI-powered demo showcases how advanced artificial intelligence 
+                   can create dynamic, realistic visual experiences for modern applications.
+                  </p>
                 </div>
               </div>
+            </div>
 
-              {/* Continue with all other articles similarly */}
-              {/* Article 3 */}
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <a href="#" className="img img-2" style={{backgroundImage: "url(/images/image_3.jpg)"}}></a>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Fashion</a></span>
-                    <h3 className="mb-4"><a href="#">Awesome Fashion Trend in For Summer</a></h3>
-                    <p className="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                    <div className="author mb-4 d-flex align-items-center">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/person_3.jpg)"}}></a>
-                      <div className="ml-3 info">
-                        <span>Written by</span>
-                        <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                      </div>
-                    </div>
-                    <div className="meta-wrap align-items-center">
-                      <div className="half order-md-last">
-                        <p className="meta">
-                          <span><i className="icon-heart"></i>3</span>
-                          <span><i className="icon-eye"></i>100</span>
-                          <span><i className="icon-comment"></i>5</span>
-                        </p>
-                      </div>
-                      <div className="half">
-                        <p><a href="#" className="btn py-2">Continue Reading <span className="ion-ios-arrow-forward"></span></a></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              {/* Article 4 */}
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <a href="#" className="img img-2" style={{backgroundImage: "url(/images/image_4.jpg)"}}></a>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Travel</a></span>
-                    <h3 className="mb-4"><a href="#">10 Most Awesome Place</a></h3>
-                    <p className="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                    <div className="author mb-4 d-flex align-items-center">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/person_1.jpg)"}}></a>
-                      <div className="ml-3 info">
-                        <span>Written by</span>
-                        <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                      </div>
-                    </div>
-                    <div className="meta-wrap align-items-center">
-                      <div className="half order-md-last">
-                        <p className="meta">
-                          <span><i className="icon-heart"></i>3</span>
-                          <span><i className="icon-eye"></i>100</span>
-                          <span><i className="icon-comment"></i>5</span>
-                        </p>
-                      </div>
-                      <div className="half">
-                        <p><a href="#" className="btn py-2">Continue Reading <span className="ion-ios-arrow-forward"></span></a></p>
-                      </div>
-                    </div>
-                  </div>
+             <div className="col-md-4">
+              <div className="blog-entry ftco-animate">
+                <div className="img img-2">
+                  <video 
+                    src="/images/1.mp4" 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
+                  />
+                </div>
+                <div className="text text-2 pt-2 mt-3">
+                  <span className="category mb-3 d-block"><a href="#">Ai Based Fashion System</a></span>
+                  <h3 className="mb-4"><a href="#">AI-Enhanced Fashion Creation System</a></h3>
+                  <p className="mb-4">
+                   AI is rapidly transforming the fashion industry, offering innovative solutions for design, 
+                   production, and customer experience. AI-powered systems can analyze trends, personalize recommendations,
+                    optimize manufacturing processes, and enhance the overall shopping experience. 
+                  </p>
                 </div>
               </div>
+            </div>
 
-              {/* Article 5 */}
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <a href="#" className="img img-2" style={{backgroundImage: "url(/images/image_5.jpg)"}}></a>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Travel</a></span>
-                    <h3 className="mb-4"><a href="#">10 Most Awesome Beach in Asia</a></h3>
-                    <p className="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                    <div className="author mb-4 d-flex align-items-center">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/person_2.jpg)"}}></a>
-                      <div className="ml-3 info">
-                        <span>Written by</span>
-                        <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                      </div>
-                    </div>
-                    <div className="meta-wrap align-items-center">
-                      <div className="half order-md-last">
-                        <p className="meta">
-                          <span><i className="icon-heart"></i>3</span>
-                          <span><i className="icon-eye"></i>100</span>
-                          <span><i className="icon-comment"></i>5</span>
-                        </p>
-                      </div>
-                      <div className="half">
-                        <p><a href="#" className="btn py-2">Continue Reading <span className="ion-ios-arrow-forward"></span></a></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            
 
-              {/* Article 6 */}
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <a href="#" className="img img-2" style={{backgroundImage: "url(/images/image_6.jpg)"}}></a>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Travel</a></span>
-                    <h3 className="mb-4"><a href="#">Top Amazing Places to Go in Summer</a></h3>
-                    <p className="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                    <div className="author mb-4 d-flex align-items-center">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/person_3.jpg)"}}></a>
-                      <div className="ml-3 info">
-                        <span>Written by</span>
-                        <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                      </div>
-                    </div>
-                    <div className="meta-wrap align-items-center">
-                      <div className="half order-md-last">
-                        <p className="meta">
-                          <span><i className="icon-heart"></i>3</span>
-                          <span><i className="icon-eye"></i>100</span>
-                          <span><i className="icon-comment"></i>5</span>
-                        </p>
-                      </div>
-                      <div className="half">
-                        <p><a href="#" className="btn py-2">Continue Reading <span className="ion-ios-arrow-forward"></span></a></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              {/* Article 7 */}
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <a href="#" className="img img-2" style={{backgroundImage: "url(/images/image_7.jpg)"}}></a>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Fashion</a></span>
-                    <h3 className="mb-4"><a href="#">7 Beginner Photographer's Mistakes</a></h3>
-                    <p className="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                    <div className="author mb-4 d-flex align-items-center">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/person_1.jpg)"}}></a>
-                      <div className="ml-3 info">
-                        <span>Written by</span>
-                        <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                      </div>
-                    </div>
-                    <div className="meta-wrap align-items-center">
-                      <div className="half order-md-last">
-                        <p className="meta">
-                          <span><i className="icon-heart"></i>3</span>
-                          <span><i className="icon-eye"></i>100</span>
-                          <span><i className="icon-comment"></i>5</span>
-                        </p>
-                      </div>
-                      <div className="half">
-                        <p><a href="#" className="btn py-2">Continue Reading <span className="ion-ios-arrow-forward"></span></a></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Article 8 */}
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <a href="#" className="img img-2" style={{backgroundImage: "url(/images/image_8.jpg)"}}></a>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Photography</a>, <a href="#">Travel</a></span>
-                    <h3 className="mb-4"><a href="#">Excited to Visit in Palawan Philippines</a></h3>
-                    <p className="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                    <div className="author mb-4 d-flex align-items-center">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/person_2.jpg)"}}></a>
-                      <div className="ml-3 info">
-                        <span>Written by</span>
-                        <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                      </div>
-                    </div>
-                    <div className="meta-wrap align-items-center">
-                      <div className="half order-md-last">
-                        <p className="meta">
-                          <span><i className="icon-heart"></i>3</span>
-                          <span><i className="icon-eye"></i>100</span>
-                          <span><i className="icon-comment"></i>5</span>
-                        </p>
-                      </div>
-                      <div className="half">
-                        <p><a href="#" className="btn py-2">Continue Reading <span className="ion-ios-arrow-forward"></span></a></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Article 9 */}
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <a href="#" className="img img-2" style={{backgroundImage: "url(/images/image_9.jpg)"}}></a>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Technology</a></span>
-                    <h3 className="mb-4"><a href="#">How to Make a Paper Boat in Scratch</a></h3>
-                    <p className="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                    <div className="author mb-4 d-flex align-items-center">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/person_3.jpg)"}}></a>
-                      <div className="ml-3 info">
-                        <span>Written by</span>
-                        <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                      </div>
-                    </div>
-                    <div className="meta-wrap align-items-center">
-                      <div className="half order-md-last">
-                        <p className="meta">
-                          <span><i className="icon-heart"></i>3</span>
-                          <span><i className="icon-eye"></i>100</span>
-                          <span><i className="icon-comment"></i>5</span>
-                        </p>
-                      </div>
-                      <div className="half">
-                        <p><a href="#" className="btn py-2">Continue Reading <span className="ion-ios-arrow-forward"></span></a></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Article 10 */}
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <a href="#" className="img img-2" style={{backgroundImage: "url(/images/image_10.jpg)"}}></a>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Fashion</a></span>
-                    <h3 className="mb-4"><a href="#">10 Best Way to Styling Your Lifestyle</a></h3>
-                    <p className="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                    <div className="author mb-4 d-flex align-items-center">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/person_1.jpg)"}}></a>
-                      <div className="ml-3 info">
-                        <span>Written by</span>
-                        <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                      </div>
-                    </div>
-                    <div className="meta-wrap align-items-center">
-                      <div className="half order-md-last">
-                        <p className="meta">
-                          <span><i className="icon-heart"></i>3</span>
-                          <span><i className="icon-eye"></i>100</span>
-                          <span><i className="icon-comment"></i>5</span>
-                        </p>
-                      </div>
-                      <div className="half">
-                        <p><a href="#" className="btn py-2">Continue Reading <span className="ion-ios-arrow-forward"></span></a></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Article 11 */}
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <a href="#" className="img img-2" style={{backgroundImage: "url(/images/image_11.jpg)"}}></a>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Fashion</a></span>
-                    <h3 className="mb-4"><a href="#">10 Tips to Become a Fashion Pro</a></h3>
-                    <p className="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                    <div className="author mb-4 d-flex align-items-center">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/person_2.jpg)"}}></a>
-                      <div className="ml-3 info">
-                        <span>Written by</span>
-                        <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                      </div>
-                    </div>
-                    <div className="meta-wrap align-items-center">
-                      <div className="half order-md-last">
-                        <p className="meta">
-                          <span><i className="icon-heart"></i>3</span>
-                          <span><i className="icon-eye"></i>100</span>
-                          <span><i className="icon-comment"></i>5</span>
-                        </p>
-                      </div>
-                      <div className="half">
-                        <p><a href="#" className="btn py-2">Continue Reading <span className="ion-ios-arrow-forward"></span></a></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Article 12 */}
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <a href="#" className="img img-2" style={{backgroundImage: "url(/images/image_12.jpg)"}}></a>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Photography</a></span>
-                    <h3 className="mb-4"><a href="#">Visit the Most Amazing Place in North America</a></h3>
-                    <p className="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost</p>
-                    <div className="author mb-4 d-flex align-items-center">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/person_3.jpg)"}}></a>
-                      <div className="ml-3 info">
-                        <span>Written by</span>
-                        <h3><a href="#">Dave Lewis</a>, <span>Nov. 28, 2018</span></h3>
-                      </div>
-                    </div>
-                    <div className="meta-wrap align-items-center">
-                      <div className="half order-md-last">
-                        <p className="meta">
-                          <span><i className="icon-heart"></i>3</span>
-                          <span><i className="icon-eye"></i>100</span>
-                          <span><i className="icon-comment"></i>5</span>
-                        </p>
-                      </div>
-                      <div className="half">
-                        <p><a href="#" className="btn py-2">Continue Reading <span className="ion-ios-arrow-forward"></span></a></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
