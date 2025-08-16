@@ -161,21 +161,42 @@ const About = () => {
       </aside>
 
       <div id="colorlib-main">
-        <div className="hero-wrap hero-wrap-2 js-fullheight" style={{backgroundImage: "url(/images/bg_4.jpg)"}} data-stellar-background-ratio="0.5">
+        <div className="hero-wrap hero-wrap-2 js-fullheight" style={{backgroundImage: "url(/images/about_bg_1.jpg)"}} data-stellar-background-ratio="0.5">
           <div className="overlay"></div>
           <div className="js-fullheight d-flex justify-content-center align-items-center">
             <div className="col-md-8 text text-center">
-              <div className="img mb-4" style={{backgroundImage: "url(/images/author.jpg)"}}></div>
-              <div className="desc">
-                <h2 className="subheading">Hello I'm</h2>
-                <h1 className="mb-4">InfiniteWaveX</h1>
-                <p className="mb-4">I am A Blogger Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                <ul className="ftco-social mt-3">
-                  <li className="ftco-animate"><a href="#"><span className="icon-twitter"></span></a></li>
-                  <li className="ftco-animate"><a href="#"><span className="icon-facebook"></span></a></li>
-                  <li className="ftco-animate"><a href="#"><span className="icon-instagram"></span></a></li>
-                </ul>
-              </div>
+              <div className="img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}></div>
+                <div className="desc">
+                  <h2 className="subheading">Hello I'm</h2>
+                  <h1 className="mb-4">InfiniteWaveX</h1>
+                  <p className="mb-4">
+                    InfiniteWaveX is a forward-thinking digital venture dedicated to creativity, 
+                    technology, and storytelling. What began as a small blogging space has 
+                    grown into a platform where ideas, innovation, and inspiration converge. 
+                    We believe that every thought has the power to create ripples, and those 
+                    ripples form the infinite waves of change that shape the future.  
+                    <br /><br />
+                    At InfiniteWaveX, we explore diverse domains including technology, design, 
+                    business insights, lifestyle, and creative expression. Our goal is to 
+                    inspire individuals and businesses by sharing meaningful stories, 
+                    practical knowledge, and forward-looking perspectives. We are not just 
+                    a blogging space; we are a community built around curiosity, learning, 
+                    and digital growth.  
+                    <br /><br />
+                    With a mission to empower dreamers, creators, and doers, InfiniteWaveX 
+                    is constantly evolving into more than just content—it’s an experience. 
+                    Through engaging articles, digital solutions, and community-driven 
+                    initiatives, we strive to connect people across the globe who share 
+                    a passion for innovation and creativity. Whether you are here to 
+                    read, learn, collaborate, or get inspired, InfiniteWaveX welcomes you 
+                    to ride the wave of endless possibilities.
+                  </p>
+                  <ul className="ftco-social mt-3">
+                    <li className="ftco-animate"><a href="#"><span className="icon-twitter"></span></a></li>
+                    <li className="ftco-animate"><a href="#"><span className="icon-facebook"></span></a></li>
+                    <li className="ftco-animate"><a href="#"><span className="icon-instagram"></span></a></li>
+                  </ul>
+                </div>
             </div>
           </div>
         </div>
