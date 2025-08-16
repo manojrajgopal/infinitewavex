@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, NavLink } from 'react-router-dom';
 
+
 const Home = () => {
+  const [showMore, setShowMore] = useState(false);
     useEffect(() => {
+      
     const scriptElements = [];
     
     const loadScript = (src) => {
@@ -109,7 +112,7 @@ const Home = () => {
 
       <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
       <aside id="colorlib-aside" role="complementary" className="js-fullheight text-center">
-        <h1 id="colorlib-logo"><Link to="/">elen<span>.</span></Link></h1>
+        <h1 id="colorlib-logo"><Link to="/">InfWX<span>.</span></Link></h1>
         <nav id="colorlib-main-menu" role="navigation">
           <ul>
             <li>
@@ -125,7 +128,7 @@ const Home = () => {
                 to="/photography" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
-                Photography
+                Leadership Spotlight
               </NavLink>
             </li>
             <li>
@@ -181,12 +184,33 @@ const Home = () => {
           <div className="overlay"></div>
           <div className="js-fullheight d-flex justify-content-center align-items-center">
             <div className="col-md-8 text text-center">
-              <div className="img mb-4" style={{backgroundImage: "url(/images/author.jpg)"}}></div>
+              <div className="img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}></div>
               <div className="desc">
                 <h2 className="subheading">Hello I'm</h2>
-                <h1 className="mb-4">Elen Henderson</h1>
-                <p className="mb-4">I am A Blogger Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                <p><a href="#" className="btn-custom">More About Me <span className="ion-ios-arrow-forward"></span></a></p>
+                <h1 className="mb-4">InfiniteWaveX</h1>
+                <p className="mb-4">
+                  We are a technology-driven company specializing in innovative digital solutions that bring ideas to life.
+                  Our expertise spans across custom coding, website development, creative design, 3D visualization, Artificial Intelligence (AI),
+                  and Machine Learning (ML). With a strong foundation in computer science, we craft scalable and intelligent systems that not only solve problems but also create new opportunities for growth.<br />
+                </p>
+
+                <p>
+                  <button 
+                    className="btn-custom" 
+                    onClick={() => setShowMore(!showMore)}
+                    style={{ border: "none", background: "transparent", cursor: "pointer" }}
+                  >
+                    More About Me <span className="ion-ios-arrow-forward"></span>
+                  </button>
+                </p>
+
+                {showMore && (
+                  <p className="mt-3">
+                    From building sleek, user-friendly websites to designing immersive 3D experiences and deploying AI-powered solutions, 
+                    we bridge creativity with technology. Our mission is to deliver cutting-edge digital experiences that help businesses 
+                    stay ahead in an ever-evolving digital world.
+                  </p>
+                  )}
               </div>
             </div>
           </div>
