@@ -1,9 +1,17 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const About = () => {
+
+  const location = useLocation();
+  
   useEffect(() => {
+    if (window.AOS) window.AOS.init();
+    if (window.$ && window.$('.owl-carousel').length) {
+      window.$('.owl-carousel').owlCarousel();
+    }
+
     const scriptElements = [];
     
     const loadScript = (src) => {
@@ -51,7 +59,11 @@ const About = () => {
       }
     };
 
+  if (!window.__themeScriptsLoaded) {
+    window.__themeScriptsLoaded = true;
     loadScripts();
+  }
+
 
     return () => {
       scriptElements.forEach(script => {
@@ -60,12 +72,12 @@ const About = () => {
         }
       });
     };
-  }, []);
+  }, [location]);
 
   return (
     <div id="colorlib-page">
       <Helmet>
-        <title>Explorer - Free Bootstrap 4 Template by Colorlib</title>
+        <title>InfiniteWaveX - About</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         
@@ -89,67 +101,132 @@ const About = () => {
         <link rel="stylesheet" href="/css/flaticon.css" />
         <link rel="stylesheet" href="/css/icomoon.css" />
         <link rel="stylesheet" href="/css/style.css" />
+
+        {/* Add mobile-specific styles */}
+        
+        <style type="text/css">{`
+        /* Fix full height issue on mobile */
+          .js-fullheight {
+            min-height: 100vh;       /* allow proper full height */
+            height: auto !important; /* don’t force fixed 100vh */
+            display: flex;
+            flex-direction: column;
+          }
+
+          html, body {
+            height: auto;
+            min-height: 100vh;
+            overflow-x: hidden;  /* avoid sideways scroll */
+            overflow-y: auto;    /* enable vertical scroll */
+          }
+
+          @media (max-width: 768px) {
+            .hero-wrap-2.js-fullheight {
+              padding-top: 20px;
+              min-height: calc(100vh - 40px) !important;
+            }
+            #colorlib-aside {
+              padding-top: 20px;
+            }
+            .img.mb-4 {
+              background-size: contain !important;
+              min-height: 80px !important;
+              margin-top: 10px;
+            }
+            .desc h1 {
+              font-size: 2rem;
+            }
+            .desc p {
+              font-size: 1rem;
+              padding: 0 10px;
+            }
+            .ftco-social {
+              margin-top: 20px !important;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .hero-wrap-2.js-fullheight {
+              padding-top: 10px;
+              min-height: calc(100vh - 20px) !important;
+            }
+            .desc h1 {
+              font-size: 1.8rem;
+            }
+            .desc h2.subheading {
+              font-size: 1.2rem;
+            }
+            .desc p {
+              font-size: 0.9rem;
+            }
+          }
+        `}</style>
+        
       </Helmet>
 
       <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
       <aside id="colorlib-aside" role="complementary" className="js-fullheight text-center">
-        <h1 id="colorlib-logo"><Link to="/">InfWX<span>.</span></Link></h1>
-        <nav id="colorlib-main-menu" role="navigation">
-          <ul>
-            <li>
-              <NavLink 
-                to="/" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/photography" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Photography
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/projects" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Projects
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/fashion" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Fashion
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/about" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/contact" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Contact
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+        <h1 id="colorlib-logo">
+          <a href="#" onClick={() => window.location.href = '/'}>InfWX<span>.</span></a>
+        </h1>
+
+          <nav id="colorlib-main-menu" role="navigation">
+            <ul>
+              <li>
+                <NavLink 
+                  to="/" 
+                  onClick={() => window.location.href = '/'}
+                  className={({ isActive }) => isActive ? "colorlib-active" : ""}
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to="/photography" 
+                  onClick={() => window.location.href = '/photography'}
+                  className={({ isActive }) => isActive ? "colorlib-active" : ""}
+                >
+                  Leadership Spotlight
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to="/projects" 
+                  onClick={() => window.location.href = '/projects'}
+                  className={({ isActive }) => isActive ? "colorlib-active" : ""}
+                >
+                  Projects
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to="/fashion" 
+                  onClick={() => window.location.href = '/fashion'}
+                  className={({ isActive }) => isActive ? "colorlib-active" : ""}
+                >
+                  Fashion
+                </NavLink>
+              </li>
+              <li>
+
+              </li>
+              <li>
+                <NavLink 
+                  to="/contact" 
+                  onClick={() => window.location.href = '/contact'}
+                  className={({ isActive }) => isActive ? "colorlib-active" : ""}
+                >
+                  Contact
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+
 
         <div className="colorlib-footer">
           <p>
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
+            Copyright &copy; {new Date().getFullYear()} All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
           </p>
           <ul>
             <li><a href="#"><i className="icon-facebook"></i></a></li>
@@ -161,15 +238,34 @@ const About = () => {
       </aside>
 
       <div id="colorlib-main">
-        <div className="hero-wrap hero-wrap-2 js-fullheight" style={{backgroundImage: "url(/images/about_bg_1.jpg)"}} data-stellar-background-ratio="0.5">
+        <div className="hero-wrap hero-wrap-2 js-fullheight" style={{ 
+          backgroundImage: "url(/images/about_bg_1.jpg)",
+          backgroundPosition: window.innerWidth <= 768 ? "center center" : undefined,
+          backgroundSize: window.innerWidth <= 768 ? "cover" : undefined
+        }} data-stellar-background-ratio="0.5">
           <div className="overlay"></div>
           <div className="js-fullheight d-flex justify-content-center align-items-center">
-            <div className="col-md-8 text text-center">
-              <div className="img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}></div>
+            <div className="col-md-8 text text-center" style={{
+              padding: window.innerWidth <= 768 ? "20px" : "0",
+              marginTop: window.innerWidth <= 768 ? "20px" : "0"
+            }}>
+            <div className="img mb-4" style={{
+              backgroundImage: "url(/images/logo.png)",
+              backgroundSize: "contain",
+              minHeight: window.innerWidth <= 768 ? "80px" : "100px"
+            }}></div>
                 <div className="desc">
-                  <h2 className="subheading">Hello I'm</h2>
-                  <h1 className="mb-4">InfiniteWaveX</h1>
-                  <p className="mb-4">
+                  <h2 className="subheading" style={{
+                    fontSize: window.innerWidth <= 480 ? "1.2rem" : undefined
+                  }}>Hello I'm</h2>
+                  <h1 className="mb-4" style={{
+                    fontSize: window.innerWidth <= 480 ? "1.8rem" : window.innerWidth <= 768 ? "2rem" : undefined
+                  }}>InfiniteWaveX</h1>
+                  <p className="mb-4" style={{
+                      fontSize: window.innerWidth <= 480 ? "0.9rem" : "1rem",
+                      textAlign: "justify",
+                      padding: window.innerWidth <= 768 ? "0 10px" : "0"
+                    }}>
                     InfiniteWaveX is a forward-thinking digital venture dedicated to creativity, 
                     technology, and storytelling. What began as a small blogging space has 
                     grown into a platform where ideas, innovation, and inspiration converge. 
@@ -191,7 +287,9 @@ const About = () => {
                     read, learn, collaborate, or get inspired, InfiniteWaveX welcomes you 
                     to ride the wave of endless possibilities.
                   </p>
-                  <ul className="ftco-social mt-3">
+                  <ul className="ftco-social mt-3" style={{
+                    marginTop: window.innerWidth <= 768 ? "20px !important" : undefined
+                  }}>
                     <li className="ftco-animate"><a href="#"><span className="icon-twitter"></span></a></li>
                     <li className="ftco-animate"><a href="#"><span className="icon-facebook"></span></a></li>
                     <li className="ftco-animate"><a href="#"><span className="icon-instagram"></span></a></li>

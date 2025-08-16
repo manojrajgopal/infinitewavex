@@ -1,9 +1,15 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const Photography = () => {
+  const location = useLocation();
+  
   useEffect(() => {
+    if (window.AOS) window.AOS.init();
+    if (window.$ && window.$('.owl-carousel').length) {
+      window.$('.owl-carousel').owlCarousel();
+    }
     const scriptElements = [];
     
     const loadScript = (src) => {
@@ -56,7 +62,11 @@ const Photography = () => {
       }
     };
 
+  if (!window.__themeScriptsLoaded) {
+    window.__themeScriptsLoaded = true;
     loadScripts();
+  }
+
 
     return () => {
       scriptElements.forEach(script => {
@@ -65,7 +75,7 @@ const Photography = () => {
         }
       });
     };
-  }, []);
+  }, [Location]);
 
   return (
     <div id="colorlib-page">
@@ -98,27 +108,24 @@ const Photography = () => {
 
       <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
       <aside id="colorlib-aside" role="complementary" className="js-fullheight text-center">
-        <h1 id="colorlib-logo"><a href="index.html">InfWX<span>.</span></a></h1>
+        <h1 id="colorlib-logo">
+          <a href="#" onClick={() => window.location.href = '/'}>InfWX<span>.</span></a>
+        </h1>
         <nav id="colorlib-main-menu" role="navigation">
           <ul>
-<li>
+            <li>
               <NavLink 
+              onClick={() => window.location.href = '/'}
                 to="/" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
                 Home
               </NavLink>
             </li>
+
             <li>
               <NavLink 
-                to="/photography" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Photography
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
+              onClick={() => window.location.href = '/projects'}
                 to="/projects" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -127,6 +134,7 @@ const Photography = () => {
             </li>
             <li>
               <NavLink 
+              onClick={() => window.location.href = '/fashion'}
                 to="/fashion" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -135,6 +143,7 @@ const Photography = () => {
             </li>
             <li>
               <NavLink 
+              onClick={() => window.location.href = '/about'}
                 to="/about" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -143,6 +152,7 @@ const Photography = () => {
             </li>
             <li>
               <NavLink 
+              onClick={() => window.location.href = '/contact'}
                 to="/contact" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -154,7 +164,7 @@ const Photography = () => {
 
         <div className="colorlib-footer">
           <p>
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
+            Copyright &copy; {new Date().getFullYear()} All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
           </p>
           <ul>
             <li><a href="#"><i className="icon-facebook"></i></a></li>
@@ -322,7 +332,7 @@ const Photography = () => {
             <div className="row">
               <div className="col-md-12">
                 <p>
-                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
+                  Copyright &copy; {new Date().getFullYear()} All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
                 </p>
               </div>
             </div>

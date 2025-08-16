@@ -51,7 +51,11 @@ const Projects = () => {
       }
     };
 
+  if (!window.__themeScriptsLoaded) {
+    window.__themeScriptsLoaded = true;
     loadScripts();
+  }
+
 
     return () => {
       scriptElements.forEach(script => {
@@ -60,7 +64,7 @@ const Projects = () => {
         }
       });
     };
-  }, []);
+  }, [Location]);
 
   return (
     <div id="colorlib-page">
@@ -98,11 +102,15 @@ const Projects = () => {
 
       <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
       <aside id="colorlib-aside" role="complementary" className="js-fullheight text-center">
-        <h1 id="colorlib-logo"><Link to="/">InfWX<span>.</span></Link></h1>
+        <h1 id="colorlib-logo">
+        <a href="#" onClick={() => window.location.href = '/'}>InfWX<span>.</span></a>
+      </h1>
+
         <nav id="colorlib-main-menu" role="navigation">
           <ul>
             <li>
               <NavLink 
+              onClick={() => window.location.href = '/'}
                 to="/" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -111,22 +119,17 @@ const Projects = () => {
             </li>
             <li>
               <NavLink 
+              onClick={() => window.location.href = '/photography'}
                 to="/photography" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
-                Photography
+                Leadership Spotlight
               </NavLink>
             </li>
+
             <li>
               <NavLink 
-                to="/projects" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Projects
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
+              onClick={() => window.location.href = '/fashion'}
                 to="/fashion" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -135,6 +138,7 @@ const Projects = () => {
             </li>
             <li>
               <NavLink 
+              onClick={() => window.location.href = '/about'}
                 to="/about" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -143,6 +147,7 @@ const Projects = () => {
             </li>
             <li>
               <NavLink 
+              onClick={() => window.location.href = '/contact'}
                 to="/contact" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -154,7 +159,7 @@ const Projects = () => {
 
         <div className="colorlib-footer">
           <p>
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
+            Copyright &copy; {new Date().getFullYear()} All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
           </p>
           <ul>
             <li><a href="#"><i className="icon-facebook"></i></a></li>
@@ -644,7 +649,7 @@ const Projects = () => {
             <div className="row">
               <div className="col-md-12">
                 <p>
-                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
+                  Copyright &copy; {new Date().getFullYear()} All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
                 </p>
               </div>
             </div>

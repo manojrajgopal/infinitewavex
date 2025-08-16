@@ -1,12 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const Home = () => {
   const [showMore, setShowMore] = useState(false);
   const threeJsContainer = useRef(null);
-
+  const location = useLocation();
+  
   useEffect(() => {
+    if (window.AOS) window.AOS.init();
+    if (window.$ && window.$('.owl-carousel').length) {
+      window.$('.owl-carousel').owlCarousel();
+    }
     // Load Three.js and related scripts dynamically
     const loadThreeJS = () => {
       return new Promise((resolve) => {
@@ -171,7 +176,11 @@ const Home = () => {
       }
     };
 
+  if (!window.__themeScriptsLoaded) {
+    window.__themeScriptsLoaded = true;
     loadScripts();
+  }
+
 
     return () => {
       // Cleanup
@@ -181,7 +190,7 @@ const Home = () => {
         }
       });
     };
-  }, []);
+  }, [Location]);
 
   return (
     <div id="colorlib-page">
@@ -195,7 +204,8 @@ const Home = () => {
           width: '100%',
           height: '100%',
           zIndex: -1,
-          opacity: 0.7
+          opacity: 0.7,
+          pointerEvents: 'none'
         }}
       />
 
@@ -203,7 +213,9 @@ const Home = () => {
         <title>InfiniteWaveX</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, shrink-to-fit=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet" />
 
@@ -219,23 +231,124 @@ const Home = () => {
         <link rel="stylesheet" href="/css/flaticon.css" />
         <link rel="stylesheet" href="/css/icomoon.css" />
         <link rel="stylesheet" href="/css/style.css" />
+
+        <style type="text/css">{`
+         .js-fullheight {
+            min-height: 100vh;       /* allow proper full height */
+            height: auto !important; /* don’t force fixed 100vh */
+            display: flex;
+            flex-direction: column;
+          }
+
+          html, body {
+            height: auto;
+            min-height: 100vh;
+            overflow-x: hidden;  /* avoid sideways scroll */
+            overflow-y: auto;    /* enable vertical scroll */
+          }
+
+          @media (max-width: 768px) {
+            .hero-wrap.js-fullheight {
+              padding-top: 20px;
+            }
+            #colorlib-aside {
+              padding-top: 20px;
+            }
+            .img.mb-4 {
+              min-height: 80px !important;
+            }
+            .desc h1 {
+              font-size: 2rem;
+            }
+            .desc p {
+              font-size: 1rem;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .hero-wrap.js-fullheight {
+              padding-top: 10px;
+            }
+            .desc h1 {
+              font-size: 1.8rem;
+            }
+            .desc h2.subheading {
+              font-size: 1.2rem;
+            }
+          }
+          /* Mobile-specific adjustments */
+          @media (max-width: 768px) {
+            #colorlib-aside {
+              padding-top: 20px;
+              height: auto;
+            }
+            
+            #colorlib-main {
+              padding-top: 20px;
+            }
+            
+            .hero-wrap.js-fullheight {
+              min-height: calc(100vh - 40px);
+            }
+            
+            .img.mb-4 {
+              background-size: contain !important;
+              min-height: 80px !important;
+              margin-top: 10px;
+            }
+            
+            .desc h1 {
+              font-size: 2rem;
+              margin-top: 10px;
+            }
+            
+            .desc h2.subheading {
+              font-size: 1.2rem;
+            }
+            
+            .desc p {
+              font-size: 1rem;
+              padding: 0 10px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            #colorlib-aside {
+              padding-top: 10px;
+            }
+            
+            .hero-wrap.js-fullheight {
+              min-height: calc(100vh - 20px);
+            }
+            
+            .desc h1 {
+              font-size: 1.8rem;
+            }
+            
+            .desc h2.subheading {
+              font-size: 1rem;
+            }
+            
+            .blog-entry {
+              margin-bottom: 30px;
+            }
+          }
+        `}</style>
+
       </Helmet>
 
       <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
       <aside id="colorlib-aside" role="complementary" className="js-fullheight text-center">
-        <h1 id="colorlib-logo"><Link to="/">InfWX<span>.</span></Link></h1>
+        <h1 id="colorlib-logo">
+          <a href="#" onClick={() => window.location.href = '/'}>InfWX<span>.</span></a>
+        </h1>
+
         <nav id="colorlib-main-menu" role="navigation">
           <ul>
+
             <li>
               <NavLink 
-                to="/" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
+              onClick={() => window.location.href = '/photography'}
                 to="/photography" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -244,6 +357,7 @@ const Home = () => {
             </li>
             <li>
               <NavLink 
+              onClick={() => window.location.href = '/projects'}
                 to="/projects" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -252,6 +366,7 @@ const Home = () => {
             </li>
             <li>
               <NavLink 
+              onClick={() => window.location.href = '/fashion'}
                 to="/fashion" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -260,6 +375,7 @@ const Home = () => {
             </li>
             <li>
               <NavLink 
+              onClick={() => window.location.href = '/about'}
                 to="/about" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -268,6 +384,7 @@ const Home = () => {
             </li>
             <li>
               <NavLink 
+              onClick={() => window.location.href = '/contact'}
                 to="/contact" 
                 className={({ isActive }) => isActive ? "colorlib-active" : ""}
               >
@@ -279,7 +396,7 @@ const Home = () => {
 
         <div className="colorlib-footer">
           <p>
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
+            Copyright &copy; {new Date().getFullYear()} All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
           </p>
           <ul>
             <li><a href="#"><i className="icon-facebook"></i></a></li>
@@ -294,8 +411,16 @@ const Home = () => {
         <div className="hero-wrap js-fullheight" style={{ background: 'none' }} data-stellar-background-ratio="0.5">
           <div className="overlay"></div>
           <div className="js-fullheight d-flex justify-content-center align-items-center">
-            <div className="col-md-8 text text-center">
-              <div className="img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}></div>
+            <div className="col-md-8 text text-center"style={{
+              padding: "20px",  // Add mobile padding
+              fontSize: "clamp(14px, 2.5vw, 16px)",
+              marginTop: window.innerWidth <= 768 ? "20px" : "0"
+            }}>
+              <div className="img mb-4" style={{
+                backgroundImage: "url(/images/logo.png)",
+                backgroundSize: "contain",  // Add this
+                minHeight: "100px"  // Add minimum height
+              }}></div>
               <div className="desc">
                 <h2 className="subheading">Hello I'm</h2>
                 <h1 className="mb-4">InfiniteWaveX</h1>
@@ -452,7 +577,7 @@ const Home = () => {
             <div className="row">
               <div className="col-md-12">
                 <p>
-                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
+                  Copyright &copy; {new Date().getFullYear()} All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
                 </p>
               </div>
             </div>
