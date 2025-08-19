@@ -229,6 +229,7 @@ const Home = () => {
 
         <Copyright />
 
+
       </aside>
 
       <div id="colorlib-main" style={{ position: 'relative', zIndex: 1 }}>

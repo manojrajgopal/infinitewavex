@@ -121,6 +121,7 @@ const Gallery = () => {
 
         <Copyright />
 
+
       </aside>
 
       <div id="colorlib-main">

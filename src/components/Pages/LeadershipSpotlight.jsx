@@ -115,6 +115,7 @@ const LeadershipSpotlight = () => {
 
         <Copyright />
 
+
       </aside>
 
       <div id="colorlib-main">

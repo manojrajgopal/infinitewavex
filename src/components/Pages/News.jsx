@@ -150,7 +150,7 @@ const News = () => {
                           algorithms with intuitive user interfaces.
                         </p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="#" className="img" style={{backgroundImage: "url(/images/person_1.jpg)"}}></a>
+                          <a href="#" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Written by</span>
                             <h3><a href="#">Manoj R</a>, <span>Oct. 15, 2023</span></h3>
@@ -174,8 +174,26 @@ const News = () => {
 
                   <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
-                      <a href="#" className="img img-2" style={{backgroundImage: "url(/images/news_2.jpg)"}}></a>
-                      <div className="text text-2 pt-2 mt-3">
+                      <div className="img img-2" style={{ position: "relative", overflow: "hidden" }}>
+                        <video 
+                          src="/images/news_2.mp4" 
+                          autoPlay 
+                          loop 
+                          muted 
+                          playsInline 
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            zIndex: 0
+                          }}
+                        />
+                      </div>
+
+                      <div className="text text-2 pt-2 mt-3" style={{ position: "relative", zIndex: 1 }}>
                         <span className="category mb-3 d-block"><a href="#">Innovation</a></span>
                         <h3 className="mb-4"><a href="#">How We're Revolutionizing 3D Visualization</a></h3>
                         <p className="mb-4">
@@ -206,6 +224,7 @@ const News = () => {
                     </div>
                   </div>
 
+
                   <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
                       <a href="#" className="img img-2" style={{backgroundImage: "url(/images/news_3.jpg)"}}></a>
@@ -218,7 +237,7 @@ const News = () => {
                           opportunities for collaboration.
                         </p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="#" className="img" style={{backgroundImage: "url(/images/person_3.jpg)"}}></a>
+                          <a href="#" className="img" style={{backgroundImage: "url(/images/logo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Written by</span>
                             <h3><a href="#">Team InfiniteWaveX</a>, <span>Oct. 5, 2023</span></h3>
@@ -240,7 +259,7 @@ const News = () => {
                     </div>
                   </div>
 
-                  <div className="col-md-12">
+                  {/* <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
                       <a href="#" className="img img-2" style={{backgroundImage: "url(/images/news_4.jpg)"}}></a>
                       <div className="text text-2 pt-2 mt-3">
@@ -271,9 +290,9 @@ const News = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
-                  <div className="col-md-12">
+                  {/* <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
                       <a href="#" className="img img-2" style={{backgroundImage: "url(/images/news_5.jpg)"}}></a>
                       <div className="text text-2 pt-2 mt-3">
@@ -304,7 +323,7 @@ const News = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="row mt-5">
