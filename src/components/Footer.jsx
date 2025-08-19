@@ -16,25 +16,26 @@ const Footer = () => {
             <div className="row mb-5">
               <div className="col-md">
                 <div className="ftco-footer-widget mb-4 ml-md-4">
-                  <h2 className="ftco-heading-2">Category</h2>
-                  <ul className="list-unstyled categories">
-                    <li><a href="#">Photography <span>(6)</span></a></li>
-                    <li><a href="#">Fashion <span>(8)</span></a></li>
-                    <li><a href="#">Technology <span>(2)</span></a></li>
-                    <li><a href="#">Travel <span>(2)</span></a></li>
-                  </ul>
+                <h2 className="ftco-heading-2">Our Solutions</h2>
+                <ul className="list-unstyled categories">
+                  <li><a href="#">AI & Machine Learning <span>(6)</span></a></li>
+                  <li><a href="#">Cloud & DevOps <span>(2)</span></a></li>
+                  <li><a href="#">Web & App Development <span>(4)</span></a></li>
+                  <li><a href="#">ERP & SAP Consulting <span>(7)</span></a></li>
+                  <li><a href="#">3D Visualization <span>(12)</span></a></li>
+                </ul>
                 </div>
               </div>
               <div className="col-md">
                 <div className="ftco-footer-widget mb-4">
-                  <h2 className="ftco-heading-2">Archives</h2>
-                  <ul className="list-unstyled categories">
-                    <li><a href="#">October 2018 <span>(6)</span></a></li>
-                    <li><a href="#">September 2018 <span>(6)</span></a></li>
-                    <li><a href="#">August 2018 <span>(8)</span></a></li>
-                    <li><a href="#">July 2018 <span>(2)</span></a></li>
-                    <li><a href="#">June 2018 <span>(7)</span></a></li>
-                  </ul>
+                <h2 className="ftco-heading-2">Explore</h2>
+                <ul className="list-unstyled categories">
+                  <li><a href="#">Innovation <span>(1)</span></a></li>
+                  <li><a href="#">Creative Design <span>(5)</span></a></li>
+                  <li><a href="#">Music & Art <span>(19)</span></a></li>
+                  <li><a href="#">Technology <span>(34)</span></a></li>
+                  <li><a href="#">Future Trends <span>(11)</span></a></li>
+                </ul>
                 </div>
               </div>
               <div className="col-md">

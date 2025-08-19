@@ -356,6 +356,106 @@ const Home = () => {
                   </div>
                 </div>
               </div>
+
+              <div className="col-md-4">
+                <div className="blog-entry ftco-animate">
+                  <div className="img img-2">
+                    <video 
+                      src="/images/1.mp4" 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
+                    />
+                  </div>
+                  <div className="text text-2 pt-2 mt-3">
+                    <span className="category mb-3 d-block"><a href="#">Singing</a></span>
+                    <h3 className="mb-4"><a href="#">Expressive Singing & Voice Artistry</a></h3>
+                    <p className="mb-4">
+                      Singing is a timeless art that blends melody, rhythm, and emotion to create powerful 
+                      connections with audiences. Through practice and creativity, singers develop unique 
+                      styles that showcase their vocal range and storytelling ability. From classical to 
+                      contemporary, singing continues to inspire, heal, and entertain across cultures worldwide.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-4">
+                <div className="blog-entry ftco-animate">
+                  <div className="img img-2">
+                    <video 
+                      src="/images/2.mp4" 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
+                    />
+                  </div>
+                  <div className="text text-2 pt-2 mt-3">
+                    <span className="category mb-3 d-block"><a href="#">Exterior Design</a></span>
+                    <h3 className="mb-4"><a href="#">Innovative Exterior Design Solutions</a></h3>
+                    <p className="mb-4">
+                      Exterior design transforms outdoor spaces into visually stunning and functional environments. 
+                      From architectural facades to landscaping, materials, and lighting, every element is carefully 
+                      planned to enhance aesthetics, durability, and harmony with surroundings. Innovative exterior 
+                      design blends creativity with practicality to create spaces that impress and inspire.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-4">
+                <div className="blog-entry ftco-animate">
+                  <div className="img img-2">
+                    <video 
+                      src="/images/2.mp4" 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
+                    />
+                  </div>
+                  <div className="text text-2 pt-2 mt-3">
+                    <span className="category mb-3 d-block"><a href="#">Voice Over</a></span>
+                    <h3 className="mb-4"><a href="#">Professional Voice Over Services</a></h3>
+                    <p className="mb-4">
+                      Voice over adds life and emotion to videos, presentations, and multimedia projects. 
+                      Professional voice artists bring clarity, tone, and personality to every recording, 
+                      enhancing storytelling and audience engagement. From commercials to animations, 
+                      voice over is essential for creating impactful audio-visual experiences.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-4">
+                <div className="blog-entry ftco-animate">
+                  <div className="img img-2">
+                    <video 
+                      src="/images/2.mp4" 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
+                    />
+                  </div>
+                  <div className="text text-2 pt-2 mt-3">
+                    <span className="category mb-3 d-block"><a href="#">Web & App Development</a></span>
+                    <h3 className="mb-4"><a href="#">Custom Web and Mobile Applications</a></h3>
+                    <p className="mb-4">
+                      Our team designs and develops web and mobile applications tailored to your business needs. 
+                      From responsive websites to feature-rich mobile apps, we combine usability, scalability, 
+                      and aesthetics to deliver digital solutions that engage users and drive growth. 
+                    </p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
