@@ -361,7 +361,7 @@ const Home = () => {
                 <div className="blog-entry ftco-animate">
                   <div className="img img-2">
                     <video 
-                      src="/images/1.mp4" 
+                      src="/images/music.mp4" 
                       autoPlay 
                       loop 
                       muted 
@@ -386,7 +386,7 @@ const Home = () => {
                 <div className="blog-entry ftco-animate">
                   <div className="img img-2">
                     <video 
-                      src="/images/2.mp4" 
+                      src="/images/4.mp4" 
                       autoPlay 
                       loop 
                       muted 
@@ -411,32 +411,7 @@ const Home = () => {
                 <div className="blog-entry ftco-animate">
                   <div className="img img-2">
                     <video 
-                      src="/images/2.mp4" 
-                      autoPlay 
-                      loop 
-                      muted 
-                      playsInline 
-                      style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }}
-                    />
-                  </div>
-                  <div className="text text-2 pt-2 mt-3">
-                    <span className="category mb-3 d-block"><a href="#">Voice Over</a></span>
-                    <h3 className="mb-4"><a href="#">Professional Voice Over Services</a></h3>
-                    <p className="mb-4">
-                      Voice over adds life and emotion to videos, presentations, and multimedia projects. 
-                      Professional voice artists bring clarity, tone, and personality to every recording, 
-                      enhancing storytelling and audience engagement. From commercials to animations, 
-                      voice over is essential for creating impactful audio-visual experiences.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-md-4">
-                <div className="blog-entry ftco-animate">
-                  <div className="img img-2">
-                    <video 
-                      src="/images/2.mp4" 
+                      src="/images/5.mp4" 
                       autoPlay 
                       loop 
                       muted 

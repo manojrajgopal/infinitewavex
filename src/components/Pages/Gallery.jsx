@@ -142,7 +142,7 @@ const Gallery = () => {
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 02</h3>
-                    <span>Nature</span>
+                    <span>Python Language</span>
                   </div>
                 </a>
               </div>
@@ -151,7 +151,7 @@ const Gallery = () => {
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 03</h3>
-                    <span>Fashion</span>
+                    <span>Coding</span>
                   </div>
                 </a>
               </div>
@@ -160,7 +160,7 @@ const Gallery = () => {
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 04</h3>
-                    <span>Travel</span>
+                    <span>Website Design</span>
                   </div>
                 </a>
               </div>
@@ -169,7 +169,7 @@ const Gallery = () => {
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 05</h3>
-                    <span>Travel</span>
+                    <span>Big Data</span>
                   </div>
                 </a>
               </div>
@@ -178,7 +178,7 @@ const Gallery = () => {
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 06</h3>
-                    <span>Travel</span>
+                    <span>Digital Market</span>
                   </div>
                 </a>
               </div>
@@ -187,7 +187,7 @@ const Gallery = () => {
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 07</h3>
-                    <span>Fashion, Model</span>
+                    <span>Animation</span>
                   </div>
                 </a>
               </div>
@@ -196,7 +196,7 @@ const Gallery = () => {
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 08</h3>
-                    <span>Nature</span>
+                    <span>Photography</span>
                   </div>
                 </a>
               </div>
@@ -205,7 +205,7 @@ const Gallery = () => {
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 09</h3>
-                    <span>Technology</span>
+                    <span>Interior Design</span>
                   </div>
                 </a>
               </div>
@@ -214,7 +214,7 @@ const Gallery = () => {
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 10</h3>
-                    <span>Model</span>
+                    <span>Music</span>
                   </div>
                 </a>
               </div>
@@ -223,7 +223,7 @@ const Gallery = () => {
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 11</h3>
-                    <span>Fashion</span>
+                    <span>Application</span>
                   </div>
                 </a>
               </div>
@@ -232,7 +232,7 @@ const Gallery = () => {
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 12</h3>
-                    <span>Photography</span>
+                    <span>AI</span>
                   </div>
                 </a>
               </div>
