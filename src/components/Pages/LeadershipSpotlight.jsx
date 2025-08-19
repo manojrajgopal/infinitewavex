@@ -145,7 +145,7 @@ const LeadershipSpotlight = () => {
           </div>
         </div>
 
-        <section className="ftco-section">
+        {/* <section className="ftco-section">
           <div className="container">
             <div className="row">
               <div className="col-lg-8">
@@ -167,9 +167,9 @@ const LeadershipSpotlight = () => {
                         <div className="meta-wrap align-items-center">
                           <div className="half order-md-last">
                             <p className="meta">
-                              <span><i className="icon-heart"></i>3</span>
-                              <span><i className="icon-eye"></i>100</span>
-                              <span><i className="icon-comment"></i>5</span>
+                              <span><i className="fa fa-heart"></i>3</span>
+                              <span><i className="fa fa-eye"></i>100</span>
+                              <span><i className="fa fa-comment"></i>5</span>
                             </p>
                           </div>
                           <div className="half">
@@ -197,9 +197,9 @@ const LeadershipSpotlight = () => {
                         <div className="meta-wrap align-items-center">
                           <div className="half order-md-last">
                             <p className="meta">
-                              <span><i className="icon-heart"></i>3</span>
-                              <span><i className="icon-eye"></i>100</span>
-                              <span><i className="icon-comment"></i>5</span>
+                              <span><i className="fa fa-heart"></i>3</span>
+                              <span><i className="fa fa-eye"></i>100</span>
+                              <span><i className="fa fa-comment"></i>5</span>
                             </p>
                           </div>
                           <div className="half">
@@ -227,9 +227,9 @@ const LeadershipSpotlight = () => {
                         <div className="meta-wrap align-items-center">
                           <div className="half order-md-last">
                             <p className="meta">
-                              <span><i className="icon-heart"></i>3</span>
-                              <span><i className="icon-eye"></i>100</span>
-                              <span><i className="icon-comment"></i>5</span>
+                              <span><i className="fa fa-heart"></i>3</span>
+                              <span><i className="fa fa-eye"></i>100</span>
+                              <span><i className="fa fa-comment"></i>5</span>
                             </p>
                           </div>
                           <div className="half">
@@ -257,9 +257,9 @@ const LeadershipSpotlight = () => {
                         <div className="meta-wrap align-items-center">
                           <div className="half order-md-last">
                             <p className="meta">
-                              <span><i className="icon-heart"></i>3</span>
-                              <span><i className="icon-eye"></i>100</span>
-                              <span><i className="icon-comment"></i>5</span>
+                              <span><i className="fa fa-heart"></i>3</span>
+                              <span><i className="fa fa-eye"></i>100</span>
+                              <span><i className="fa fa-comment"></i>5</span>
                             </p>
                           </div>
                           <div className="half">
@@ -287,9 +287,9 @@ const LeadershipSpotlight = () => {
                         <div className="meta-wrap align-items-center">
                           <div className="half order-md-last">
                             <p className="meta">
-                              <span><i className="icon-heart"></i>3</span>
-                              <span><i className="icon-eye"></i>100</span>
-                              <span><i className="icon-comment"></i>5</span>
+                              <span><i className="fa fa-heart"></i>3</span>
+                              <span><i className="fa fa-eye"></i>100</span>
+                              <span><i className="fa fa-comment"></i>5</span>
                             </p>
                           </div>
                           <div className="half">
@@ -317,9 +317,9 @@ const LeadershipSpotlight = () => {
                         <div className="meta-wrap align-items-center">
                           <div className="half order-md-last">
                             <p className="meta">
-                              <span><i className="icon-heart"></i>3</span>
-                              <span><i className="icon-eye"></i>100</span>
-                              <span><i className="icon-comment"></i>5</span>
+                              <span><i className="fa fa-heart"></i>3</span>
+                              <span><i className="fa fa-eye"></i>100</span>
+                              <span><i className="fa fa-comment"></i>5</span>
                             </p>
                           </div>
                           <div className="half">
@@ -347,9 +347,9 @@ const LeadershipSpotlight = () => {
                         <div className="meta-wrap align-items-center">
                           <div className="half order-md-last">
                             <p className="meta">
-                              <span><i className="icon-heart"></i>3</span>
-                              <span><i className="icon-eye"></i>100</span>
-                              <span><i className="icon-comment"></i>5</span>
+                              <span><i className="fa fa-heart"></i>3</span>
+                              <span><i className="fa fa-eye"></i>100</span>
+                              <span><i className="fa fa-comment"></i>5</span>
                             </p>
                           </div>
                           <div className="half">
@@ -377,9 +377,9 @@ const LeadershipSpotlight = () => {
                         <div className="meta-wrap align-items-center">
                           <div className="half order-md-last">
                             <p className="meta">
-                              <span><i className="icon-heart"></i>3</span>
-                              <span><i className="icon-eye"></i>100</span>
-                              <span><i className="icon-comment"></i>5</span>
+                              <span><i className="fa fa-heart"></i>3</span>
+                              <span><i className="fa fa-eye"></i>100</span>
+                              <span><i className="fa fa-comment"></i>5</span>
                             </p>
                           </div>
                           <div className="half">
@@ -407,9 +407,9 @@ const LeadershipSpotlight = () => {
                         <div className="meta-wrap align-items-center">
                           <div className="half order-md-last">
                             <p className="meta">
-                              <span><i className="icon-heart"></i>3</span>
-                              <span><i className="icon-eye"></i>100</span>
-                              <span><i className="icon-comment"></i>5</span>
+                              <span><i className="fa fa-heart"></i>3</span>
+                              <span><i className="fa fa-eye"></i>100</span>
+                              <span><i className="fa fa-comment"></i>5</span>
                             </p>
                           </div>
                           <div className="half">
@@ -437,9 +437,9 @@ const LeadershipSpotlight = () => {
                         <div className="meta-wrap align-items-center">
                           <div className="half order-md-last">
                             <p className="meta">
-                              <span><i className="icon-heart"></i>3</span>
-                              <span><i className="icon-eye"></i>100</span>
-                              <span><i className="icon-comment"></i>5</span>
+                              <span><i className="fa fa-heart"></i>3</span>
+                              <span><i className="fa fa-eye"></i>100</span>
+                              <span><i className="fa fa-comment"></i>5</span>
                             </p>
                           </div>
                           <div className="half">
@@ -467,9 +467,9 @@ const LeadershipSpotlight = () => {
                         <div className="meta-wrap align-items-center">
                           <div className="half order-md-last">
                             <p className="meta">
-                              <span><i className="icon-heart"></i>3</span>
-                              <span><i className="icon-eye"></i>100</span>
-                              <span><i className="icon-comment"></i>5</span>
+                              <span><i className="fa fa-heart"></i>3</span>
+                              <span><i className="fa fa-eye"></i>100</span>
+                              <span><i className="fa fa-comment"></i>5</span>
                             </p>
                           </div>
                           <div className="half">
@@ -497,9 +497,9 @@ const LeadershipSpotlight = () => {
                         <div className="meta-wrap align-items-center">
                           <div className="half order-md-last">
                             <p className="meta">
-                              <span><i className="icon-heart"></i>3</span>
-                              <span><i className="icon-eye"></i>100</span>
-                              <span><i className="icon-comment"></i>5</span>
+                              <span><i className="fa fa-heart"></i>3</span>
+                              <span><i className="fa fa-eye"></i>100</span>
+                              <span><i className="fa fa-comment"></i>5</span>
                             </p>
                           </div>
                           <div className="half">
@@ -614,9 +614,9 @@ const LeadershipSpotlight = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
-        <Footer />
+        {/* <Footer /> */}
 
       </div>
 
