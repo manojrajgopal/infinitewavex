@@ -8107,7 +8107,7 @@ textarea.form-control {
         transform: translate(-50%, -50%);
         color: #000000; }
       .ftco-social li a:hover {
-        color: #fff; }
+        color: red; }
 
 #map {
   height: 400px;

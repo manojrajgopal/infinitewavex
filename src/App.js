@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Pages/Home';
-import Photography from './components/Pages/Photography';
+import Photography from './components/Pages/Gallery';
 import Projects from './components/Pages/Projects';
-import Fashion from './components/Pages/Fashion';
+import LeadershipSpotlight from './components/Pages/LeadershipSpotlight';
 import About from './components/Pages/About';
 import Contact from './components/Pages/Contact';
 
@@ -26,7 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/photography" element={<Photography />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/fashion" element={<Fashion />} />
+        <Route path="/leadershipSpotlight" element={<LeadershipSpotlight />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>

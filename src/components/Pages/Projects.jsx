@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, NavLink } from 'react-router-dom';
+import Navigation from '../Navigation';
+import Footer from '../Footer'
+import Copyright from '../Copyright';
 
 const Projects = () => {
   useEffect(() => {
@@ -106,68 +109,10 @@ const Projects = () => {
         <a href="#" onClick={() => window.location.href = '/'}>InfWX<span>.</span></a>
       </h1>
 
-        <nav id="colorlib-main-menu" role="navigation">
-          <ul>
-            <li>
-              <NavLink 
-              onClick={() => window.location.href = '/'}
-                to="/" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-              onClick={() => window.location.href = '/photography'}
-                to="/photography" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Leadership Spotlight
-              </NavLink>
-            </li>
+        <Navigation />
 
-            <li>
-              <NavLink 
-              onClick={() => window.location.href = '/fashion'}
-                to="/fashion" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Fashion
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-              onClick={() => window.location.href = '/about'}
-                to="/about" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-              onClick={() => window.location.href = '/contact'}
-                to="/contact" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Contact
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-
-        <div className="colorlib-footer">
-          <p>
-            Copyright &copy; {new Date().getFullYear()} All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
-          </p>
-          <ul>
-            <li><a href="#"><i className="icon-facebook"></i></a></li>
-            <li><a href="#"><i className="icon-twitter"></i></a></li>
-            <li><a href="#"><i className="icon-instagram"></i></a></li>
-            <li><a href="#"><i className="icon-linkedin"></i></a></li>
-          </ul>
-        </div>
+        <Copyright />
+        
       </aside>
 
       <div id="colorlib-main">
@@ -607,54 +552,7 @@ const Projects = () => {
           </div>
         </section>
 
-        <footer className="ftco-footer ftco-bg-dark ftco-section">
-          <div className="container px-md-5">
-            <div className="row mb-5">
-              <div className="col-md">
-                <div className="ftco-footer-widget mb-4 ml-md-4">
-                  <h2 className="ftco-heading-2">Category</h2>
-                  <ul className="list-unstyled categories">
-                    <li><a href="#">Photography <span>(6)</span></a></li>
-                    <li><a href="#">Fashion <span>(8)</span></a></li>
-                    <li><a href="#">Technology <span>(2)</span></a></li>
-                    <li><a href="#">Travel <span>(2)</span></a></li>
-                  </ul>
-                </div>
-              </div>
-              <div className="col-md">
-                <div className="ftco-footer-widget mb-4">
-                  <h2 className="ftco-heading-2">Archives</h2>
-                  <ul className="list-unstyled categories">
-                    <li><a href="#">October 2018 <span>(6)</span></a></li>
-                    <li><a href="#">September 2018 <span>(6)</span></a></li>
-                    <li><a href="#">August 2018 <span>(8)</span></a></li>
-                    <li><a href="#">July 2018 <span>(2)</span></a></li>
-                    <li><a href="#">June 2018 <span>(7)</span></a></li>
-                  </ul>
-                </div>
-              </div>
-              <div className="col-md">
-                <div className="ftco-footer-widget mb-4">
-                  <h2 className="ftco-heading-2">Have a Questions?</h2>
-                  <div className="block-23 mb-3">
-                    <ul>
-                      <li><span className="icon icon-map-marker"></span><span className="text">Krishshnarajapuram, Bangalore, India - 560049</span></li>
-                      <li><a href="#"><span className="icon icon-phone"></span><span className="text">+91 8951663446</span></a></li>
-                      <li><a href="#"><span className="icon icon-envelope"></span><span className="text">infinitewavexofficial@gmail.com</span></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                <p>
-                  Copyright &copy; {new Date().getFullYear()} All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
 
       <div id="ftco-loader" className="show fullscreen"><svg className="circular" width="48px" height="48px"><circle className="path-bg" cx="24" cy="24" r="22" fill="none" strokeWidth="4" stroke="#eeeeee"/><circle className="path" cx="24" cy="24" r="22" fill="none" strokeWidth="4" strokeMiterlimit="10" stroke="#F96D00"/></svg></div>

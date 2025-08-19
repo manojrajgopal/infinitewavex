@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import Navigation from '../Navigation';
+import Copyright from '../Copyright';
 
 const About = () => {
 
@@ -101,6 +103,10 @@ const About = () => {
         <link rel="stylesheet" href="/css/flaticon.css" />
         <link rel="stylesheet" href="/css/icomoon.css" />
         <link rel="stylesheet" href="/css/style.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
 
         {/* Add mobile-specific styles */}
         
@@ -170,71 +176,10 @@ const About = () => {
           <a href="#" onClick={() => window.location.href = '/'}>InfWX<span>.</span></a>
         </h1>
 
-          <nav id="colorlib-main-menu" role="navigation">
-            <ul>
-              <li>
-                <NavLink 
-                  to="/" 
-                  onClick={() => window.location.href = '/'}
-                  className={({ isActive }) => isActive ? "colorlib-active" : ""}
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink 
-                  to="/photography" 
-                  onClick={() => window.location.href = '/photography'}
-                  className={({ isActive }) => isActive ? "colorlib-active" : ""}
-                >
-                  Leadership Spotlight
-                </NavLink>
-              </li>
-              <li>
-                <NavLink 
-                  to="/projects" 
-                  onClick={() => window.location.href = '/projects'}
-                  className={({ isActive }) => isActive ? "colorlib-active" : ""}
-                >
-                  Projects
-                </NavLink>
-              </li>
-              <li>
-                <NavLink 
-                  to="/fashion" 
-                  onClick={() => window.location.href = '/fashion'}
-                  className={({ isActive }) => isActive ? "colorlib-active" : ""}
-                >
-                  Fashion
-                </NavLink>
-              </li>
-              <li>
+        <Navigation />
 
-              </li>
-              <li>
-                <NavLink 
-                  to="/contact" 
-                  onClick={() => window.location.href = '/contact'}
-                  className={({ isActive }) => isActive ? "colorlib-active" : ""}
-                >
-                  Contact
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
+        <Copyright />
 
-
-        <div className="colorlib-footer">
-          <p>
-            Copyright &copy; {new Date().getFullYear()} All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank">InfiniteWaveX</a>
-          </p>
-          <ul>
-            <li><a href="#"><i className="icon-facebook"></i></a></li>
-            <li><a href="#"><i className="icon-twitter"></i></a></li>
-            <li><a href="#"><i className="icon-instagram"></i></a></li>
-            <li><a href="#"><i className="icon-linkedin"></i></a></li>
-          </ul>
-        </div>
       </aside>
 
       <div id="colorlib-main">
@@ -287,12 +232,22 @@ const About = () => {
                     read, learn, collaborate, or get inspired, InfiniteWaveX welcomes you 
                     to ride the wave of endless possibilities.
                   </p>
-                  <ul className="ftco-social mt-3" style={{
-                    marginTop: window.innerWidth <= 768 ? "20px !important" : undefined
-                  }}>
-                    <li className="ftco-animate"><a href="#"><span className="icon-twitter"></span></a></li>
-                    <li className="ftco-animate"><a href="#"><span className="icon-facebook"></span></a></li>
-                    <li className="ftco-animate"><a href="#"><span className="icon-instagram"></span></a></li>
+                  <ul
+                    className="ftco-social mt-3"
+                    style={{
+                      display: "block",
+                      marginTop: window.innerWidth <= 768 ? "20px !important" : undefined
+                    }}
+                  >
+                    <li>
+                      <a href="#"><i className="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i className="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i className="fa fa-instagram"></i></a>
+                    </li>
                   </ul>
                 </div>
             </div>
