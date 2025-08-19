@@ -293,7 +293,7 @@ const ProjectRequest = () => {
                           multiple 
                         />
                         <label className="custom-file-label" htmlFor="customFile">
-                          {formData.files ? `${formData.files.length} files selected` : 'Choose files (PDF, DOC, JPG, PNG up to 10MB)'}
+                          {formData.files ? `${formData.files.length} files selected` : 'Choose files'}
                         </label>
                       </div>
                     </div>
