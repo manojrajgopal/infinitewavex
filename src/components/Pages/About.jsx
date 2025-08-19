@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Copyright from '../Copyright';
+import ThreeJSParticles from '../ThreeJSParticles';
 
 const About = () => {
 
@@ -78,6 +79,7 @@ const About = () => {
 
   return (
     <div id="colorlib-page">
+      <ThreeJSParticles />
       <Helmet>
         <title>InfiniteWaveX - About</title>
         <meta charSet="utf-8" />

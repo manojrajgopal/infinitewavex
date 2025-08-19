@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Footer from '../Footer'
 import Copyright from '../Copyright';
+import ThreeJSParticles from '../ThreeJSParticles';
 
 const LeadershipSpotlight = () => {
     const location = useLocation();
@@ -76,6 +77,7 @@ const LeadershipSpotlight = () => {
 
   return (
     <div id="colorlib-page">
+      <ThreeJSParticles />
       <Helmet>
         <title>InfiniteWaveX</title>
         <meta charSet="utf-8" />

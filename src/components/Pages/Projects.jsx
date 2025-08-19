@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Footer from '../Footer'
 import Copyright from '../Copyright';
+import ThreeJSParticles from '../ThreeJSParticles';
 
 const Projects = () => {
   useEffect(() => {
@@ -71,6 +72,7 @@ const Projects = () => {
 
   return (
     <div id="colorlib-page">
+      <ThreeJSParticles />
       <Helmet>
         <title>InfiniteWaveX</title>
         <meta charSet="utf-8" />
@@ -112,7 +114,7 @@ const Projects = () => {
         <Navigation />
 
         <Copyright />
-        
+
       </aside>
 
       <div id="colorlib-main">
