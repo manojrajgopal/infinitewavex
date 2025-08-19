@@ -240,10 +240,10 @@ const ProjectRequest = () => {
                     </div>
                     
                     <div className="form-group">
-                      <label className="text-dark">Estimated Budget ($)</label>
+                      <label className="text-dark">Estimated Budget (₹)</label>
                       <div className="input-group">
                         <div className="input-group-prepend">
-                          <span className="input-group-text">$</span>
+                          <span className="input-group-text">₹</span>
                         </div>
                         <input 
                           type="number" 
@@ -251,8 +251,8 @@ const ProjectRequest = () => {
                           value={formData.budget}
                           onChange={handleChange}
                           className="form-control" 
-                          placeholder="5000" 
-                          min="0"
+                          placeholder="900" 
+                          min="750"
                         />
                       </div>
                     </div>
