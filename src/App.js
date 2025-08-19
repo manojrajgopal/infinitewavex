@@ -8,6 +8,8 @@ import Contact from './components/Pages/Contact';
 import Career from './components/Pages/Career';
 import Testimonials from './components/Pages/Testimonials';
 import News from './components/Pages/News';
+import ProjectRequest from './components/Pages/ProjectRequest';
+
 
 import './App.css';
 import './assets/css/bootstrap.min.css';
@@ -35,6 +37,10 @@ function App() {
         <Route path="/career" element={<Career />} />
         <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/news" element={<News />} />
+        <Route path="/projectrequest" element={<ProjectRequest />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+
       </Routes>
     </Router>
   );

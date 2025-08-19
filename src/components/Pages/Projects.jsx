@@ -102,6 +102,191 @@ const Projects = () => {
         <link rel="stylesheet" href="%PUBLIC_URL%/css/ionicons.min.css" />
         <link rel="stylesheet" href="%PUBLIC_URL%/css/flaticon.css" />
         <link rel="stylesheet" href="%PUBLIC_URL%/css/icomoon.css" />
+        <style>{`
+          /* ProjectRequest.css */
+          .project-request-container {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+            background-color: #f9fafb;
+          }
+
+          .threejs-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.2;
+            pointer-events: none;
+            background-color: transparent;
+          }
+
+          .form-container {
+            max-width: 56rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 3rem 1rem;
+            position: relative;
+            z-index: 10;
+          }
+
+          .form-wrapper {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+          }
+
+          .form-header {
+            background: linear-gradient(to right, #2563eb, #1e40af);
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+          }
+
+          .form-header h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+          }
+
+          .form-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+          }
+
+          .form-content {
+            padding: 1.5rem;
+          }
+
+          @media (min-width: 768px) {
+            .form-content {
+              padding: 2rem;
+            }
+          }
+
+          .form-grid {
+            display: grid;
+            gap: 1.5rem;
+          }
+
+          @media (min-width: 768px) {
+            .form-grid {
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+          }
+
+          .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+          }
+
+          .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+          }
+
+          .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            background-color: white;
+            transition: all 0.2s;
+          }
+
+          .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+          }
+
+          .form-textarea {
+            min-height: 200px;
+          }
+
+          .file-upload {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+          }
+
+          .file-upload-label {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border: 2px dashed #d1d5db;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 1rem 0;
+          }
+
+          .file-upload-label:hover {
+            background-color: #f9fafb;
+          }
+
+          .file-upload-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .file-upload-icon {
+            width: 2rem;
+            height: 2rem;
+            color: #9ca3af;
+          }
+
+          .file-upload-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+          }
+
+          .file-upload-subtext {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 0.25rem;
+          }
+
+          .submit-button {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(to right, #2563eb, #1e40af);
+            color: white;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+          }
+
+          .submit-button:hover {
+            background: linear-gradient(to right, #1d4ed8, #1e3a8a);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+          }
+
+          .budget-input {
+            position: relative;
+          }
+
+          .budget-symbol {
+            position: absolute;
+            left: 0.75rem;
+            top: 0.75rem;
+            color: #6b7280;
+          }
+       `} </style>
       </Helmet>
 
       <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
@@ -113,6 +298,68 @@ const Projects = () => {
         <Navigation />
 
         <Copyright />
+        <h1 id="colorlib-logo"><Link to="/">InfWX<span>.</span></Link></h1>
+        <nav id="colorlib-main-menu" role="navigation">
+          <ul>
+            <li>
+              <NavLink 
+                to="/" 
+                className={({ isActive }) => isActive ? "colorlib-active" : ""}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/photography" 
+                className={({ isActive }) => isActive ? "colorlib-active" : ""}
+              >
+                Photography
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/projects" 
+                className={({ isActive }) => isActive ? "colorlib-active" : ""}
+              >
+                Projects
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/fashion" 
+                className={({ isActive }) => isActive ? "colorlib-active" : ""}
+              >
+                Fashion
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+              onClick={() => window.location.href = '/projectrequest'}
+                to="/projectrequest" 
+                className={({ isActive }) => isActive ? "colorlib-active" : ""}
+              >
+              Project Request
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/about" 
+                className={({ isActive }) => isActive ? "colorlib-active" : ""}
+              >
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/contact" 
+                className={({ isActive }) => isActive ? "colorlib-active" : ""}
+              >
+                Contact
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
 
       </aside>
 
@@ -203,6 +450,7 @@ const Projects = () => {
                           <div className="half">
                             <p><a href="https://github.com/manojrajgopal/ai-powered-personal-stylist-and-outfit-recommendation" className="btn btn-primary p-3 px-xl-4 py-xl-3">GitHUb</a></p>
                           </div>
+                     
                         </div>
                       </div>
                     </div>
@@ -240,6 +488,7 @@ const Projects = () => {
                           <div className="half">
                             <p><a href="https://github.com/manojrajgopal/ai-powered-personal-stylist-and-outfit-recommendation" className="btn btn-primary p-3 px-xl-4 py-xl-3">GitHUb</a></p>
                           </div>
+                       
                         </div>
                       </div>
                     </div>
@@ -277,6 +526,7 @@ const Projects = () => {
                           <div className="half">
                             <p><a href="https://github.com/manojrajgopal/ai-powered-personal-stylist-and-outfit-recommendation" className="btn btn-primary p-3 px-xl-4 py-xl-3">GitHUb</a></p>
                           </div>
+                
                         </div>
                       </div>
                     </div>
@@ -313,6 +563,7 @@ const Projects = () => {
                           <div className="half">
                             <p><a href="https://github.com/manojrajgopal/ai-powered-personal-stylist-and-outfit-recommendation" className="btn btn-primary p-3 px-xl-4 py-xl-3">GitHUb</a></p>
                           </div>
+                 
                         </div>
                       </div>
                     </div>
