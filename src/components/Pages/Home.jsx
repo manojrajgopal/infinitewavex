@@ -115,18 +115,6 @@ const Home = () => {
         <link rel="stylesheet" href="/css/style.css" />
 
         <style type="text/css">{`
-          /* 🔥 Active menu CSS */
-          #colorlib-aside #colorlib-main-menu ul li.colorlib-active a {
-            color: #000000;
-          }
-          #colorlib-aside #colorlib-main-menu ul li.colorlib-active a:after {
-            visibility: visible;
-            -webkit-transform: scaleX(1);
-            -moz-transform: scaleX(1);
-            -ms-transform: scaleX(1);
-            -o-transform: scaleX(1);
-            transform: scaleX(1);
-          }
          .js-fullheight {
             min-height: 100vh;       /* allow proper full height */
             height: auto !important; /* don’t force fixed 100vh */
