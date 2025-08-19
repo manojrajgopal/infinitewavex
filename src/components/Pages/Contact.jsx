@@ -169,6 +169,7 @@ const Contact = () => {
                         }
                     }
                 `}</style>
+
       </Helmet>
 
       <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
@@ -187,6 +188,36 @@ const Contact = () => {
                 position: 'relative',
                 overflow: 'visible'
             }}>
+              <div className="hero-wrap hero-wrap-2 js-fullheight" style={{ 
+                backgroundImage: "url(/images/contact_bg.jpg)",
+                backgroundPosition: window.innerWidth <= 768 ? "center center" : undefined,
+                backgroundSize: window.innerWidth <= 768 ? "cover" : undefined
+              }} data-stellar-background-ratio="0.5">
+                <div className="overlay"></div>
+                <div className="js-fullheight d-flex justify-content-center align-items-center">
+                  <div className="col-md-8 text text-center" style={{
+                    padding: window.innerWidth <= 768 ? "20px" : "0",
+                    marginTop: window.innerWidth <= 768 ? "20px" : "0"
+                  }}>
+                    <div className="desc">
+                      <h2 className="subheading" style={{
+                        fontSize: window.innerWidth <= 480 ? "1.2rem" : undefined
+                      }}>Get In Touch</h2>
+                      <h1 className="mb-4" style={{
+                        fontSize: window.innerWidth <= 480 ? "1.8rem" : window.innerWidth <= 768 ? "2rem" : undefined
+                      }}>Contact Us</h1>
+                      <p className="mb-4" style={{
+                          fontSize: window.innerWidth <= 480 ? "0.9rem" : "1rem",
+                          textAlign: "center",
+                          padding: window.innerWidth <= 768 ? "0 10px" : "0"
+                        }}>
+                        Have a project in mind? Want to collaborate? We'd love to hear from you. 
+                        Reach out to us and let's create something amazing together.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
                 <section className="ftco-section contact-section" style={{
                   marginTop: '50px',
                   marginLeft: '10px',
@@ -194,24 +225,47 @@ const Contact = () => {
                     padding: '7em 0'
                 }}>
                     <div className="container">
-                        <div className="row d-flex mb-5 contact-info">
-                            <div className="col-md-12 mb-4">
-                                <h2 className="h4 font-weight-bold">Contact Information</h2>
-                            </div>
-                            <div className="w-100"></div>
-                            <div className="col-md-3">
-                                <p><span>Address:</span> Krishnarajapuram, Bangalore, India - 560049</p>
-                            </div>
-                            <div className="col-md-3">
-                                <p><span>Phone:</span> <a href="tel://1234567920">+91 8951663446</a></p>
-                            </div>
-                            <div className="col-md-3">
-                                <p><span>Email:</span> <a href="mailto:infinitewavexofficial@gmail.com">infinitewavexofficial@gmail.com</a></p>
-                            </div>
-                            <div className="col-md-3">
-                                <p><span>Website</span> <a href="#">yoursite.com</a></p>
-                            </div>
+                      <div className="row d-flex mb-5 contact-info">
+                        <div className="col-md-12 mb-4">
+                          <h2 className="h4 font-weight-bold">Contact Information</h2>
                         </div>
+                        
+                        {/* First Row */}
+                        <div className="col-md-3">
+                          <p>
+                            <i className="fa fa-map-marker mr-2"></i> 
+                            <span>Address:</span> Krishnarajapuram, Bangalore, India - 560049
+                          </p>
+                        </div>
+                        <div className="col-md-3">
+                          <p>
+                            <i className="fa fa-phone mr-2"></i> 
+                            <span>Phone:</span> <a href="tel://+918951663446">+91 8951663446</a>
+                          </p>
+                        </div>
+                        <div className="col-md-3">
+                          <p>
+                            <i className="fa fa-envelope mr-2"></i> 
+                            <span>Email:</span> <a href="mailto:infinitewavexofficial@gmail.com">infinitewavexofficial@gmail.com</a>
+                          </p>
+                        </div>
+
+                        <div className="w-100"></div>
+
+                        <div className="col-md-3">
+                          <p>
+                            <i className="fa fa-globe mr-2"></i> 
+                            <span>Website:</span> <a href="#">infinitewavex.com</a>
+                          </p>
+                        </div>
+                        <div className="col-md-3">
+                          <p>
+                            <i className="fa fa-clock-o mr-2"></i> 
+                            <span>Business Hours:</span> Mon-Fri: 6AM-11PM
+                          </p>
+                        </div>
+                      </div>
+
                         <div className="row block-9">
                             <div className="col-md-6 order-md-last pr-md-5">
                                 <form action="#">
@@ -250,6 +304,41 @@ const Contact = () => {
                         </div>
                     </div>
                 </section>
+
+                <section className="ftco-section ftco-hireme">
+                  <div className="overlay"></div>
+                  <div className="container">
+                    <div className="row justify-content-center">
+                      <div className="col-md-8 text-center">
+                        <h2>Ready to start your next project?</h2>
+                        <p>Let's discuss how we can help bring your ideas to life with our expertise.</p>
+                        <p className="mb-0">
+                          <a href="#" className="btn btn-primary py-3 px-5">Get Started Today</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <div className="col-md-12 mt-4">
+                  <div className="ftco-social text-center">
+                    <p><span>Follow Us:</span></p>
+                    <ul className="ftco-social mt-3 list-inline">
+                      <li className="ftco-animate list-inline-item">
+                        <a href="#"><i className="fa fa-twitter"></i></a>
+                      </li>
+                      <li className="ftco-animate list-inline-item">
+                        <a href="#"><i className="fa fa-facebook"></i></a>
+                      </li>
+                      <li className="ftco-animate list-inline-item">
+                        <a href="#"><i className="fa fa-instagram"></i></a>
+                      </li>
+                      <li className="ftco-animate list-inline-item">
+                        <a href="#"><i className="fa fa-linkedin"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
 
                 <Footer />
 

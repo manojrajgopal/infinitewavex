@@ -40,12 +40,21 @@ const Navigation = () => {
           <li className={isActivePath("/projects") ? "colorlib-active" : ""}>
             <NavLink to="/projects" onClick={handleRedirect("/projects")}>Projects</NavLink>
           </li>
-          <li className={isActivePath("/photography") ? "colorlib-active" : ""}>
-            <NavLink to="/photography" onClick={handleRedirect("/photography")}>Gallery</NavLink>
+          <li className={isActivePath("/gallery") ? "colorlib-active" : ""}>
+            <NavLink to="/gallery" onClick={handleRedirect("/gallery")}>Gallery</NavLink>
+          </li>
+          <li className={isActivePath("/career") ? "colorlib-active" : ""}>
+            <NavLink to="/career" onClick={handleRedirect("/career")}>Career</NavLink>
           </li>
           <li className={isActivePath("/leadershipSpotlight") ? "colorlib-active" : ""}>
             <NavLink to="/leadershipSpotlight" onClick={handleRedirect("/leadershipSpotlight")}>Leadership Spotlight</NavLink>
           </li>
+          <li className={isActivePath("/testimonials") ? "colorlib-active" : ""}>
+            <NavLink to="/testimonials" onClick={handleRedirect("/testimonials")}>Testimonials</NavLink>
+          </li>
+          <li className={isActivePath("/news") ? "colorlib-active" : ""}>
+            <NavLink to="/news" onClick={handleRedirect("/news")}>News</NavLink>
+          </li>    
           <li className={isActivePath("/about") ? "colorlib-active" : ""}>
             <NavLink to="/about" onClick={handleRedirect("/about")}>About</NavLink>
           </li>

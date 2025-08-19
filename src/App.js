@@ -5,6 +5,9 @@ import Projects from './components/Pages/Projects';
 import LeadershipSpotlight from './components/Pages/LeadershipSpotlight';
 import About from './components/Pages/About';
 import Contact from './components/Pages/Contact';
+import Career from './components/Pages/Career';
+import Testimonials from './components/Pages/Testimonials';
+import News from './components/Pages/News';
 
 import './App.css';
 import './assets/css/bootstrap.min.css';
@@ -24,11 +27,14 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/photography" element={<Photography />} />
+        <Route path="/gallery" element={<Photography />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/leadershipSpotlight" element={<LeadershipSpotlight />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/career" element={<Career />} />
+        <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/news" element={<News />} />
       </Routes>
     </Router>
   );

@@ -118,16 +118,28 @@ const LeadershipSpotlight = () => {
       </aside>
 
       <div id="colorlib-main">
-        <div className="hero-wrap js-fullheight" style={{backgroundImage: "url(/images/bg_1.jpg)"}} data-stellar-background-ratio="0.5">
+        <div className="hero-wrap js-fullheight" style={{backgroundImage: "url(/images/contact_bg_2.jpg)"}} data-stellar-background-ratio="0.5">
           <div className="overlay"></div>
           <div className="js-fullheight d-flex justify-content-center align-items-center">
             <div className="col-md-8 text text-center">
-              <div className="img mb-4" style={{backgroundImage: "url(/images/author.jpg)"}}></div>
+              <div className="img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}></div>
               <div className="desc">
                 <h2 className="subheading">Hello I'm</h2>
                 <h1 className="mb-4">InfiniteWaveX</h1>
-                <p className="mb-4">I am A Blogger Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                <p><a href="#" className="btn-custom">More About Me <span className="ion-ios-arrow-forward"></span></a></p>
+                <p className="mb-4">
+                  At InfiniteWaveX, leadership is more than decision-making—it’s about inspiring people,
+                  building trust, and shaping a future driven by innovation. Our leaders bring together years
+                  of expertise across diverse industries, blending strategic vision with a deep commitment to
+                  collaboration and growth.
+                </p>
+
+                <p className="mb-4">
+                  With a forward-looking mindset, the InfiniteWaveX leadership team focuses on empowering
+                  individuals, nurturing creativity, and driving transformative solutions that make a real
+                  difference. Each leader embodies the core values of integrity, innovation, and impact—
+                  ensuring that every step we take moves us closer to creating sustainable opportunities for
+                  our clients, our people, and the communities we serve.
+                </p>
               </div>
             </div>
           </div>
