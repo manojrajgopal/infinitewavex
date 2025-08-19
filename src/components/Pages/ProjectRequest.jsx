@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import Navigation from '../Navigation';
+import Footer from '../Footer';
+import Copyright from '../Copyright';
+import ThreeJSParticles from '../ThreeJSParticles';
 
 const ProjectRequest = () => {
   const [customerType, setCustomerType] = useState('individual');
@@ -13,6 +17,74 @@ const ProjectRequest = () => {
     details: '',
     files: null
   });
+
+  const location = useLocation();
+  
+  useEffect(() => {
+    if (window.AOS) window.AOS.init();
+    if (window.$ && window.$('.owl-carousel').length) {
+      window.$('.owl-carousel').owlCarousel();
+    }
+
+    const scriptElements = [];
+    
+    const loadScript = (src) => {
+      return new Promise((resolve, reject) => {
+        if (document.querySelector(`script[src="${src}"]`)) {
+          resolve();
+          return;
+        }
+        
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = false;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+        scriptElements.push(script);
+      });
+    };
+
+    const scripts = [
+      '/js/jquery.min.js',
+      '/js/jquery-migrate-3.0.1.min.js',
+      '/js/popper.min.js',
+      '/js/bootstrap.min.js',
+      '/js/jquery.easing.1.3.js',
+      '/js/jquery.waypoints.min.js',
+      '/js/jquery.stellar.min.js',
+      '/js/owl.carousel.min.js',
+      '/js/jquery.magnific-popup.min.js',
+      '/js/aos.js',
+      '/js/jquery.animateNumber.min.js',
+      '/js/bootstrap-datepicker.js',
+      '/js/scrollax.min.js',
+      '/js/main.js'
+    ];
+
+    const loadScripts = async () => {
+      try {
+        for (const src of scripts) {
+          await loadScript(src);
+        }
+      } catch (error) {
+        console.error('Script loading error:', error);
+      }
+    };
+
+    if (!window.__themeScriptsLoaded) {
+      window.__themeScriptsLoaded = true;
+      loadScripts();
+    }
+
+    return () => {
+      scriptElements.forEach(script => {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      });
+    };
+  }, [location]);
 
   const customerTypes = [
     { value: 'individual', label: 'Individual' },
@@ -37,232 +109,233 @@ const ProjectRequest = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', { customerType, ...formData });
-    // Here you would typically send the data to your backend
     alert('Project request submitted successfully!');
   };
 
   return (
     <div id="colorlib-page">
+      <ThreeJSParticles />
+      
       <Helmet>
         <title>InfiniteWaveX - Project Request</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet" />
+
+        <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/animate.css" />
+        <link rel="stylesheet" href="/css/owl.carousel.min.css" />
+        <link rel="stylesheet" href="/css/owl.theme.default.min.css" />
+        <link rel="stylesheet" href="/css/magnific-popup.css" />
+        <link rel="stylesheet" href="/css/aos.css" />
+        <link rel="stylesheet" href="/css/ionicons.min.css" />
+        <link rel="stylesheet" href="/css/bootstrap-datepicker.css" />
+        <link rel="stylesheet" href="/css/jquery.timepicker.css" />
+        <link rel="stylesheet" href="/css/flaticon.css" />
+        <link rel="stylesheet" href="/css/icomoon.css" />
+        <link rel="stylesheet" href="/css/style.css" />
       </Helmet>
 
       <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
       <aside id="colorlib-aside" role="complementary" className="js-fullheight text-center">
-        <h1 id="colorlib-logo"><Link to="/">InfWX<span>.</span></Link></h1>
-        <nav id="colorlib-main-menu" role="navigation">
-          <ul>
-            <li><NavLink to="/" className={({ isActive }) => isActive ? "colorlib-active" : ""}>Home</NavLink></li>
-            <li><NavLink to="/photography" className={({ isActive }) => isActive ? "colorlib-active" : ""}>Photography</NavLink></li>
-            <li><NavLink to="/projects" className={({ isActive }) => isActive ? "colorlib-active" : ""}>Projects</NavLink></li>
-            <li><NavLink to="/fashion" className={({ isActive }) => isActive ? "colorlib-active" : ""}>Fashion</NavLink></li>
-            <li><NavLink to="/projectrequest" className={({ isActive }) => isActive ? "colorlib-active" : ""}>Project Request</NavLink></li>
-            <li><NavLink to="/about" className={({ isActive }) => isActive ? "colorlib-active" : ""}>About</NavLink></li>
-            <li><NavLink to="/contact" className={({ isActive }) => isActive ? "colorlib-active" : ""}>Contact</NavLink></li>
-          </ul>
-        </nav>
+        <h1 id="colorlib-logo">
+          <a href="#" onClick={() => window.location.href = '/'}>InfWX<span>.</span></a>
+        </h1>
 
-        <div className="colorlib-footer">
-          <p>Copyright &copy;{new Date().getFullYear()} All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank" rel="noopener noreferrer">InfiniteWaveX</a></p>
-          <ul>
-            <li><a href="#"><i className="icon-facebook"></i></a></li>
-            <li><a href="#"><i className="icon-twitter"></i></a></li>
-            <li><a href="#"><i className="icon-instagram"></i></a></li>
-            <li><a href="#"><i className="icon-linkedin"></i></a></li>
-          </ul>
-        </div>
+        <Navigation />
+
+        <Copyright />
       </aside>
 
       <div id="colorlib-main" style={{ position: 'relative', zIndex: 1 }}>
-        <section className="ftco-section contact-section">
+        <div className="hero-wrap js-fullheight" style={{ background: 'none' }} data-stellar-background-ratio="0.5">
+          <div className="overlay"></div>
+          <div className="js-fullheight d-flex justify-content-center align-items-center">
+            <div className="col-md-8 text text-center">
+              <div className="img mb-4" style={{
+                backgroundImage: "url(/images/logo.png)",
+                backgroundSize: "contain",
+                minHeight: "100px"
+              }}></div>
+              <div className="desc">
+                <h2 className="subheading">Start Your Project</h2>
+                <h1 className="mb-4">Project Request</h1>
+                <p className="mb-4">
+                  Tell us about your project requirements and let our experts bring your ideas to life. 
+                  We'll review your request and get back to you with a customized solution.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section className="ftco-section">
           <div className="container">
-            <div className="row d-flex mb-5 contact-info">
-              <div className="col-md-12 mb-4">
-                <h2 className="h4 font-weight-bold">Project Request Form</h2>
+            <div className="row justify-content-center mb-5 pb-2">
+              <div className="col-md-7 heading-section text-center ftco-animate">
+                <h2 className="mb-4">Submit Your Project Details</h2>
+                <p>Fill out the form below and our team will contact you within 24 hours.</p>
               </div>
             </div>
             
-            <div className="row block-9">
-              <div className="col-md-12 pr-md-5">
-                <form onSubmit={handleSubmit} className="bg-white p-5 contact-form">
-                  <div className="form-group">
-                    <label className="text-dark">Customer Type *</label>
-                    <select
-                      value={customerType}
-                      onChange={(e) => setCustomerType(e.target.value)}
-                      className="form-control"
-                      required
-                    >
-                      {customerTypes.map((type) => (
-                        <option key={type.value} value={type.value}>
-                          {type.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  
-                  <div className="form-group">
-                    <label className="text-dark">Project Title *</label>
-                    <input 
-                      type="text" 
-                      name="projectTitle"
-                      value={formData.projectTitle}
-                      onChange={handleChange}
-                      className="form-control" 
-                      placeholder="My Awesome Project" 
-                      required 
-                    />
-                  </div>
-                  
-                  <div className="form-group">
-                    <label className="text-dark">Your Name *</label>
-                    <input 
-                      type="text" 
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="form-control" 
-                      placeholder="John Doe" 
-                      required 
-                    />
-                  </div>
-                  
-                  <div className="form-group">
-                    <label className="text-dark">Email *</label>
-                    <input 
-                      type="email" 
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="form-control" 
-                      placeholder="your@email.com" 
-                      required 
-                    />
-                  </div>
-                  
-                  <div className="form-group">
-                    <label className="text-dark">Estimated Budget ($)</label>
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">$</span>
-                      </div>
+            <div className="row">
+              <div className="col-md-12">
+                <div className="contact-form bg-light p-4 p-md-5 ftco-animate">
+                  <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                      <label className="text-dark">Customer Type *</label>
+                      <select
+                        value={customerType}
+                        onChange={(e) => setCustomerType(e.target.value)}
+                        className="form-control"
+                        required
+                      >
+                        {customerTypes.map((type) => (
+                          <option key={type.value} value={type.value}>
+                            {type.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    
+                    <div className="form-group">
+                      <label className="text-dark">Project Title *</label>
                       <input 
-                        type="number" 
-                        name="budget"
-                        value={formData.budget}
+                        type="text" 
+                        name="projectTitle"
+                        value={formData.projectTitle}
                         onChange={handleChange}
                         className="form-control" 
-                        placeholder="5000" 
-                        min="0"
+                        placeholder="My Awesome Project" 
+                        required 
                       />
                     </div>
-                  </div>
-                  
-                  <div className="form-group">
-                    <label className="text-dark">Target Deadline</label>
-                    <input 
-                      type="date" 
-                      name="deadline"
-                      value={formData.deadline}
-                      onChange={handleChange}
-                      className="form-control"
-                    />
-                  </div>
-                  
-                  <div className="form-group">
-                    <label className="text-dark">Project Details *</label>
-                    <textarea 
-                      name="details"
-                      value={formData.details}
-                      onChange={handleChange}
-                      className="form-control" 
-                      placeholder="Describe your project requirements, goals, and any specific needs..."
-                      rows="8"
-                      required
-                    />
-                  </div>
-                  
-                  <div className="form-group">
-                    <label className="text-dark">Attachments</label>
-                    <div className="custom-file">
+                    
+                    <div className="form-group">
+                      <label className="text-dark">Your Name *</label>
                       <input 
-                        type="file" 
-                        name="files"
+                        type="text" 
+                        name="name"
+                        value={formData.name}
                         onChange={handleChange}
-                        className="custom-file-input" 
-                        id="customFile" 
-                        multiple 
+                        className="form-control" 
+                        placeholder="John Doe" 
+                        required 
                       />
-                      <label className="custom-file-label" htmlFor="customFile">
-                        {formData.files ? `${formData.files.length} files selected` : 'Choose files (PDF, DOC, JPG, PNG up to 10MB)'}
-                      </label>
                     </div>
-                  </div>
-                  
-                  <div className="form-group">
-                    <button 
-                      type="submit" 
-                      className="btn btn-primary py-3 px-5"
-                    >
-                      Submit Project Request
-                    </button>
-                  </div>
-                </form>
+                    
+                    <div className="form-group">
+                      <label className="text-dark">Email *</label>
+                      <input 
+                        type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="form-control" 
+                        placeholder="your@email.com" 
+                        required 
+                      />
+                    </div>
+                    
+                    <div className="form-group">
+                      <label className="text-dark">Estimated Budget ($)</label>
+                      <div className="input-group">
+                        <div className="input-group-prepend">
+                          <span className="input-group-text">$</span>
+                        </div>
+                        <input 
+                          type="number" 
+                          name="budget"
+                          value={formData.budget}
+                          onChange={handleChange}
+                          className="form-control" 
+                          placeholder="5000" 
+                          min="0"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="form-group">
+                      <label className="text-dark">Target Deadline</label>
+                      <input 
+                        type="date" 
+                        name="deadline"
+                        value={formData.deadline}
+                        onChange={handleChange}
+                        className="form-control"
+                      />
+                    </div>
+                    
+                    <div className="form-group">
+                      <label className="text-dark">Project Details *</label>
+                      <textarea 
+                        name="details"
+                        value={formData.details}
+                        onChange={handleChange}
+                        className="form-control" 
+                        placeholder="Describe your project requirements, goals, and any specific needs..."
+                        rows="8"
+                        required
+                      />
+                    </div>
+                    
+                    <div className="form-group">
+                      <label className="text-dark">Attachments</label>
+                      <div className="custom-file">
+                        <input 
+                          type="file" 
+                          name="files"
+                          onChange={handleChange}
+                          className="custom-file-input" 
+                          id="customFile" 
+                          multiple 
+                        />
+                        <label className="custom-file-label" htmlFor="customFile">
+                          {formData.files ? `${formData.files.length} files selected` : 'Choose files (PDF, DOC, JPG, PNG up to 10MB)'}
+                        </label>
+                      </div>
+                    </div>
+                    
+                    <div className="form-group text-center">
+                      <button 
+                        type="submit" 
+                        className="btn btn-primary py-3 px-5"
+                      >
+                        Submit Project Request
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <footer className="ftco-footer ftco-bg-dark ftco-section">
-          <div className="container px-md-5">
-            <div className="row mb-5">
-              <div className="col-md">
-                <div className="ftco-footer-widget mb-4 ml-md-4">
-                  <h2 className="ftco-heading-2">Category</h2>
-                  <ul className="list-unstyled categories">
-                    <li><a href="#">Photography <span>(6)</span></a></li>
-                    <li><a href="#">Fashion <span>(8)</span></a></li>
-                    <li><a href="#">Technology <span>(2)</span></a></li>
-                    <li><a href="#">Travel <span>(2)</span></a></li>
-                  </ul>
-                </div>
-              </div>
-              <div className="col-md">
-                <div className="ftco-footer-widget mb-4">
-                  <h2 className="ftco-heading-2">Archives</h2>
-                  <ul className="list-unstyled categories">
-                    <li><a href="#">October 2018 <span>(6)</span></a></li>
-                    <li><a href="#">September 2018 <span>(6)</span></a></li>
-                    <li><a href="#">August 2018 <span>(8)</span></a></li>
-                    <li><a href="#">July 2018 <span>(2)</span></a></li>
-                    <li><a href="#">June 2018 <span>(7)</span></a></li>
-                  </ul>
-                </div>
-              </div>
-              <div className="col-md">
-                <div className="ftco-footer-widget mb-4">
-                  <h2 className="ftco-heading-2">Have a Questions?</h2>
-                  <div className="block-23 mb-3">
-                    <ul>
-                      <li><span className="icon icon-map-marker"></span><span className="text">Krishnarajapuram, Bangalore, India - 560049</span></li>
-                      <li><a href="#"><span className="icon icon-phone"></span><span className="text">+91 8951663446</span></a></li>
-                      <li><a href="#"><span className="icon icon-envelope"></span><span className="text">infinitewavexofficial@gmail.com</span></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                <p>Copyright &copy; All rights reserved | This template is made with <i className="icon-heart" aria-hidden="true"></i> by <a href="https://manojrajgopal.github.io/portfolio/" target="_blank" rel="noopener noreferrer">InfiniteWaveX</a></p>
+        <section className="ftco-section ftco-hireme bg-primary">
+          <div className="overlay"></div>
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-md-8 text-center">
+                <h2>Have questions about your project?</h2>
+                <p>Contact us directly for a free consultation and quote.</p>
+                <p className="mb-0">
+                  <a href="/contact" className="btn btn-secondary py-3 px-5">Contact Us</a>
+                </p>
               </div>
             </div>
           </div>
-        </footer>
+        </section>
+
+        <Footer />
+      </div>
+
+      <div id="ftco-loader" className="show fullscreen">
+        <svg className="circular" width="48px" height="48px">
+          <circle className="path-bg" cx="24" cy="24" r="22" fill="none" strokeWidth="4" stroke="#eeeeee"/>
+          <circle className="path" cx="24" cy="24" r="22" fill="none" strokeWidth="4" strokeMiterlimit="10" stroke="#F96D00"/>
+        </svg>
       </div>
     </div>
   );

@@ -228,68 +228,7 @@ const Home = () => {
         <Navigation />
 
         <Copyright />
-        <h1 id="colorlib-logo"><Link to="/">InfWX<span>.</span></Link></h1>
-        <nav id="colorlib-main-menu" role="navigation">
-          <ul>
-            <li>
-              <NavLink 
-                to="/" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/photography" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Leadership Spotlight
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/projects" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Projects
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/fashion" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Fashion
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-              onClick={() => window.location.href = '/projectrequest'}
-                to="/projectrequest" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-              Project Request
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/about" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/contact" 
-                className={({ isActive }) => isActive ? "colorlib-active" : ""}
-              >
-                Contact
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+
 
       </aside>
 
