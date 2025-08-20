@@ -1,15 +1,53 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, NavLink } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Footer from '../Footer'
 import Copyright from '../Copyright';
 import ThreeJSParticles from '../ThreeJSParticles';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
 
 const Projects = () => {
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+    setIsLoading(true);
+    try {
+      const response = await axios.post(
+        `${BACKEND_URL}/api/newsletter/subscribe`,
+        { email: email },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      
+      if (response.data.message.includes('already subscribed')) {
+        // Show warning that email is already subscribed
+        alert('This email is already subscribed to our newsletter!');
+      } else {
+        // Show success message
+        alert('Successfully subscribed to our newsletter!');
+        setIsSubscribed(true);
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
+      alert('Error subscribing to newsletter. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     const scriptElements = [];
-    
+
     const loadScript = (src) => {
       return new Promise((resolve, reject) => {
         if (document.querySelector(`script[src="${src}"]`)) {
@@ -55,11 +93,10 @@ const Projects = () => {
       }
     };
 
-  if (!window.__themeScriptsLoaded) {
-    window.__themeScriptsLoaded = true;
-    loadScripts();
-  }
-
+    if (!window.__themeScriptsLoaded) {
+      window.__themeScriptsLoaded = true;
+      loadScripts();
+    }
 
     return () => {
       scriptElements.forEach(script => {
@@ -68,7 +105,7 @@ const Projects = () => {
         }
       });
     };
-  }, [Location]);
+  }, []);
 
   return (
     <div id="colorlib-page">
@@ -98,10 +135,7 @@ const Projects = () => {
         <link rel="stylesheet" href="/css/flaticon.css" />
         <link rel="stylesheet" href="/css/icomoon.css" />
         <link rel="stylesheet" href="/css/style.css" />
-        <link rel="stylesheet" href="%PUBLIC_URL%/css/open-iconic-bootstrap.min.css" />
-        <link rel="stylesheet" href="%PUBLIC_URL%/css/ionicons.min.css" />
-        <link rel="stylesheet" href="%PUBLIC_URL%/css/flaticon.css" />
-        <link rel="stylesheet" href="%PUBLIC_URL%/css/icomoon.css" />
+
       </Helmet>
 
       <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
@@ -555,17 +589,35 @@ const Projects = () => {
                   </ul>
                 </div>
 
-
                 <div className="sidebar-box subs-wrap img" style={{backgroundImage: "url(/images/bg_1.jpg)"}}>
                   <div className="overlay"></div>
                   <h3 className="mb-4 sidebar-heading">Subscribe to Our Newsletter</h3>
                   <p className="mb-4">Stay updated with our latest business news, services, and updates.</p>
-                  <form action="#" className="subscribe-form">
-                    <div className="form-group">
-                      <input type="email" className="form-control" placeholder="Enter your email" />
-                      <input type="submit" value="Subscribe" className="mt-2 btn btn-white submit" />
+                  {isSubscribed ? (
+                    <div className="alert alert-success">
+                      <i className="fa fa-check"></i> Thank you for subscribing!
                     </div>
-                  </form>
+                  ) : (
+                    <form onSubmit={handleSubscribe} className="subscribe-form">
+                      <div className="form-group">
+                        <input 
+                          type="email" 
+                          className="form-control" 
+                          placeholder="Enter your email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                        />
+                        <button 
+                          type="submit" 
+                          className="mt-2 btn btn-white submit"
+                          disabled={isLoading}
+                        >
+                          {isLoading ? 'Subscribing...' : 'Subscribe'}
+                        </button>
+                      </div>
+                    </form>
+                  )}
                 </div>
 
                 <div className="sidebar-box ftco-animate">

@@ -1,12 +1,50 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
 import Copyright from '../Copyright';
 import ThreeJSParticles from '../ThreeJSParticles';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
 
 const News = () => {
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+    setIsLoading(true);
+    try {
+      const response = await axios.post(
+        `${BACKEND_URL}/api/newsletter/subscribe`,
+        { email: email },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      
+      if (response.data.message.includes('already subscribed')) {
+        // Show warning that email is already subscribed
+        alert('This email is already subscribed to our newsletter!');
+      } else {
+        // Show success message
+        alert('Successfully subscribed to our newsletter!');
+        setIsSubscribed(true);
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
+      alert('Error subscribing to newsletter. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const location = useLocation();
   
   useEffect(() => {
@@ -430,15 +468,35 @@ const News = () => {
 
                 <div className="sidebar-box subs-wrap img" style={{backgroundImage: "url(/images/bg_1.jpg)"}}>
                   <div className="overlay"></div>
-                  <h3 className="mb-4 sidebar-heading">Newsletter</h3>
-                  <p className="mb-4">Stay updated with our latest news and insights. Subscribe to our newsletter</p>
-                  <form action="#" className="subscribe-form">
-                    <div className="form-group">
-                      <input type="email" className="form-control" placeholder="Email Address" />
-                      <input type="submit" value="Subscribe" className="mt-2 btn btn-white submit" />
+                  <h3 className="mb-4 sidebar-heading">Subscribe to Our Newsletter</h3>
+                  <p className="mb-4">Stay updated with our latest business news, services, and updates.</p>
+                  {isSubscribed ? (
+                    <div className="alert alert-success">
+                      <i className="fa fa-check"></i> Thank you for subscribing!
                     </div>
-                  </form>
+                  ) : (
+                    <form onSubmit={handleSubscribe} className="subscribe-form">
+                      <div className="form-group">
+                        <input 
+                          type="email" 
+                          className="form-control" 
+                          placeholder="Enter your email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                        />
+                        <button 
+                          type="submit" 
+                          className="mt-2 btn btn-white submit"
+                          disabled={isLoading}
+                        >
+                          {isLoading ? 'Subscribing...' : 'Subscribe'}
+                        </button>
+                      </div>
+                    </form>
+                  )}
                 </div>
+
               </div>
             </div>
           </div>

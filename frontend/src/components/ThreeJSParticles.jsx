@@ -51,7 +51,7 @@ const ThreeJSParticles = () => {
       const loader = new THREE.TextureLoader();
       const leafTextures = [
         loader.load("/threeJS/snow/snow1.png"),
-        loader.load("/threeJS/snow/snow2.png"),
+        loader.load("/threeJS/snow/snow3.png"),
         loader.load("/threeJS/snow/snow3.png"),
       ];
       leafTextures.forEach((t) => {
