@@ -172,10 +172,10 @@ const Contact = () => {
 
       </Helmet>
 
-      <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+      <a href="/" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
       <aside id="colorlib-aside" role="complementary" className="js-fullheight text-center">
         <h1 id="colorlib-logo">
-          <a href="#" onClick={() => window.location.href = '/'}>InfWX<span>.</span></a>
+          <a href="/" onClick={() => window.location.href = '/'}>InfWX<span>.</span></a>
         </h1>
 
         <Navigation />
@@ -255,7 +255,7 @@ const Contact = () => {
                         <div className="col-md-3">
                           <p>
                             <i className="fa fa-globe mr-2"></i> 
-                            <span>Website:</span> <a href="#">infinitewavex.com</a>
+                            <span>Website:</span> <a href="/">infinitewavex.com</a>
                           </p>
                         </div>
                         <div className="col-md-3">
@@ -297,6 +297,7 @@ const Contact = () => {
                                         marginHeight="0" 
                                         marginWidth="0" 
                                         src="https://www.openstreetmap.org/export/embed.html?bbox=77.5366%2C12.9236%2C77.6366%2C13.0236&amp;layer=mapnik&amp;marker=12.9716%2C77.5946" 
+                                        title="Map of our location">
                                         style={{ border: '1px solid black' }}
                                     ></iframe>
                                 </div>
@@ -313,7 +314,7 @@ const Contact = () => {
                         <h2>Ready to start your next project?</h2>
                         <p>Let's discuss how we can help bring your ideas to life with our expertise.</p>
                         <p className="mb-0">
-                          <a href="#" className="btn btn-primary py-3 px-5">Get Started Today</a>
+                          <a href="/" className="btn btn-primary py-3 px-5">Get Started Today</a>
                         </p>
                       </div>
                     </div>
@@ -325,16 +326,16 @@ const Contact = () => {
                     <p><span>Follow Us:</span></p>
                     <ul className="ftco-social mt-3 list-inline">
                       <li className="ftco-animate list-inline-item">
-                        <a href="#"><i className="fa fa-twitter"></i></a>
+                        <a href="/"><i className="fa fa-twitter"></i></a>
                       </li>
                       <li className="ftco-animate list-inline-item">
-                        <a href="#"><i className="fa fa-facebook"></i></a>
+                        <a href="/"><i className="fa fa-facebook"></i></a>
                       </li>
                       <li className="ftco-animate list-inline-item">
-                        <a href="#"><i className="fa fa-instagram"></i></a>
+                        <a href="/"><i className="fa fa-instagram"></i></a>
                       </li>
                       <li className="ftco-animate list-inline-item">
-                        <a href="#"><i className="fa fa-linkedin"></i></a>
+                        <a href="/"><i className="fa fa-linkedin"></i></a>
                       </li>
                     </ul>
                   </div>

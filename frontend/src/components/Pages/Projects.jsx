@@ -138,10 +138,10 @@ const Projects = () => {
 
       </Helmet>
 
-      <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+      <a href="/" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
       <aside id="colorlib-aside" role="complementary" className="js-fullheight text-center">
         <h1 id="colorlib-logo">
-        <a href="#" onClick={() => window.location.href = '/'}>InfWX<span>.</span></a>
+        <a href="/" onClick={() => window.location.href = '/'}>InfWX<span>.</span></a>
       </h1>
 
         <Navigation />
@@ -184,16 +184,16 @@ const Projects = () => {
                 <div className="row">
                   <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/project_1.png)"}}></a>
+                      <a href="/" className="img" style={{backgroundImage: "url(/images/project_1.png)"}}></a>
                       <div className="text pt-2 mt-3">
-                        <span className="category mb-1 d-block"><a href="#">Technologies: <strong>HTML, SCSS, CSS, JavaScript</strong></a></span>
-                        <h3 className="mb-4"><a href="#">Responsive Website Restaurant</a></h3>
+                        <span className="category mb-1 d-block"><a href="/">Technologies: <strong>HTML, SCSS, CSS, JavaScript</strong></a></span>
+                        <h3 className="mb-4"><a href="/">Responsive Website Restaurant</a></h3>
                         <p className="mb-4">Nice design of a responsive restaurant website 🥗 . It contains a header, home, about, services, menu, app and contact. It also has a fully developed light/dark mode 🌓 first for mobile then for desktop.</p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="#" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="#">Manoj R</a>, <span>Nov 28, 2018</span></h3>
+                            <h3><a href="/">Manoj R</a>, <span>Nov 28, 2018</span></h3>
                           </div>
                         </div>
                         <div className="meta-wrap d-md-flex align-items-center">
@@ -214,16 +214,16 @@ const Projects = () => {
 
                   <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/project_2.png)"}}></a>
+                      <a href="/" className="img" style={{backgroundImage: "url(/images/project_2.png)"}}></a>
                       <div className="text pt-2 mt-3">
-                        <span className="category mb-1 d-block"><a href="#">Technologies: <strong>Flask, ML, DeepFace, PyTorch, OpenCV, HTML, SCSS, CSS, JavaScript</strong></a></span>
-                        <h3 className="mb-4"><a href="#">AI-Powered Personal Stylish and Outfit Recommendation</a></h3>
+                        <span className="category mb-1 d-block"><a href="/">Technologies: <strong>Flask, ML, DeepFace, PyTorch, OpenCV, HTML, SCSS, CSS, JavaScript</strong></a></span>
+                        <h3 className="mb-4"><a href="/">AI-Powered Personal Stylish and Outfit Recommendation</a></h3>
                         <p className="mb-4">An AI-driven fashion assistant that creates personalized outfit suggestions based on user profile, wardrobe, and preferences. It supports virtual try-on, weather and occasion-based recommendations, and skin-tone-aware styling. With ML-powered outfit recognition and trend analysis, it offers a smart, interactive fashion experience tailored uniquely for every user.</p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="#" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="#">Manoj R</a>, <span>May 3, 2024</span></h3>
+                            <h3><a href="/">Manoj R</a>, <span>May 3, 2024</span></h3>
                           </div>
                         </div>
                         <div className="meta-wrap d-md-flex align-items-center">
@@ -244,23 +244,23 @@ const Projects = () => {
 
                   <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/project_3.png)"}}></a>
+                      <a href="/" className="img" style={{backgroundImage: "url(/images/project_3.png)"}}></a>
                       <div className="text pt-2 mt-3">
-                        <span className="category mb-1 d-block"><a href="#">Technologies: <strong>Flask, ML, DeepFace, PyTorch, OpenCV, HTML, SCSS, CSS, JavaScript</strong></a></span>
-                        <h3 className="mb-4"><a href="#">Full E Commerce Website UI UX Design</a></h3>
+                        <span className="category mb-1 d-block"><a href="/">Technologies: <strong>Flask, ML, DeepFace, PyTorch, OpenCV, HTML, SCSS, CSS, JavaScript</strong></a></span>
+                        <h3 className="mb-4"><a href="/">Full E Commerce Website UI UX Design</a></h3>
                         <p className="mb-4">A complete e-commerce website UI/UX design crafted for seamless navigation, engaging visuals, and modern shopping experiences. It focuses on intuitive layouts, responsive design, and user-friendly interactions for enhanced customer satisfaction.</p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="#" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="#">Manoj R</a>, <span>Aug 29, 2025</span></h3>
+                            <h3><a href="/">Manoj R</a>, <span>Aug 29, 2025</span></h3>
                           </div>
                         </div>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="#" className="img" style={{backgroundImage: "url(/images/manoj_g_photo.png)"}}></a>
+                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_g_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="#">Manoj G</a>, <span>Aug 29, 2025</span></h3>
+                            <h3><a href="/">Manoj G</a>, <span>Aug 29, 2025</span></h3>
                           </div>
                         </div>
                         <div className="meta-wrap d-md-flex align-items-center">
@@ -281,23 +281,23 @@ const Projects = () => {
 
                   <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/project_4.png)"}}></a>
+                      <a href="/" className="img" style={{backgroundImage: "url(/images/project_4.png)"}}></a>
                       <div className="text pt-2 mt-3">
-                        <span className="category mb-1 d-block"><a href="#">Technologies: <strong>Flask, ML, DeepFace, PyTorch, OpenCV, HTML, SCSS, CSS, JavaScript</strong></a></span>
-                        <h3 className="mb-4"><a href="#">Virtual Interior Design</a></h3>
+                        <span className="category mb-1 d-block"><a href="/">Technologies: <strong>Flask, ML, DeepFace, PyTorch, OpenCV, HTML, SCSS, CSS, JavaScript</strong></a></span>
+                        <h3 className="mb-4"><a href="/">Virtual Interior Design</a></h3>
                         <p className="mb-4">An interactive virtual interior design platform that allows users to visualize and customize home spaces in real-time. It enhances creativity with 3D layouts, smart recommendations, and immersive design experiences.</p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="#" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="#">Manoj R</a>, <span>Aug 29, 2025</span></h3>
+                            <h3><a href="/">Manoj R</a>, <span>Aug 29, 2025</span></h3>
                           </div>
                         </div>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="#" className="img" style={{backgroundImage: "url(/images/manoj_g_photo.png)"}}></a>
+                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_g_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="#">Manoj G</a>, <span>Aug 29, 2025</span></h3>
+                            <h3><a href="/">Manoj G</a>, <span>Aug 29, 2025</span></h3>
                           </div>
                         </div>
                         <div className="meta-wrap d-md-flex align-items-center">
@@ -317,23 +317,23 @@ const Projects = () => {
                   </div>
                   <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/project_5.png)"}}></a>
+                      <a href="/" className="img" style={{backgroundImage: "url(/images/project_5.png)"}}></a>
                       <div className="text pt-2 mt-3">
-                        <span className="category mb-1 d-block"><a href="#">Technologies: <strong>HTML, SCSS, CSS, JavaScript</strong></a></span>
-                        <h3 className="mb-4"><a href="#">Landing Page</a></h3>
+                        <span className="category mb-1 d-block"><a href="/">Technologies: <strong>HTML, SCSS, CSS, JavaScript</strong></a></span>
+                        <h3 className="mb-4"><a href="/">Landing Page</a></h3>
                         <p className="mb-4">A modern and responsive landing page designed to capture user attention with clean UI, engaging visuals, and clear call-to-actions. Built for optimized performance, accessibility, and conversion-focused design.</p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="#" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="#">Manoj R</a>, <span>May 3, 2024</span></h3>
+                            <h3><a href="/">Manoj R</a>, <span>May 3, 2024</span></h3>
                           </div>
                         </div>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="#" className="img" style={{backgroundImage: "url(/images/manoj_g_photo.png)"}}></a>
+                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_g_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="#">Manoj G</a>, <span>May 3, 2024</span></h3>
+                            <h3><a href="/">Manoj G</a>, <span>May 3, 2024</span></h3>
                           </div>
                         </div>
                         <div className="meta-wrap d-md-flex align-items-center">
@@ -353,23 +353,23 @@ const Projects = () => {
                   </div>
                   <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
-                      <a href="#" className="img" style={{backgroundImage: "url(/images/project_6.png)"}}></a>
+                      <a href="/" className="img" style={{backgroundImage: "url(/images/project_6.png)"}}></a>
                       <div className="text pt-2 mt-3">
-                        <span className="category mb-1 d-block"><a href="#">Technologies: <strong>FastAPI, React</strong></a></span>
-                        <h3 className="mb-4"><a href="#">AI Chatbot Dashboard</a></h3>
+                        <span className="category mb-1 d-block"><a href="/">Technologies: <strong>FastAPI, React</strong></a></span>
+                        <h3 className="mb-4"><a href="/">AI Chatbot Dashboard</a></h3>
                         <p className="mb-4">An intelligent AI-powered chatbot dashboard designed to manage conversations, monitor analytics, and enhance customer support. It provides a user-friendly interface with real-time insights, customization, and automation features.</p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="#" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="#">Manoj R</a>, <span>May 3, 2024</span></h3>
+                            <h3><a href="/">Manoj R</a>, <span>May 3, 2024</span></h3>
                           </div>
                         </div>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="#" className="img" style={{backgroundImage: "url(/images/manoj_g_photo.png)"}}></a>
+                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_g_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="#">Manoj G</a>, <span>May 3, 2024</span></h3>
+                            <h3><a href="/">Manoj G</a>, <span>May 3, 2024</span></h3>
                           </div>
                         </div>
                         <div className="meta-wrap d-md-flex align-items-center">
@@ -393,13 +393,13 @@ const Projects = () => {
                   <div className="col">
                     <div className="block-27">
                       <ul>
-                        <li><a href="#">&lt;</a></li>
+                        <li><a href="/">&lt;</a></li>
                         <li className="active"><span>1</span></li>
-                        {/* <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li> */}
-                        <li><a href="#">&gt;</a></li>
+                        {/* <li><a href="/">2</a></li>
+                        <li><a href="/">3</a></li>
+                        <li><a href="/">4</a></li>
+                        <li><a href="/">5</a></li> */}
+                        <li><a href="/">&gt;</a></li>
                       </ul>
                     </div>
                   </div>
@@ -418,26 +418,26 @@ const Projects = () => {
                 <div className="sidebar-box ftco-animate">
                   <h3 className="sidebar-heading">Categories</h3>
                     <ul className="categories">
-                      <li><a href="#">AI & ML <span>(6)</span></a></li>
-                      <li><a href="#">Frontend <span>(8)</span></a></li>
-                      <li><a href="#">Backend <span>(5)</span></a></li>
-                      <li><a href="#">Fullstack <span>(4)</span></a></li>
-                      <li><a href="#">Cloud & DevOps <span>(3)</span></a></li>
-                      <li><a href="#">Data Science <span>(6)</span></a></li>
-                      <li><a href="#">Cybersecurity <span>(2)</span></a></li>
-                      <li><a href="#">UI / UX <span>(4)</span></a></li>
-                      <li><a href="#">3D Websites <span>(3)</span></a></li>
-                      <li><a href="#">Interior Design <span>(4)</span></a></li>
-                      <li><a href="#">Exterior Design <span>(2)</span></a></li>
-                      <li><a href="#">Graphic Design <span>(5)</span></a></li>
-                      <li><a href="#">Photography <span>(7)</span></a></li>
-                      <li><a href="#">Music <span>(6)</span></a></li>
-                      <li><a href="#">Singing <span>(3)</span></a></li>
-                      <li><a href="#">Video Editing <span>(4)</span></a></li>
-                      <li><a href="#">Animation <span>(2)</span></a></li>
-                      <li><a href="#">Travel <span>(2)</span></a></li>
-                      <li><a href="#">Food & Lifestyle <span>(3)</span></a></li>
-                      <li><a href="#">Fitness & Sports <span>(2)</span></a></li>
+                      <li><a href="/">AI & ML <span>(6)</span></a></li>
+                      <li><a href="/">Frontend <span>(8)</span></a></li>
+                      <li><a href="/">Backend <span>(5)</span></a></li>
+                      <li><a href="/">Fullstack <span>(4)</span></a></li>
+                      <li><a href="/">Cloud & DevOps <span>(3)</span></a></li>
+                      <li><a href="/">Data Science <span>(6)</span></a></li>
+                      <li><a href="/">Cybersecurity <span>(2)</span></a></li>
+                      <li><a href="/">UI / UX <span>(4)</span></a></li>
+                      <li><a href="/">3D Websites <span>(3)</span></a></li>
+                      <li><a href="/">Interior Design <span>(4)</span></a></li>
+                      <li><a href="/">Exterior Design <span>(2)</span></a></li>
+                      <li><a href="/">Graphic Design <span>(5)</span></a></li>
+                      <li><a href="/">Photography <span>(7)</span></a></li>
+                      <li><a href="/">Music <span>(6)</span></a></li>
+                      <li><a href="/">Singing <span>(3)</span></a></li>
+                      <li><a href="/">Video Editing <span>(4)</span></a></li>
+                      <li><a href="/">Animation <span>(2)</span></a></li>
+                      <li><a href="/">Travel <span>(2)</span></a></li>
+                      <li><a href="/">Food & Lifestyle <span>(3)</span></a></li>
+                      <li><a href="/">Fitness & Sports <span>(2)</span></a></li>
                     </ul>
                 </div>
 
@@ -454,11 +454,11 @@ const Projects = () => {
                       }}
                     ></a>
                     <div className="text">
-                      <h3 className="heading"><a href="#">Personal Chatbot</a></h3>
+                      <h3 className="heading"><a href="/">Personal Chatbot</a></h3>
                       <div className="meta">
-                        <div><a href="#"><span className="icon-calendar"></span> Aug. 15, 2025</a></div>
-                        <div><a href="#"><span className="icon-person"></span> By You</a></div>
-                        <div><a href="#"><span className="icon-chat"></span> 12</a></div>
+                        <div><a href="/"><span className="icon-calendar"></span> Aug. 15, 2025</a></div>
+                        <div><a href="/"><span className="icon-person"></span> By You</a></div>
+                        <div><a href="/"><span className="icon-chat"></span> 12</a></div>
                       </div>
                     </div>
                   </div>
@@ -473,11 +473,11 @@ const Projects = () => {
                       }}
                     ></a>
                     <div className="text">
-                      <h3 className="heading"><a href="#">AI-Powered Personal Stylish & Outfit Recommender</a></h3>
+                      <h3 className="heading"><a href="/">AI-Powered Personal Stylish & Outfit Recommender</a></h3>
                       <div className="meta">
-                        <div><a href="#"><span className="icon-calendar"></span> Aug. 10, 2025</a></div>
-                        <div><a href="#"><span className="icon-person"></span> By You</a></div>
-                        <div><a href="#"><span className="icon-chat"></span> 25</a></div>
+                        <div><a href="/"><span className="icon-calendar"></span> Aug. 10, 2025</a></div>
+                        <div><a href="/"><span className="icon-person"></span> By You</a></div>
+                        <div><a href="/"><span className="icon-chat"></span> 25</a></div>
                       </div>
                     </div>
                   </div>
@@ -493,11 +493,11 @@ const Projects = () => {
                       }}
                     ></a>
                     <div className="text">
-                      <h3 className="heading"><a href="#">Coffee Shop</a></h3>
+                      <h3 className="heading"><a href="/">Coffee Shop</a></h3>
                       <div className="meta">
-                        <div><a href="#"><span className="icon-calendar"></span> Jul. 28, 2025</a></div>
-                        <div><a href="#"><span className="icon-person"></span> By You</a></div>
-                        <div><a href="#"><span className="icon-chat"></span> 8</a></div>
+                        <div><a href="/"><span className="icon-calendar"></span> Jul. 28, 2025</a></div>
+                        <div><a href="/"><span className="icon-person"></span> By You</a></div>
+                        <div><a href="/"><span className="icon-chat"></span> 8</a></div>
                       </div>
                     </div>
                   </div>
@@ -510,82 +510,82 @@ const Projects = () => {
                     
                     {/* 🚀 Core Expertise */}
                     <h5 className="tag-category-heading">Our Expertise</h5>
-                    <a href="#" className="tag-cloud-link">Web Development</a>
-                    <a href="#" className="tag-cloud-link">Custom Coding</a>
-                    <a href="#" className="tag-cloud-link">Creative Design</a>
-                    <a href="#" className="tag-cloud-link">3D Visualization</a>
-                    <a href="#" className="tag-cloud-link">Artificial Intelligence</a>
-                    <a href="#" className="tag-cloud-link">Machine Learning</a>
-                    <a href="#" className="tag-cloud-link">Digital Solutions</a>
-                    <a href="#" className="tag-cloud-link">UI/UX Design</a>
-                    <a href="#" className="tag-cloud-link">Scalable Systems</a>
-                    <a href="#" className="tag-cloud-link">Innovation</a>
+                    <a href="/" className="tag-cloud-link">Web Development</a>
+                    <a href="/" className="tag-cloud-link">Custom Coding</a>
+                    <a href="/" className="tag-cloud-link">Creative Design</a>
+                    <a href="/" className="tag-cloud-link">3D Visualization</a>
+                    <a href="/" className="tag-cloud-link">Artificial Intelligence</a>
+                    <a href="/" className="tag-cloud-link">Machine Learning</a>
+                    <a href="/" className="tag-cloud-link">Digital Solutions</a>
+                    <a href="/" className="tag-cloud-link">UI/UX Design</a>
+                    <a href="/" className="tag-cloud-link">Scalable Systems</a>
+                    <a href="/" className="tag-cloud-link">Innovation</a>
                     
                     {/* 💻 Technology Stack */}
                     <h5 className="tag-category-heading">Technology Stack</h5>
-                    <a href="#" className="tag-cloud-link">Python</a>
-                    <a href="#" className="tag-cloud-link">JavaScript</a>
-                    <a href="#" className="tag-cloud-link">React</a>
-                    <a href="#" className="tag-cloud-link">Node.js</a>
-                    <a href="#" className="tag-cloud-link">Next.js</a>
-                    <a href="#" className="tag-cloud-link">TensorFlow</a>
-                    <a href="#" className="tag-cloud-link">PyTorch</a>
-                    <a href="#" className="tag-cloud-link">Django</a>
-                    <a href="#" className="tag-cloud-link">Flask</a>
-                    <a href="#" className="tag-cloud-link">Cloud Computing</a>
-                    <a href="#" className="tag-cloud-link">AWS</a>
-                    <a href="#" className="tag-cloud-link">Azure</a>
-                    <a href="#" className="tag-cloud-link">Docker</a>
-                    <a href="#" className="tag-cloud-link">Kubernetes</a>
-                    <a href="#" className="tag-cloud-link">Blockchain</a>
+                    <a href="/" className="tag-cloud-link">Python</a>
+                    <a href="/" className="tag-cloud-link">JavaScript</a>
+                    <a href="/" className="tag-cloud-link">React</a>
+                    <a href="/" className="tag-cloud-link">Node.js</a>
+                    <a href="/" className="tag-cloud-link">Next.js</a>
+                    <a href="/" className="tag-cloud-link">TensorFlow</a>
+                    <a href="/" className="tag-cloud-link">PyTorch</a>
+                    <a href="/" className="tag-cloud-link">Django</a>
+                    <a href="/" className="tag-cloud-link">Flask</a>
+                    <a href="/" className="tag-cloud-link">Cloud Computing</a>
+                    <a href="/" className="tag-cloud-link">AWS</a>
+                    <a href="/" className="tag-cloud-link">Azure</a>
+                    <a href="/" className="tag-cloud-link">Docker</a>
+                    <a href="/" className="tag-cloud-link">Kubernetes</a>
+                    <a href="/" className="tag-cloud-link">Blockchain</a>
                     
                     {/* 🎨 Creative & Design */}
                     <h5 className="tag-category-heading">Creative & Design</h5>
-                    <a href="#" className="tag-cloud-link">Graphic Design</a>
-                    <a href="#" className="tag-cloud-link">3D Modeling</a>
-                    <a href="#" className="tag-cloud-link">Animation</a>
-                    <a href="#" className="tag-cloud-link">Augmented Reality</a>
-                    <a href="#" className="tag-cloud-link">Virtual Reality</a>
-                    <a href="#" className="tag-cloud-link">Photography</a>
-                    <a href="#" className="tag-cloud-link">Motion Graphics</a>
-                    <a href="#" className="tag-cloud-link">Branding</a>
+                    <a href="/" className="tag-cloud-link">Graphic Design</a>
+                    <a href="/" className="tag-cloud-link">3D Modeling</a>
+                    <a href="/" className="tag-cloud-link">Animation</a>
+                    <a href="/" className="tag-cloud-link">Augmented Reality</a>
+                    <a href="/" className="tag-cloud-link">Virtual Reality</a>
+                    <a href="/" className="tag-cloud-link">Photography</a>
+                    <a href="/" className="tag-cloud-link">Motion Graphics</a>
+                    <a href="/" className="tag-cloud-link">Branding</a>
                     
                     {/* 🤖 AI/ML Specializations */}
                     <h5 className="tag-category-heading">AI/ML Specializations</h5>
-                    <a href="#" className="tag-cloud-link">Deep Learning</a>
-                    <a href="#" className="tag-cloud-link">Computer Vision</a>
-                    <a href="#" className="tag-cloud-link">NLP</a>
-                    <a href="#" className="tag-cloud-link">Neural Networks</a>
-                    <a href="#" className="tag-cloud-link">Data Science</a>
-                    <a href="#" className="tag-cloud-link">Predictive Analytics</a>
-                    <a href="#" className="tag-cloud-link">Chatbots</a>
-                    <a href="#" className="tag-cloud-link">Generative AI</a>
+                    <a href="/" className="tag-cloud-link">Deep Learning</a>
+                    <a href="/" className="tag-cloud-link">Computer Vision</a>
+                    <a href="/" className="tag-cloud-link">NLP</a>
+                    <a href="/" className="tag-cloud-link">Neural Networks</a>
+                    <a href="/" className="tag-cloud-link">Data Science</a>
+                    <a href="/" className="tag-cloud-link">Predictive Analytics</a>
+                    <a href="/" className="tag-cloud-link">Chatbots</a>
+                    <a href="/" className="tag-cloud-link">Generative AI</a>
                     
                     {/* 🌐 Digital Transformation */}
                     <h5 className="tag-category-heading">Digital Transformation</h5>
-                    <a href="#" className="tag-cloud-link">Smart Solutions</a>
-                    <a href="#" className="tag-cloud-link">Automation</a>
-                    <a href="#" className="tag-cloud-link">IoT</a>
-                    <a href="#" className="tag-cloud-link">Big Data</a>
-                    <a href="#" className="tag-cloud-link">Business Intelligence</a>
-                    <a href="#" className="tag-cloud-link">Digital Strategy</a>
+                    <a href="/" className="tag-cloud-link">Smart Solutions</a>
+                    <a href="/" className="tag-cloud-link">Automation</a>
+                    <a href="/" className="tag-cloud-link">IoT</a>
+                    <a href="/" className="tag-cloud-link">Big Data</a>
+                    <a href="/" className="tag-cloud-link">Business Intelligence</a>
+                    <a href="/" className="tag-cloud-link">Digital Strategy</a>
                     
                     {/* 🎵 Creative Interests */}
                     <h5 className="tag-category-heading">Creative Interests</h5>
-                    <a href="#" className="tag-cloud-link">Music</a>
-                    <a href="#" className="tag-cloud-link">Art</a>
-                    <a href="#" className="tag-cloud-link">Photography</a>
-                    <a href="#" className="tag-cloud-link">Film</a>
-                    <a href="#" className="tag-cloud-link">Design</a>
-                    <a href="#" className="tag-cloud-link">Innovation</a>
+                    <a href="/" className="tag-cloud-link">Music</a>
+                    <a href="/" className="tag-cloud-link">Art</a>
+                    <a href="/" className="tag-cloud-link">Photography</a>
+                    <a href="/" className="tag-cloud-link">Film</a>
+                    <a href="/" className="tag-cloud-link">Design</a>
+                    <a href="/" className="tag-cloud-link">Innovation</a>
                     
                     {/* 🏢 Business & Growth */}
                     <h5 className="tag-category-heading">Business & Growth</h5>
-                    <a href="#" className="tag-cloud-link">Entrepreneurship</a>
-                    <a href="#" className="tag-cloud-link">Startups</a>
-                    <a href="#" className="tag-cloud-link">Digital Marketing</a>
-                    <a href="#" className="tag-cloud-link">E-commerce</a>
-                    <a href="#" className="tag-cloud-link">Tech Innovation</a>
+                    <a href="/" className="tag-cloud-link">Entrepreneurship</a>
+                    <a href="/" className="tag-cloud-link">Startups</a>
+                    <a href="/" className="tag-cloud-link">Digital Marketing</a>
+                    <a href="/" className="tag-cloud-link">E-commerce</a>
+                    <a href="/" className="tag-cloud-link">Tech Innovation</a>
                   </ul>
                 </div>
 
@@ -623,12 +623,12 @@ const Projects = () => {
                 <div className="sidebar-box ftco-animate">
                   <h3 className="sidebar-heading">Archives</h3>
                   <ul className="categories">
-                    <li><a href="#">October 2018 <span>(10)</span></a></li>
-                    <li><a href="#">September 2018 <span>(6)</span></a></li>
-                    <li><a href="#">August 2018 <span>(8)</span></a></li>
-                    <li><a href="#">July 2018 <span>(2)</span></a></li>
-                    <li><a href="#">June 2018 <span>(7)</span></a></li>
-                    <li><a href="#">May 2018 <span>(5)</span></a></li>
+                    <li><a href="/">October 2018 <span>(10)</span></a></li>
+                    <li><a href="/">September 2018 <span>(6)</span></a></li>
+                    <li><a href="/">August 2018 <span>(8)</span></a></li>
+                    <li><a href="/">July 2018 <span>(2)</span></a></li>
+                    <li><a href="/">June 2018 <span>(7)</span></a></li>
+                    <li><a href="/">May 2018 <span>(5)</span></a></li>
                   </ul>
                 </div>
 
