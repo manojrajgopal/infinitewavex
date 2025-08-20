@@ -297,7 +297,7 @@ const Contact = () => {
                                         marginHeight="0" 
                                         marginWidth="0" 
                                         src="https://www.openstreetmap.org/export/embed.html?bbox=77.5366%2C12.9236%2C77.6366%2C13.0236&amp;layer=mapnik&amp;marker=12.9716%2C77.5946" 
-                                        title="Map of our location">
+                                        title="Map of our location"
                                         style={{ border: '1px solid black' }}
                                     ></iframe>
                                 </div>
