@@ -21,3 +21,16 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.env
+
+__pycache__
+
+credentials.json
+
+token.json
+gmail_auth.py
+token.pkl
+
+venv
+node_modules
