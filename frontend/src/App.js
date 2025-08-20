@@ -26,7 +26,7 @@ import './assets/css/bootstrap-datepicker.css';
 
 function App() {
   return (
-    <Router>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/gallery" element={<Photography />} />
@@ -42,7 +42,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
 
       </Routes>
-    </Router>
+
   );
 }
 
