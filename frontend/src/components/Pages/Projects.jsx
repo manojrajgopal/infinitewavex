@@ -233,11 +233,21 @@ const Projects = () => {
           </div>
 
           {/* Navigation Arrows */}
-          <div className="slider-nav">
-            <button className="nav-arrow prev" onClick={() => setCurrentSlide((currentSlide - 1 + slides.length) % slides.length)}>
+          <div className="slider-nav hidden md:flex">
+            <button
+              className="nav-arrow prev"
+              onClick={() =>
+                setCurrentSlide((currentSlide - 1 + slides.length) % slides.length)
+              }
+            >
               &#8249;
             </button>
-            <button className="nav-arrow next" onClick={() => setCurrentSlide((currentSlide + 1) % slides.length)}>
+            <button
+              className="nav-arrow next"
+              onClick={() =>
+                setCurrentSlide((currentSlide + 1) % slides.length)
+              }
+            >
               &#8250;
             </button>
           </div>
@@ -381,6 +391,18 @@ const Projects = () => {
               background: rgba(255,255,255,0.3);
               transform: scale(1.1);
             }
+              /* default: visible */
+            .slider-nav {
+              display: flex;
+            }
+
+            /* hide on mobile */
+            @media (max-width: 768px) {
+              .slider-nav {
+                display: none;
+              }
+            }
+
             @media (max-width: 768px) {
               .slide-content h1 { 
                 font-size: 2.2rem; 
