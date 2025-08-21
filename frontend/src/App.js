@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './components/Pages/Home';
 import Photography from './components/Pages/Gallery';
 import Projects from './components/Pages/Projects';
@@ -24,25 +25,39 @@ import './assets/css/flaticon.css';
 import './assets/css/jquery.timepicker.css';
 import './assets/css/bootstrap-datepicker.css';
 
+function ScriptReloader() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (window.AOS) window.AOS.init();
+    if (window.$ && window.$('.owl-carousel').length) {
+      window.$('.owl-carousel').owlCarousel();
+    }
+  }, [location]);
+
+  return null;
+}
+
 function App() {
   return (
+      <>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/gallery" element={<Photography />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/leadershipSpotlight" element={<LeadershipSpotlight />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/career" element={<Career />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/projectrequest" element={<ProjectRequest />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/gallery" element={<Photography />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/leadershipSpotlight" element={<LeadershipSpotlight />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/testimonials" element={<Testimonials />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/projectrequest" element={<ProjectRequest />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-
-      </Routes>
-
+        </Routes>
+      <ScriptReloader />
+    </>
   );
 }
 

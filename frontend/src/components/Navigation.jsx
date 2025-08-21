@@ -1,8 +1,9 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
   const location = useLocation();
-
+  const navigate = useNavigate();
+  
   // helper: check if route matches (supports dynamic paths like /projects/123)
   const isActivePath = (path) => {
     if (path === "/") {
@@ -14,7 +15,8 @@ const Navigation = () => {
   // wrapper: force reload with window.location.href
   const handleRedirect = (url) => (e) => {
     e.preventDefault(); // stop React Router from handling it
-    window.location.href = url; // 🔥 your requirement
+    navigate(url);
+    // window.location.href = url; // 🔥 your requirement
   };
 
   return (

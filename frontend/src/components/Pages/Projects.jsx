@@ -46,6 +46,11 @@ const Projects = () => {
   };
 
   useEffect(() => {
+    if (window.AOS) window.AOS.init();
+    if (window.$ && window.$('.owl-carousel').length) {
+      window.$('.owl-carousel').owlCarousel();
+    }
+
     const scriptElements = [];
 
     const loadScript = (src) => {
@@ -97,6 +102,7 @@ const Projects = () => {
       window.__themeScriptsLoaded = true;
       loadScripts();
     }
+    loadScripts();
 
     return () => {
       scriptElements.forEach(script => {

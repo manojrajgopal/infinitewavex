@@ -73,7 +73,7 @@ const Home = () => {
     window.__themeScriptsLoaded = true;
     loadScripts();
   }
-
+  loadScripts();
 
     return () => {
       // Cleanup

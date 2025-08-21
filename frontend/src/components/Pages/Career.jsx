@@ -143,7 +143,7 @@ const Career = () => {
       window.__themeScriptsLoaded = true;
       loadScripts();
     }
-
+    loadScripts();
     return () => {
       scriptElements.forEach(script => {
         if (script.parentNode) {

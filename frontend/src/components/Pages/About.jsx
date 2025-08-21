@@ -66,7 +66,7 @@ const About = () => {
     window.__themeScriptsLoaded = true;
     loadScripts();
   }
-
+  loadScripts();
 
     return () => {
       scriptElements.forEach(script => {
