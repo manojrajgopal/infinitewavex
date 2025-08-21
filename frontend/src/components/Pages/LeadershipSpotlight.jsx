@@ -83,6 +83,10 @@ const LeadershipSpotlight = () => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet" />
 
@@ -103,6 +107,64 @@ const LeadershipSpotlight = () => {
         <link rel="stylesheet" href="/css/flaticon.css" />
         <link rel="stylesheet" href="/css/icomoon.css" />
         <link rel="stylesheet" href="/css/style.css" />
+
+        <style type="text/css">{`
+          .js-fullheight {
+            min-height: 100vh;
+            height: auto !important;
+            display: flex;
+            flex-direction: column;
+          }
+
+          html, body {
+            height: auto;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+          }
+
+          @media (max-width: 768px) {
+            .hero-wrap.js-fullheight {
+              padding-top: 20px;
+              min-height: calc(100vh - 40px) !important;
+            }
+            #colorlib-aside {
+              padding-top: 20px;
+            }
+            .img.mb-4 {
+              background-size: contain !important;
+              min-height: 80px !important;
+              margin-top: 10px;
+            }
+            .desc h1 {
+              font-size: 2rem;
+            }
+            .desc p {
+              font-size: 1rem;
+              padding: 0 10px;
+            }
+            .col-md-8.text {
+              padding: 20px;
+              margin-top: 20px;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .hero-wrap.js-fullheight {
+              padding-top: 10px;
+              min-height: calc(100vh - 20px) !important;
+            }
+            .desc h1 {
+              font-size: 1.8rem;
+            }
+            .desc h2.subheading {
+              font-size: 1.2rem;
+            }
+            .desc p {
+              font-size: 0.9rem;
+            }
+          }
+        `}</style>
       </Helmet>
 
       <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
@@ -119,22 +181,45 @@ const LeadershipSpotlight = () => {
       </aside>
 
       <div id="colorlib-main">
-        <div className="hero-wrap js-fullheight" style={{backgroundImage: "url(/images/contact_bg_2.jpg)"}} data-stellar-background-ratio="0.5">
+        <div className="hero-wrap js-fullheight" style={{ 
+          backgroundImage: "url(/images/contact_bg_2.jpg)",
+          backgroundPosition: window.innerWidth <= 768 ? "center center" : undefined,
+          backgroundSize: window.innerWidth <= 768 ? "cover" : undefined
+        }} data-stellar-background-ratio="0.5">
           <div className="overlay"></div>
           <div className="js-fullheight d-flex justify-content-center align-items-center">
-            <div className="col-md-8 text text-center">
-              <div className="img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}></div>
+            <div className="col-md-8 text text-center" style={{
+              padding: window.innerWidth <= 768 ? "20px" : "0",
+              marginTop: window.innerWidth <= 768 ? "20px" : "0"
+            }}>
+              <div className="img mb-4" style={{
+                backgroundImage: "url(/images/logo.png)",
+                backgroundSize: "contain",
+                minHeight: window.innerWidth <= 768 ? "80px" : "100px"
+              }}></div>
               <div className="desc">
-                <h2 className="subheading">Hello I'm</h2>
-                <h1 className="mb-4">InfiniteWaveX</h1>
-                <p className="mb-4">
+                <h2 className="subheading" style={{
+                  fontSize: window.innerWidth <= 480 ? "1.2rem" : undefined
+                }}>Hello I'm</h2>
+                <h1 className="mb-4" style={{
+                  fontSize: window.innerWidth <= 480 ? "1.8rem" : window.innerWidth <= 768 ? "2rem" : undefined
+                }}>InfiniteWaveX</h1>
+                <p className="mb-4" style={{
+                    fontSize: window.innerWidth <= 480 ? "0.9rem" : "1rem",
+                    textAlign: "justify",
+                    padding: window.innerWidth <= 768 ? "0 10px" : "0"
+                  }}>
                   At InfiniteWaveX, leadership is more than decision-making—it’s about inspiring people,
                   building trust, and shaping a future driven by innovation. Our leaders bring together years
                   of expertise across diverse industries, blending strategic vision with a deep commitment to
                   collaboration and growth.
                 </p>
 
-                <p className="mb-4">
+                <p className="mb-4" style={{
+                  fontSize: window.innerWidth <= 480 ? "0.9rem" : "1rem",
+                  textAlign: "justify",
+                  padding: window.innerWidth <= 768 ? "0 10px" : "0"
+                }}>
                   With a forward-looking mindset, the InfiniteWaveX leadership team focuses on empowering
                   individuals, nurturing creativity, and driving transformative solutions that make a real
                   difference. Each leader embodies the core values of integrity, innovation, and impact—
