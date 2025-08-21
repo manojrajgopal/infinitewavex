@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Footer from '../Footer'
 import Copyright from '../Copyright';
@@ -13,7 +13,52 @@ const Projects = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
+  const handleRedirect = (url) => (e) => {
+    e.preventDefault(); // stop React Router from handling it
+    navigate(url);
+    // window.location.href = url; // 🔥 your requirement
+  };
+
+  const slides = [
+    {
+      image: "/images/news_1.jpg",
+      title: "Immersive Digital Experiences",
+      text: "Creating stunning 3D visualizations and interactive environments that transform how you experience spaces."
+    },
+    {
+      image: "/images/image_9.jpg",
+      title: "Smart Interior Solutions",
+      text: "Combining technology and design to create intelligent, beautiful living spaces that adapt to your needs."
+    },
+    {
+      image: "/images/image_4.jpg",
+      title: "Cutting-Edge Technology",
+      text: "Leveraging the latest in AI and computing power to deliver innovative solutions that drive your business forward."
+    },
+    {
+      image: "/images/bg_11.jpg",
+      title: "Smart Coding",
+      text: "Expert programmers turning complex problems into simple, smart digital solutions."
+    },
+    {
+      image: "/images/bg_12.jpg",
+      title: "Problem Solvers",
+      text: "Our programmers craft clean, efficient, and scalable solutions to bring your ideas to life."
+    }
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000); // auto-play every 5s
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  
   const handleSubscribe = async (e) => {
     e.preventDefault();
     if (!email) return;
@@ -157,30 +202,206 @@ const Projects = () => {
       </aside>
 
       <div id="colorlib-main">
-        <section className="home-slider js-fullheight owl-carousel">
-          <div className="slider-item js-fullheight" style={{backgroundImage: "url(/images/bg_11.jpg)"}}>
-            <div className="overlay"></div>
-            <div className="container-fluid">
-              <div className="row no-gutters slider-text slider-text-2 js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-                <div className="col-md-10 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                  <h1 className="mb-4" style={{color: "#f0f0f0ff", textShadow: "2px 2px 4px rgba(0,0,0,0.5)"}} data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Smart Coding</h1>
-                  <p style={{color: "#f0f0f0ff", textShadow: "1px 1px 2px rgba(0,0,0,0.5)"}} data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Expert programmers turning complex problems into simple, smart digital solutions.</p>
+        <section className="custom-hero-slider js-fullheight">
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`custom-slide ${index === currentSlide ? "active" : ""}`}
+              style={{ backgroundImage: `url(${slide.image})` }}
+            >
+              <div className="overlay"></div>
+              <div className="slide-content">
+                <h1 data-aos="fade-up" data-aos-delay="200">{slide.title}</h1>
+                <p data-aos="fade-up" data-aos-delay="400">{slide.text}</p>
+                <div className="slide-buttons" data-aos="fade-up" data-aos-delay="600">
+                  <button  to="/gallery" onClick={handleRedirect("/gallery")} className="btn-primary">Our Services</button>
+                  <button to="/contact" onClick={handleRedirect("/contact")} className="btn-secondary">Contact Us</button>
                 </div>
               </div>
             </div>
+          ))}
+
+          {/* Navigation Dots */}
+          <div className="slider-dots">
+            {slides.map((_, i) => (
+              <span
+                key={i}
+                className={i === currentSlide ? "active" : ""}
+                onClick={() => setCurrentSlide(i)}
+              ></span>
+            ))}
           </div>
 
-          <div className="slider-item js-fullheight" style={{backgroundImage: "url(/images/bg_12.jpg)"}}>
-            <div className="overlay"></div>
-            <div className="container-fluid">
-              <div className="row no-gutters slider-text slider-text-2 js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-                <div className="col-md-10 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                  <h1 className="mb-4" style={{color: "#f0f0f0ff", textShadow: "2px 2px 4px rgba(0,0,0,0.5)"}} data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Problem Solvers</h1>
-                  <p style={{color: "#f0f0f0ff", textShadow: "1px 1px 2px rgba(0,0,0,0.5)"}} data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Our programmers craft clean, efficient, and scalable solutions to bring your ideas to life.</p>
-                </div>
-              </div>
-            </div>
+          {/* Navigation Arrows */}
+          <div className="slider-nav">
+            <button className="nav-arrow prev" onClick={() => setCurrentSlide((currentSlide - 1 + slides.length) % slides.length)}>
+              &#8249;
+            </button>
+            <button className="nav-arrow next" onClick={() => setCurrentSlide((currentSlide + 1) % slides.length)}>
+              &#8250;
+            </button>
           </div>
+
+          <style jsx>{`
+            .custom-hero-slider {
+              position: relative;
+              height: 100vh;
+              overflow: hidden;
+            }
+            .custom-slide {
+              position: absolute;
+              top: 0; left: 0;
+              width: 100%;
+              height: 100%;
+              background-size: cover;
+              background-position: center;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              opacity: 0;
+              transform: scale(1.1);
+              transition: opacity 1s ease, transform 1.2s ease;
+            }
+            .custom-slide.active {
+              opacity: 1;
+              transform: scale(1);
+              z-index: 1;
+            }
+            .overlay {
+              position: absolute;
+              top: 0; left: 0;
+              width: 100%; height: 100%;
+              background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+              z-index: 1;
+            }
+            .slide-content {
+              position: relative;
+              z-index: 2;
+              text-align: center;
+              color: #ffffffff;
+              max-width: 800px;
+              padding: 0 20px;
+            }
+            .slide-content h1 {
+              color: #fff;
+              font-size: 3.5rem;
+              margin-bottom: 20px;
+              text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+              font-weight: 700;
+              letter-spacing: 1px;
+            }
+            .slide-content p {
+              font-size: 1.4rem;
+              line-height: 1.6;
+              margin-bottom: 30px;
+              text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            }
+            .slide-buttons {
+              display: flex;
+              gap: 20px;
+              justify-content: center;
+              flex-wrap: wrap;
+            }
+            .slide-buttons button {
+              padding: 15px 30px;
+              border: none;
+              border-radius: 50px;
+              font-size: 1rem;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            .btn-primary {
+              background: linear-gradient(45deg, #6c63ff, #4a40e5);
+              color: white;
+            }
+            .btn-primary:hover {
+              transform: translateY(-3px);
+              box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+            }
+            .btn-secondary {
+              background: transparent;
+              color: white;
+              border: 2px solid white !important;
+            }
+            .btn-secondary:hover {
+              background: rgba(226, 218, 218, 0.1);
+              transform: translateY(-3px);
+            }
+            .slider-dots {
+              position: absolute;
+              bottom: 30px;
+              left: 50%;
+              transform: translateX(-50%);
+              display: flex;
+              gap: 12px;
+              z-index: 3;
+            }
+            .slider-dots span {
+              width: 14px; height: 14px;
+              background: rgba(255,255,255,0.6);
+              border-radius: 50%;
+              cursor: pointer;
+              transition: all 0.3s ease;
+            }
+            .slider-dots span.active {
+              background: #fff;
+              transform: scale(1.2);
+            }
+            .slider-dots span:hover {
+              background: rgba(255,255,255,0.9);
+            }
+            .slider-nav {
+              position: absolute;
+              top: 50%;
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              padding: 0 30px;
+              z-index: 3;
+              transform: translateY(-50%);
+            }
+            .nav-arrow {
+              background: rgba(255,255,255,0.2);
+              color: white;
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: none;
+              font-size: 24px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              backdrop-filter: blur(5px);
+            }
+            .nav-arrow:hover {
+              background: rgba(255,255,255,0.3);
+              transform: scale(1.1);
+            }
+            @media (max-width: 768px) {
+              .slide-content h1 { 
+                font-size: 2.2rem; 
+              }
+              .slide-content p { 
+                font-size: 1.1rem; 
+              }
+              .slide-buttons {
+                flex-direction: column;
+                align-items: center;
+              }
+              .slide-buttons button {
+                width: 200px;
+              }
+              .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+              }
+            }
+          `}</style>
         </section>
 
         <section className="ftco-section">
