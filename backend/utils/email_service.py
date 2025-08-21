@@ -19,7 +19,7 @@ load_dotenv()
 SCOPES = ['https://mail.google.com/']
 
 # List of recipients
-RECIPIENTS = ["manojraj15@hotmail.com", "manojrajgopal15@gmail.com"]
+RECIPIENTS = ["manojrajgopalachar@gmail.com", "binduramesh290@gmail.com", "muruli5621@gmail.com"]
 
 def get_gmail_service():
     """Shows basic usage of the Gmail API.
