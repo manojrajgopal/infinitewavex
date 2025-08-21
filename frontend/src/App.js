@@ -54,7 +54,8 @@ function App() {
           <Route path="/projectrequest" element={<ProjectRequest />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-
+          <Route path="*" element={<Home />} />
+          
         </Routes>
       <ScriptReloader />
     </>
