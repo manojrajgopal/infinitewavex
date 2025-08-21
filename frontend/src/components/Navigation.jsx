@@ -17,7 +17,7 @@ const Navigation = () => {
   const handleRedirect = (url) => (e) => {
     e.preventDefault(); // stop React Router from handling it
     navigate(url);
-    // window.location.href = url; // 🔥 your requirement
+    window.location.href = url; // 🔥 your requirement
   };
 
   return (
