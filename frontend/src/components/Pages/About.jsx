@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Copyright from '../Copyright';
 import ThreeJSParticles from '../ThreeJSParticles';

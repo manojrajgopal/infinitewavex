@@ -74,7 +74,7 @@ const Contact = () => {
         }
       });
     };
-  }, [Location]);
+  }, [location]);
 
   return (
     <div id="colorlib-page">

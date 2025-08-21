@@ -73,7 +73,7 @@ const LeadershipSpotlight = () => {
         }
       });
     };
-  }, [Location]);
+  }, [location]);
 
   return (
     <div id="colorlib-page">

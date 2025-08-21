@@ -83,7 +83,7 @@ const Home = () => {
         }
       });
     };
-  }, [Location]);
+  }, [location]);
 
   return (
     <div id="colorlib-page">
