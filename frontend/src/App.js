@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Home from './components/Pages/Home';
 import Photography from './components/Pages/Gallery';
 import Projects from './components/Pages/Projects';
@@ -24,6 +24,21 @@ import './assets/css/open-iconic-bootstrap.min.css';
 import './assets/css/flaticon.css';
 import './assets/css/jquery.timepicker.css';
 import './assets/css/bootstrap-datepicker.css';
+
+function ForceRedirectOnRefresh() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (performance.getEntriesByType("navigation")[0]?.type === "reload") {
+      if (location.pathname !== "/") {
+        navigate("/", { replace: true });
+      }
+    }
+  }, [location, navigate]);
+
+  return null;
+}
 
 function ScriptReloader() {
   const location = useLocation();
@@ -57,6 +72,7 @@ function App() {
 
         </Routes>
       <ScriptReloader />
+      <ForceRedirectOnRefresh />
     </>
   );
 }
