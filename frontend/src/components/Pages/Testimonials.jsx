@@ -148,7 +148,7 @@ const Testimonials = () => {
                 <div className="carousel-testimony owl-carousel ftco-owl">
                   <div className="item">
                     <div className="testimony-wrap text-center py-4 pb-5">
-                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/person_1.jpg)"}}>
+                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}>
                         <span className="quote d-flex align-items-center justify-content-center">
                           <i className="icon-quote-left"></i>
                         </span>
@@ -162,7 +162,7 @@ const Testimonials = () => {
                   </div>
                   <div className="item">
                     <div className="testimony-wrap text-center py-4 pb-5">
-                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/person_2.jpg)"}}>
+                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}>
                         <span className="quote d-flex align-items-center justify-content-center">
                           <i className="icon-quote-left"></i>
                         </span>
@@ -176,7 +176,7 @@ const Testimonials = () => {
                   </div>
                   <div className="item">
                     <div className="testimony-wrap text-center py-4 pb-5">
-                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/person_3.jpg)"}}>
+                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}>
                         <span className="quote d-flex align-items-center justify-content-center">
                           <i className="icon-quote-left"></i>
                         </span>
@@ -190,7 +190,7 @@ const Testimonials = () => {
                   </div>
                   <div className="item">
                     <div className="testimony-wrap text-center py-4 pb-5">
-                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/person_4.jpg)"}}>
+                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}>
                         <span className="quote d-flex align-items-center justify-content-center">
                           <i className="icon-quote-left"></i>
                         </span>
@@ -204,7 +204,7 @@ const Testimonials = () => {
                   </div>
                   <div className="item">
                     <div className="testimony-wrap text-center py-4 pb-5">
-                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/person_5.jpg)"}}>
+                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}>
                         <span className="quote d-flex align-items-center justify-content-center">
                           <i className="icon-quote-left"></i>
                         </span>
@@ -233,7 +233,7 @@ const Testimonials = () => {
             <div className="row">
               <div className="col-md-4">
                 <div className="blog-entry ftco-animate">
-                  <a href="#" className="img" style={{backgroundImage: "url(/images/case_study_1.jpg)"}}></a>
+                  <a href="#" className="img" style={{backgroundImage: "url(/images/project_6.png)"}}></a>
                   <div className="text pt-2 mt-3">
                     <span className="category mb-1 d-block"><a href="#">E-commerce Transformation</a></span>
                     <h3 className="mb-4"><a href="#">Revamping UrbanGoods' Online Presence</a></h3>
@@ -248,7 +248,7 @@ const Testimonials = () => {
               </div>
               <div className="col-md-4">
                 <div className="blog-entry ftco-animate">
-                  <a href="#" className="img" style={{backgroundImage: "url(/images/case_study_2.jpg)"}}></a>
+                  <a href="#" className="img" style={{backgroundImage: "url(/images/project_2.png)"}}></a>
                   <div className="text pt-2 mt-3">
                     <span className="category mb-1 d-block"><a href="#">AI Implementation</a></span>
                     <h3 className="mb-4"><a href="#">AI-Powered Fashion Recommendations</a></h3>
@@ -263,7 +263,7 @@ const Testimonials = () => {
               </div>
               <div className="col-md-4">
                 <div className="blog-entry ftco-animate">
-                  <a href="#" className="img" style={{backgroundImage: "url(/images/case_study_3.jpg)"}}></a>
+                  <a href="#" className="img" style={{backgroundImage: "url(/images/project_4.png)"}}></a>
                   <div className="text pt-2 mt-3">
                     <span className="category mb-1 d-block"><a href="#">3D Visualization</a></span>
                     <h3 className="mb-4"><a href="#">Immersive Architectural Presentations</a></h3>
