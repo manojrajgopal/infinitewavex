@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: InfiniteWaveX
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
