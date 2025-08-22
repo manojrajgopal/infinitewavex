@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
 
-from routes import project_requests, newsletter
+from routes import (project_requests, newsletter, generator, video)
 
 load_dotenv()
 
@@ -33,6 +33,18 @@ app.include_router(
     newsletter.router,
     prefix="/api/newsletter",
     tags=["Newsletter"]
+)
+
+app.include_router(
+    video.router,
+    prefix="/api/video",
+    tags=["Video Generation"]
+)
+
+app.include_router(
+    generator.router,
+    prefix="/api/generator",  
+    tags=["Generator"]
 )
 
 @app.get("/")

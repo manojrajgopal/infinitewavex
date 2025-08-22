@@ -34,3 +34,6 @@ token.pkl
 
 venv
 node_modules
+venv311
+
+Counterfeit-V2.5.safetensors
