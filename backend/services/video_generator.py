@@ -50,16 +50,28 @@ if DEVICE.type == 'cuda' and hasattr(pipe, 'enable_xformers_memory_efficient_att
         print(f"Xformers not available: {e}")
 
 # 2️⃣ Real-ESRGAN for upscaling - FIXED for CPU
-model_path = "RealESRGAN_x2plus.pth"
+model_path = "models/RealESRGAN_x2plus.pth"
+
+print(f"[DEBUG] Checking model path: {model_path}")
 if not os.path.exists(model_path):
-    try:
-        from basicsr.utils.download_util import load_file_from_url
-        model_url = 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.1/RealESRGAN_x2plus.pth'
-        model_path = load_file_from_url(model_url, model_dir='models')
-        print(f"Downloaded RealESRGAN model to: {model_path}")
-    except Exception as e:
-        print(f"Failed to download RealESRGAN model: {e}")
-        model_path = None
+    print(f"[DEBUG] Model not found at {model_path}, checking ../models/RealESRGAN_x2plus.pth")
+    alt_model_path = "../models/RealESRGAN_x2plus.pth"
+    
+    if os.path.exists(alt_model_path):
+        model_path = alt_model_path
+        print(f"[DEBUG] Found model at alternative path: {model_path}")
+    else:
+        print(f"[DEBUG] Model not found at {alt_model_path}, attempting download...")
+        try:
+            from basicsr.utils.download_util import load_file_from_url
+            model_url = 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.1/RealESRGAN_x2plus.pth'
+            model_path = load_file_from_url(model_url, model_dir='models')
+            print(f"[INFO] Downloaded RealESRGAN model to: {model_path}")
+        except Exception as e:
+            print(f"[ERROR] Failed to download RealESRGAN model: {e}")
+            model_path = None
+else:
+    print(f"[DEBUG] Model found at {model_path}")
 
 if model_path and os.path.exists(model_path):
     upscaler = RealESRGANer(
