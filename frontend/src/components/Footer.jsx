@@ -44,8 +44,8 @@ const Footer = () => {
                   <div className="block-23 mb-3">
                     <ul>
                         <li><span className="fa fa-map-marker" style={{ marginRight: '10px' }}></span><span className="text">Krishshnarajapuram, Bangalore, India - 560049</span></li>
-                        <li><a href="#"><span className="fa fa-phone" style={{ marginRight: '10px' }}></span><span className="text">+91 8951663446</span></a></li>
-                        <li><a href="#"><span className="fa fa-envelope" style={{ marginRight: '10px' }}></span><span className="text">infinitewavexofficial@gmail.com</span></a></li>
+                        <li><a href="tel:+918951663446"><span className="fa fa-phone" style={{ marginRight: '10px' }}></span><span className="text">+91 8951663446</span></a></li>
+                        <li><a href="mailto:infinitewavexofficial@gmail.com"><span className="fa fa-envelope" style={{ marginRight: '10px' }}></span><span className="text">infinitewavexofficial@gmail.com</span></a></li>
                     </ul>
                   </div>
                 </div>
