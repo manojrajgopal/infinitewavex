@@ -50,7 +50,8 @@ app.include_router(
     tags=["Reviews"]
 )
 
-@app.get("/")
+@app.get("/", include_in_schema=True)
+@app.head("/")
 async def root():
     return {"status": "ok", "message": "InfiniteWaveX API is running"}
 
