@@ -49,9 +49,9 @@ const Navigation = () => {
           <li className={isActivePath("/projectrequest") ? "colorlib-active" : ""}>
             <NavLink to="/projectrequest" onClick={handleRedirect("/projectrequest")}>Project Request</NavLink>
           </li>
-          <li className={isActivePath("/career") ? "colorlib-active" : ""}>
+          {/* <li className={isActivePath("/career") ? "colorlib-active" : ""}>
             <NavLink to="/career" onClick={handleRedirect("/career")}>Career</NavLink>
-          </li>
+          </li> */}
           <li className={isActivePath("/leadershipSpotlight") ? "colorlib-active" : ""}>
             <NavLink to="/leadershipSpotlight" onClick={handleRedirect("/leadershipSpotlight")}>Leadership Spotlight</NavLink>
           </li>
