@@ -433,16 +433,16 @@ const Projects = () => {
                 <div className="row">
                   <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
-                      <a href="/" className="img" style={{backgroundImage: "url(/images/project_1.png)"}}></a>
+                      <a href="https://manojrajgopal.github.io/tasty-food/" className="img" style={{backgroundImage: "url(/images/project_1.png)"}}></a>
                       <div className="text pt-2 mt-3">
                         <span className="category mb-1 d-block"><a href="/">Technologies: <strong>HTML, SCSS, CSS, JavaScript</strong></a></span>
                         <h3 className="mb-4"><a href="/">Responsive Website Restaurant</a></h3>
                         <p className="mb-4">Nice design of a responsive restaurant website 🥗 . It contains a header, home, about, services, menu, app and contact. It also has a fully developed light/dark mode 🌓 first for mobile then for desktop.</p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="https://manojrajgopal.github.io/portfolio" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="/">Manoj R</a>, <span>Nov 28, 2018</span></h3>
+                            <h3><a href="https://manojrajgopal.github.io/portfolio">Manoj R</a>, <span>Nov 28, 2018</span></h3>
                           </div>
                         </div>
                         <div className="meta-wrap d-md-flex align-items-center">
@@ -463,16 +463,16 @@ const Projects = () => {
 
                   <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
-                      <a href="/" className="img" style={{backgroundImage: "url(/images/project_2.png)"}}></a>
+                      <a href="https://manojrajgopal.github.io/fashion/" className="img" style={{backgroundImage: "url(/images/project_2.png)"}}></a>
                       <div className="text pt-2 mt-3">
                         <span className="category mb-1 d-block"><a href="/">Technologies: <strong>Flask, ML, DeepFace, PyTorch, OpenCV, HTML, SCSS, CSS, JavaScript</strong></a></span>
                         <h3 className="mb-4"><a href="/">AI-Powered Personal Stylish and Outfit Recommendation</a></h3>
                         <p className="mb-4">An AI-driven fashion assistant that creates personalized outfit suggestions based on user profile, wardrobe, and preferences. It supports virtual try-on, weather and occasion-based recommendations, and skin-tone-aware styling. With ML-powered outfit recognition and trend analysis, it offers a smart, interactive fashion experience tailored uniquely for every user.</p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="https://manojrajgopal.github.io/portfolio" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="/">Manoj R</a>, <span>May 3, 2024</span></h3>
+                            <h3><a href="https://manojrajgopal.github.io/portfolio">Manoj R</a>, <span>May 3, 2024</span></h3>
                           </div>
                         </div>
                         <div className="meta-wrap d-md-flex align-items-center">
@@ -499,10 +499,10 @@ const Projects = () => {
                         <h3 className="mb-4"><a href="/">Full E Commerce Website UI UX Design</a></h3>
                         <p className="mb-4">A complete e-commerce website UI/UX design crafted for seamless navigation, engaging visuals, and modern shopping experiences. It focuses on intuitive layouts, responsive design, and user-friendly interactions for enhanced customer satisfaction.</p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="https://manojrajgopal.github.io/portfolio" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="/">Manoj R</a>, <span>Aug 29, 2025</span></h3>
+                            <h3><a href="https://manojrajgopal.github.io/portfolio">Manoj R</a>, <span>Aug 29, 2025</span></h3>
                           </div>
                         </div>
                         <div className="author mb-4 d-flex align-items-center">
@@ -536,10 +536,10 @@ const Projects = () => {
                         <h3 className="mb-4"><a href="/">Virtual Interior Design</a></h3>
                         <p className="mb-4">An interactive virtual interior design platform that allows users to visualize and customize home spaces in real-time. It enhances creativity with 3D layouts, smart recommendations, and immersive design experiences.</p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="https://manojrajgopal.github.io/portfolio" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="/">Manoj R</a>, <span>Aug 29, 2025</span></h3>
+                            <h3><a href="https://manojrajgopal.github.io/portfolio">Manoj R</a>, <span>Aug 29, 2025</span></h3>
                           </div>
                         </div>
                         <div className="author mb-4 d-flex align-items-center">
@@ -566,16 +566,16 @@ const Projects = () => {
                   </div>
                   <div className="col-md-12">
                     <div className="blog-entry ftco-animate">
-                      <a href="/" className="img" style={{backgroundImage: "url(/images/project_5.png)"}}></a>
+                      <a href="https://mntn.krystonschwarze.com/" className="img" style={{backgroundImage: "url(/images/project_5.png)"}}></a>
                       <div className="text pt-2 mt-3">
-                        <span className="category mb-1 d-block"><a href="/">Technologies: <strong>HTML, SCSS, CSS, JavaScript</strong></a></span>
-                        <h3 className="mb-4"><a href="/">Landing Page</a></h3>
+                        <span className="category mb-1 d-block"><a href="https://mntn.krystonschwarze.com/">Technologies: <strong>HTML, SCSS, CSS, JavaScript</strong></a></span>
+                        <h3 className="mb-4"><a href="https://mntn.krystonschwarze.com/">Landing Page</a></h3>
                         <p className="mb-4">A modern and responsive landing page designed to capture user attention with clean UI, engaging visuals, and clear call-to-actions. Built for optimized performance, accessibility, and conversion-focused design.</p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="https://manojrajgopal.github.io/portfolio" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="/">Manoj R</a>, <span>May 3, 2024</span></h3>
+                            <h3><a href="https://manojrajgopal.github.io/portfolio">Manoj R</a>, <span>May 3, 2024</span></h3>
                           </div>
                         </div>
                         <div className="author mb-4 d-flex align-items-center">
@@ -608,10 +608,10 @@ const Projects = () => {
                         <h3 className="mb-4"><a href="/">AI Chatbot Dashboard</a></h3>
                         <p className="mb-4">An intelligent AI-powered chatbot dashboard designed to manage conversations, monitor analytics, and enhance customer support. It provides a user-friendly interface with real-time insights, customization, and automation features.</p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="https://manojrajgopal.github.io/portfolio" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Developed by</span>
-                            <h3><a href="/">Manoj R</a>, <span>May 3, 2024</span></h3>
+                            <h3><a href="https://manojrajgopal.github.io/portfolio">Manoj R</a>, <span>May 3, 2024</span></h3>
                           </div>
                         </div>
                         <div className="author mb-4 d-flex align-items-center">

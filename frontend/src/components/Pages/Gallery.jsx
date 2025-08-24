@@ -129,7 +129,7 @@ const Gallery = () => {
           <div className="photograhy">
             <div className="row no-gutters">
               <div className="col-md-3">
-                <a href="#" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_1.jpg)"}}>
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_1.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 01</h3>
@@ -138,7 +138,7 @@ const Gallery = () => {
                 </a>
               </div>
               <div className="col-md-3">
-                <a href="#" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_2.jpg)"}}>
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_2.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 02</h3>
@@ -147,7 +147,7 @@ const Gallery = () => {
                 </a>
               </div>
               <div className="col-md-3">
-                <a href="#" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_3.jpg)"}}>
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_3.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 03</h3>
@@ -156,7 +156,7 @@ const Gallery = () => {
                 </a>
               </div>
               <div className="col-md-3">
-                <a href="#" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_4.jpg)"}}>
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_4.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 04</h3>
@@ -165,7 +165,7 @@ const Gallery = () => {
                 </a>
               </div>
               <div className="col-md-3">
-                <a href="#" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_5.jpg)"}}>
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_5.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 05</h3>
@@ -174,7 +174,7 @@ const Gallery = () => {
                 </a>
               </div>
               <div className="col-md-3">
-                <a href="#" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_6.jpg)"}}>
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_6.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 06</h3>
@@ -183,7 +183,7 @@ const Gallery = () => {
                 </a>
               </div>
               <div className="col-md-3">
-                <a href="#" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_7.jpg)"}}>
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_7.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 07</h3>
@@ -192,7 +192,7 @@ const Gallery = () => {
                 </a>
               </div>
               <div className="col-md-3">
-                <a href="#" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_8.jpg)"}}>
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_8.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 08</h3>
@@ -201,7 +201,7 @@ const Gallery = () => {
                 </a>
               </div>
               <div className="col-md-3">
-                <a href="#" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_9.jpg)"}}>
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_9.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 09</h3>
@@ -210,7 +210,7 @@ const Gallery = () => {
                 </a>
               </div>
               <div className="col-md-3">
-                <a href="#" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_10.jpg)"}}>
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_10.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 10</h3>
@@ -219,7 +219,7 @@ const Gallery = () => {
                 </a>
               </div>
               <div className="col-md-3">
-                <a href="#" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_11.jpg)"}}>
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_11.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 11</h3>
@@ -228,7 +228,7 @@ const Gallery = () => {
                 </a>
               </div>
               <div className="col-md-3">
-                <a href="#" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_12.jpg)"}}>
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/image_12.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>Work 12</h3>

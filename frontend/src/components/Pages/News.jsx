@@ -189,10 +189,10 @@ const News = () => {
                           algorithms with intuitive user interfaces.
                         </p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
+                          <a href="https://manojrajgopal.github.io/portfolio" className="img" style={{backgroundImage: "url(/images/manoj_r_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Written by</span>
-                            <h3><a href="/">Manoj R</a>, <span>Oct. 15, 2023</span></h3>
+                            <h3><a href="https://manojrajgopal.github.io/portfolio">Manoj R</a>, <span>Oct. 15, 2023</span></h3>
                           </div>
                         </div>
                         <div className="meta-wrap align-items-center">
@@ -309,10 +309,10 @@ const News = () => {
                           we explore the emerging trends and how InfiniteWaveX is at the forefront of this revolution.
                         </p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="/" className="img" style={{backgroundImage: "url(/images/person_1.jpg)"}}></a>
+                          <a href="https://manojrajgopal.github.io/portfolio" className="img" style={{backgroundImage: "url(/images/person_1.jpg)"}}></a>
                           <div className="ml-3 info">
                             <span>Written by</span>
-                            <h3><a href="/">Manoj R</a>, <span>Oct. 1, 2023</span></h3>
+                            <h3><a href="https://manojrajgopal.github.io/portfolio">Manoj R</a>, <span>Oct. 1, 2023</span></h3>
                           </div>
                         </div>
                         <div className="meta-wrap align-items-center">
@@ -412,7 +412,7 @@ const News = () => {
                       <h3 className="heading"><a href="/">InfiniteWaveX Launches New AI-Powered Platform</a></h3>
                       <div className="meta">
                         <div><a href="/"><span className="icon-calendar"></span> Oct. 15, 2023</a></div>
-                        <div><a href="/"><span className="icon-person"></span> Manoj R</a></div>
+                        <div><a href="https://manojrajgopal.github.io/portfolio"><span className="icon-person"></span> Manoj R</a></div>
                         <div><a href="/"><span className="icon-chat"></span> 18</a></div>
                       </div>
                     </div>
@@ -423,7 +423,7 @@ const News = () => {
                       <h3 className="heading"><a href="/">The Future of AI in Web Development</a></h3>
                       <div className="meta">
                         <div><a href="/"><span className="icon-calendar"></span> Oct. 1, 2023</a></div>
-                        <div><a href="/"><span className="icon-person"></span> Manoj R</a></div>
+                        <div><a href="https://manojrajgopal.github.io/portfolio"><span className="icon-person"></span> Manoj R</a></div>
                         <div><a href="/"><span className="icon-chat"></span> 24</a></div>
                       </div>
                     </div>

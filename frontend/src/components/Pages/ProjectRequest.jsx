@@ -538,7 +538,7 @@ const ProjectRequest = () => {
                 <h2>Have questions about your project?</h2>
                 <p>Contact us directly for a free consultation and quote.</p>
                 <p className="mb-0">
-                  <a href="/contact" className="btn btn-secondary py-3 px-5">Contact Us</a>
+                  <a href="/#/contact" className="btn btn-secondary py-3 px-5">Contact Us</a>
                 </p>
               </div>
             </div>
