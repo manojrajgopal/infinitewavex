@@ -241,7 +241,7 @@ const News = () => {
                           expertise to create immersive experiences.
                         </p>
                         <div className="author mb-4 d-flex align-items-center">
-                          <a href="/" className="img" style={{backgroundImage: "url(/images/person_2.jpg)"}}></a>
+                          <a href="/" className="img" style={{backgroundImage: "url(/images/manoj_g_photo.png)"}}></a>
                           <div className="ml-3 info">
                             <span>Written by</span>
                             <h3><a href="/">Manoj G</a>, <span>Oct. 10, 2023</span></h3>

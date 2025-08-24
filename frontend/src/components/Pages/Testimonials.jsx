@@ -1,3 +1,4 @@
+// Testimonials.jsx
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, NavLink, useLocation } from 'react-router-dom';
@@ -50,20 +51,36 @@ const Testimonials = () => {
     title: '',
     description: ''
   });
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
+  const [loading, setLoading] = useState(false);
   
-  const fetchReviews = async () => {
+  const fetchReviews = async (pageNum = 1, append = false) => {
+    setLoading(true);
     try {
       const response = await axios.get(`${BACKEND_URL}/api/reviews`, {
         params: {
           rating: filterRating || undefined,
           search: searchTerm || undefined,
           sort_by: sortBy,
-          sort_order: sortOrder
+          sort_order: sortOrder,
+          page: pageNum,
+          limit: 10
         }
       });
-      setReviews(response.data);
+      
+      if (append) {
+        setReviews(prev => [...prev, ...response.data.reviews]);
+      } else {
+        setReviews(response.data.reviews);
+      }
+      
+      setHasMore(response.data.has_more);
+      setPage(pageNum);
     } catch (error) {
       console.error('Error fetching reviews:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -97,9 +114,9 @@ const Testimonials = () => {
         title: '',
         description: ''
       });
-      fetchReviews();
+      fetchReviews(1, false); // Reset to first page
       fetchReviewStats();
-      alert('Review submitted successfully! It will be visible after approval.');
+      alert('Review submitted successfully! Thank you for your feedback.');
     } catch (error) {
       console.error('Error submitting review:', error);
       if (error.response && error.response.status === 400) {
@@ -113,7 +130,7 @@ const Testimonials = () => {
   const markHelpful = async (reviewId) => {
     try {
       await axios.patch(`${BACKEND_URL}/api/reviews/${reviewId}/helpful`);
-      fetchReviews(); // Refresh to update helpful count
+      fetchReviews(page, false); // Refresh current page
     } catch (error) {
       console.error('Error marking review as helpful:', error);
     }
@@ -134,6 +151,10 @@ const Testimonials = () => {
       ...prev,
       [name]: value
     }));
+  };
+
+  const loadMoreReviews = () => {
+    fetchReviews(page + 1, true);
   };
 
   useEffect(() => {
@@ -444,13 +465,13 @@ const Testimonials = () => {
 
             {/* Reviews List */}
             {reviews.map((review) => (
-              <div key={review._id} className="review-item mb-4 p-3 border rounded">
-                <div className="d-flex justify-content-between align-items-center">
-                  <h4>{review.name}</h4>
+              <div key={review._id} className="review-item mb-4 p-4 border rounded shadow-sm">
+                <div className="d-flex justify-content-between align-items-center mb-2">
+                  <h4 className="mb-0 text-primary">{review.name}</h4>
                   <StarRating rating={review.rating} />
                 </div>
-                {review.title && <h5>{review.title}</h5>}
-                <p className="mb-2">{review.description}</p>
+                {review.title && <h5 className="text-dark">{review.title}</h5>}
+                <p className="mb-3 text-muted">{review.description}</p>
                 <div className="d-flex justify-content-between align-items-center">
                   <small className="text-muted">
                     {new Date(review.created_at).toLocaleDateString()}
@@ -477,12 +498,31 @@ const Testimonials = () => {
               </div>
             ))}
 
-            {reviews.length === 0 && (
+            {reviews.length === 0 && !loading && (
               <div className="text-center py-4">
                 <p>No reviews yet. Be the first to leave a review!</p>
               </div>
             )}
 
+            {loading && (
+              <div className="text-center py-4">
+                <div className="spinner-border text-primary" role="status">
+                  <span className="sr-only">Loading...</span>
+                </div>
+              </div>
+            )}
+
+            {hasMore && (
+              <div className="text-center mt-4">
+                <button 
+                  className="btn btn-primary"
+                  onClick={loadMoreReviews}
+                  disabled={loading}
+                >
+                  {loading ? 'Loading...' : 'Load More Reviews'}
+                </button>
+              </div>
+            )}
           </div>
         </section>
 

@@ -1,3 +1,4 @@
+# reviews.py
 from fastapi import APIRouter, HTTPException, Query, Depends
 from typing import List, Optional
 from datetime import datetime
@@ -23,7 +24,7 @@ async def create_review(review: Review):
     if existing_review:
         raise HTTPException(
             status_code=400, 
-            detail="You have already submitted a review. Please wait for approval."
+            detail="You have already submitted a review. Thank you for your feedback."
         )
     
     # Prepare review data
@@ -32,24 +33,25 @@ async def create_review(review: Review):
     review_data["updated_at"] = datetime.utcnow()
     review_data["helpful_count"] = 0
     review_data["reported"] = False
+    review_data["status"] = ReviewStatus.APPROVED  # Auto-approve reviews
     
     # Insert into database
     result = collection.insert_one(review_data)
     
     return {
-        "message": "Review submitted successfully. It will be visible after approval.",
+        "message": "Review submitted successfully. Thank you for your feedback.",
         "id": str(result.inserted_id)
     }
 
-@router.get("/", response_model=List[Review])
+@router.get("/", response_model=dict)
 async def get_reviews(
     status: Optional[ReviewStatus] = Query(None, description="Filter by review status"),
     rating: Optional[int] = Query(None, ge=1, le=5, description="Filter by rating"),
     search: Optional[str] = Query(None, description="Search in title and description"),
     sort_by: str = Query("created_at", description="Field to sort by"),
     sort_order: str = Query("desc", description="Sort order: asc or desc"),
-    skip: int = 0,
-    limit: int = 10
+    page: int = Query(1, ge=1, description="Page number"),
+    limit: int = Query(10, ge=1, le=100, description="Items per page")
 ):
     db = get_database()
     collection = db["reviews"]
@@ -74,17 +76,30 @@ async def get_reviews(
     sort_direction = -1 if sort_order == "desc" else 1
     sort_criteria = [(sort_by, sort_direction)]
     
+    # Calculate skip
+    skip = (page - 1) * limit
+    
     # Get reviews
-    reviews = list(collection.find(query)
-        .sort(sort_criteria)
-        .skip(skip)
-        .limit(limit))
+    reviews_cursor = collection.find(query).sort(sort_criteria).skip(skip).limit(limit)
+    reviews = list(reviews_cursor)
+    
+    # Count total matching documents
+    total_reviews = collection.count_documents(query)
     
     # Convert ObjectId to string
     for review in reviews:
         review["_id"] = str(review["_id"])
     
-    return reviews
+    # Check if there are more pages
+    has_more = (page * limit) < total_reviews
+    
+    return {
+        "reviews": reviews,
+        "page": page,
+        "limit": limit,
+        "total_reviews": total_reviews,
+        "has_more": has_more
+    }
 
 @router.get("/stats")
 async def get_review_stats():

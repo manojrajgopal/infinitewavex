@@ -16,7 +16,10 @@ app = FastAPI(
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Your React app URL
+    allow_origins=[
+        "http://localhost:3000",
+        "https://infinitewavex.onrender.com"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -1,3 +1,4 @@
+# review.py
 from pydantic import BaseModel, EmailStr, Field, ConfigDict, validator
 from typing import Optional, List
 from datetime import datetime
@@ -19,7 +20,7 @@ class PyObjectId(ObjectId):
 
     @classmethod
     def __get_pydantic_core_schema__(cls, source_type, handler):
-        return handler.generate_schema(ObjectId)
+        return handler.generate_schema(str)
 
 class ReviewStatus(str, Enum):
     PENDING = "pending"
@@ -27,13 +28,13 @@ class ReviewStatus(str, Enum):
     REJECTED = "rejected"
 
 class Review(BaseModel):
-    id: Optional[PyObjectId] = Field(default=None, alias="_id")
+    id: Optional[str] = Field(default=None, alias="_id")
     name: str
     email: EmailStr
     rating: int = Field(..., ge=1, le=5)
     title: Optional[str] = None
     description: str
-    status: ReviewStatus = ReviewStatus.PENDING
+    status: ReviewStatus = ReviewStatus.APPROVED  # Auto-approve reviews
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
     helpful_count: int = 0
@@ -55,7 +56,7 @@ class Review(BaseModel):
                 "rating": 5,
                 "title": "Excellent Service",
                 "description": "InfiniteWaveX delivered beyond my expectations.",
-                "status": "pending"
+                "status": "approved"
             }
         }
     )
