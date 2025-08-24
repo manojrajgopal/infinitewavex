@@ -19,7 +19,7 @@ load_dotenv()
 SCOPES = ['https://mail.google.com/']
 
 # List of recipients
-RECIPIENTS = ["manojrajgopalachar@gmail.com", "binduramesh290@gmail.com", "muruli5621@gmail.com"]
+RECIPIENTS = ["manojrajgopalachar@gmail.com"]
 
 def get_gmail_service():
     """Shows basic usage of the Gmail API.
@@ -106,27 +106,6 @@ def create_message_with_attachments(sender, to, subject, message_text, attachmen
     raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
     return {'raw': raw_message}
 
-def send_message(service, user_id, message):
-    """Send an email message.
-    
-    Args:
-      service: Authorized Gmail API service instance.
-      user_id: User's email address. The special value "me"
-      can be used to indicate the authenticated user.
-      message: Message to be sent.
-    
-    Returns:
-      Sent Message.
-    """
-    try:
-        message = (service.users().messages().send(userId=user_id, body=message)
-                   .execute())
-        print(f'Message Id: {message["id"]}')
-        return message
-    except HttpError as error:
-        print(f'An error occurred: {error}')
-        return None
-
 def send_project_request_email(project_request, db):
     """Send email notification for new project request using Gmail API with attachments"""
     try:
@@ -198,3 +177,133 @@ def send_project_request_email(project_request, db):
     except Exception as e:
         print(f"Error sending email: {e}")
         return False
+
+def send_contact_confirmation_email(contact_request):
+    """Send confirmation email to the client who submitted the contact form"""
+    try:
+        service = get_gmail_service()
+        if not service:
+            print("Failed to create Gmail service")
+            return False
+        
+        sender = os.getenv("EMAIL_ADDRESS")
+        recipient = contact_request["email"]
+        
+        subject = "Thank you for contacting InfiniteWaveX"
+        
+        # Create HTML confirmation email content
+        html_content = f"""
+        <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6;">
+            <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                <h2 style="color: #333; border-bottom: 2px solid #4CAF50; padding-bottom: 10px;">
+                    Thank You for Contacting Us
+                </h2>
+                
+                <p>Dear {contact_request['name']},</p>
+                
+                <p>Thank you for reaching out to InfiniteWaveX. We have received your message and our team will get back to you as soon as possible.</p>
+                
+                <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                    <p><strong>Subject:</strong> {contact_request['subject']}</p>
+                    <p><strong>Message:</strong> {contact_request['message']}</p>
+                </div>
+                
+                <p>We typically respond within 24 hours during business days.</p>
+                
+                <p>Best regards,<br/>The InfiniteWaveX Team</p>
+                
+                <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd; text-align: center;">
+                    <p style="color: #777; font-size: 12px;">
+                        InfiniteWaveX - Bringing your ideas to life
+                    </p>
+                </div>
+            </div>
+        </body>
+        </html>
+        """
+        
+        message = create_message_with_attachments(sender, recipient, subject, html_content)
+        result = send_message(service, "me", message)
+        
+        return result is not None
+        
+    except Exception as e:
+        print(f"Error sending confirmation email: {e}")
+        return False
+
+def send_contact_notification_email(contact_request):
+    """Send notification email to the InfiniteWaveX team about the new contact request"""
+    try:
+        service = get_gmail_service()
+        if not service:
+            print("Failed to create Gmail service")
+            return False
+        
+        sender = os.getenv("EMAIL_ADDRESS")
+        
+        subject = f"New Contact Request: {contact_request['subject']}"
+        
+        # Create HTML notification email content
+        html_content = f"""
+        <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6;">
+            <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                <h2 style="color: #333; border-bottom: 2px solid #4CAF50; padding-bottom: 10px;">
+                    New Contact Request Received
+                </h2>
+                
+                <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    <p><strong>Name:</strong> {contact_request['name']}</p>
+                    <p><strong>Email:</strong> {contact_request['email']}</p>
+                    <p><strong>Phone:</strong> {contact_request.get('phone', 'Not provided')}</p>
+                    <p><strong>Company:</strong> {contact_request.get('company', 'Not provided')}</p>
+                    <p><strong>Subject:</strong> {contact_request['subject']}</p>
+                </div>
+                
+                <div style="background-color: #e8f4fc; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    <h3 style="color: #0275d8; margin-top: 0;">Message:</h3>
+                    <p style="white-space: pre-wrap;">{contact_request['message']}</p>
+                </div>
+                
+                <p><strong>Received on:</strong> {contact_request['created_at']}</p>
+                
+                <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd; text-align: center;">
+                    <p style="color: #777; font-size: 12px;">
+                        This email was automatically generated by InfiniteWaveX Contact System
+                    </p>
+                </div>
+            </div>
+        </body>
+        </html>
+        """
+        
+        message = create_message_with_attachments(sender, RECIPIENTS, subject, html_content)
+        result = send_message(service, "me", message)
+        
+        return result is not None
+        
+    except Exception as e:
+        print(f"Error sending notification email: {e}")
+        return False
+
+def send_message(service, user_id, message):
+    """Send an email message.
+    
+    Args:
+      service: Authorized Gmail API service instance.
+      user_id: User's email address. The special value "me"
+      can be used to indicate the authenticated user.
+      message: Message to be sent.
+    
+    Returns:
+      Sent Message.
+    """
+    try:
+        message = (service.users().messages().send(userId=user_id, body=message)
+                   .execute())
+        print(f'Message Id: {message["id"]}')
+        return message
+    except HttpError as error:
+        print(f'An error occurred: {error}')
+        return None
