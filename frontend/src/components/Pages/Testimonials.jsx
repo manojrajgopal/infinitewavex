@@ -1,37 +1,164 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
 import Copyright from '../Copyright';
 import ThreeJSParticles from '../ThreeJSParticles';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+
+const StarRating = ({ rating, onRatingChange, editable = false }) => {
+  const [hoverRating, setHoverRating] = useState(0);
+  
+  return (
+    <div className="star-rating">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <span 
+          key={star}
+          className={`star ${star <= (hoverRating || rating) ? "text-warning" : "text-muted"} ${editable ? "editable" : ""}`}
+          onClick={() => editable && onRatingChange(star)}
+          onMouseEnter={() => editable && setHoverRating(star)}
+          onMouseLeave={() => editable && setHoverRating(0)}
+          style={{ cursor: editable ? 'pointer' : 'default', fontSize: '24px' }}
+        >
+          ★
+        </span>
+      ))}
+    </div>
+  );
+};
 
 const Testimonials = () => {
   const location = useLocation();
+  const [reviews, setReviews] = useState([]);
+  const [reviewStats, setReviewStats] = useState({
+    total_reviews: 0,
+    average_rating: 0,
+    rating_distribution: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
+  });
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [filterRating, setFilterRating] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState('created_at');
+  const [sortOrder, setSortOrder] = useState('desc');
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    title: '',
+    description: ''
+  });
   
-  useEffect(() => {
-  if (window.AOS) window.AOS.init();
-  if (window.$ && window.$('.owl-carousel').length) {
-    window.$('.owl-carousel').owlCarousel();
-  }
-  const scriptElements = [];
+  const fetchReviews = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/reviews`, {
+        params: {
+          rating: filterRating || undefined,
+          search: searchTerm || undefined,
+          sort_by: sortBy,
+          sort_order: sortOrder
+        }
+      });
+      setReviews(response.data);
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
+    }
+  };
 
-  const loadScript = (src) => {
-    return new Promise((resolve, reject) => {
-      if (document.querySelector(`script[src="${src}"]`)) {
-        resolve();
+  const fetchReviewStats = async () => {
+    try {
+      const response = await axios.get(`${BACKEND_URL}/api/reviews/stats`);
+      setReviewStats(response.data);
+    } catch (error) {
+      console.error('Error fetching review stats:', error);
+    }
+  };
+
+  const submitReview = async () => {
+    try {
+      if (selectedRating === 0) {
+        alert('Please select a rating');
         return;
       }
-
-      const script = document.createElement("script");
-      script.src = src;
-      script.async = false;
-      script.onload = resolve;
-      script.onerror = reject;
-      document.body.appendChild(script);
-      scriptElements.push(script);
-    });
+      
+      const reviewData = {
+        ...formData,
+        rating: selectedRating
+      };
+      
+      await axios.post(`${BACKEND_URL}/api/reviews`, reviewData);
+      setShowReviewForm(false);
+      setSelectedRating(0);
+      setFormData({
+        name: '',
+        email: '',
+        title: '',
+        description: ''
+      });
+      fetchReviews();
+      fetchReviewStats();
+      alert('Review submitted successfully! It will be visible after approval.');
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      if (error.response && error.response.status === 400) {
+        alert(error.response.data.detail);
+      } else {
+        alert('Error submitting review. Please try again.');
+      }
+    }
   };
+
+  const markHelpful = async (reviewId) => {
+    try {
+      await axios.patch(`${BACKEND_URL}/api/reviews/${reviewId}/helpful`);
+      fetchReviews(); // Refresh to update helpful count
+    } catch (error) {
+      console.error('Error marking review as helpful:', error);
+    }
+  };
+
+  const reportReview = async (reviewId) => {
+    try {
+      await axios.patch(`${BACKEND_URL}/api/reviews/${reviewId}/report`);
+      alert('Review reported. Our team will review it.');
+    } catch (error) {
+      console.error('Error reporting review:', error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  useEffect(() => {
+    if (window.AOS) window.AOS.init();
+    if (window.$ && window.$('.owl-carousel').length) {
+      window.$('.owl-carousel').owlCarousel();
+    }
+    const scriptElements = [];
+
+    const loadScript = (src) => {
+      return new Promise((resolve, reject) => {
+        if (document.querySelector(`script[src="${src}"]`)) {
+          resolve();
+          return;
+        }
+
+        const script = document.createElement("script");
+        script.src = src;
+        script.async = false;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+        scriptElements.push(script);
+      });
+    };
 
     const scripts = [
       '/js/jquery.min.js',
@@ -66,6 +193,9 @@ const Testimonials = () => {
     }
     loadScripts();
 
+    fetchReviews();
+    fetchReviewStats();
+    
     return () => {
       scriptElements.forEach(script => {
         if (script.parentNode) {
@@ -73,7 +203,7 @@ const Testimonials = () => {
         }
       });
     };
-  }, [location]);
+  }, [location, filterRating, searchTerm, sortBy, sortOrder]);
 
   return (
     <div id="colorlib-page">
@@ -143,82 +273,216 @@ const Testimonials = () => {
               </div>
             </div>
 
-            <div className="row">
-              <div className="col-md-12">
-                <div className="carousel-testimony owl-carousel ftco-owl">
-                  <div className="item">
-                    <div className="testimony-wrap text-center py-4 pb-5">
-                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}>
-                        <span className="quote d-flex align-items-center justify-content-center">
-                          <i className="icon-quote-left"></i>
-                        </span>
-                      </div>
-                      <div className="text p-3">
-                        <p className="mb-4">InfiniteWaveX transformed our outdated website into a modern, responsive platform that perfectly represents our brand. Their attention to detail and technical expertise exceeded our expectations.</p>
-                        <p className="name">Alex Johnson</p>
-                        <span className="position">Marketing Director, TechNova</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    <div className="testimony-wrap text-center py-4 pb-5">
-                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}>
-                        <span className="quote d-flex align-items-center justify-content-center">
-                          <i className="icon-quote-left"></i>
-                        </span>
-                      </div>
-                      <div className="text p-3">
-                        <p className="mb-4">The AI-powered recommendation system developed by InfiniteWaveX has significantly increased our customer engagement and sales. Their team was professional and delivered on time.</p>
-                        <p className="name">Sarah Williams</p>
-                        <span className="position">CEO, FashionForward</span>
+            {/* Ratings Summary */}
+            <div className="row justify-content-center mb-5">
+              <div className="col-md-8 text-center">
+                <div className="rating-summary p-4 bg-light rounded">
+                  <h3 className="mb-3">Customer Reviews</h3>
+                  <div className="row">
+                    <div className="col-md-4">
+                      <div className="average-rating">
+                        <h1 className="display-4 text-primary">{reviewStats.average_rating}</h1>
+                        <div className="stars mb-2">
+                          <StarRating rating={Math.round(reviewStats.average_rating)} />
+                        </div>
+                        <p>Based on {reviewStats.total_reviews} reviews</p>
                       </div>
                     </div>
-                  </div>
-                  <div className="item">
-                    <div className="testimony-wrap text-center py-4 pb-5">
-                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}>
-                        <span className="quote d-flex align-items-center justify-content-center">
-                          <i className="icon-quote-left"></i>
-                        </span>
-                      </div>
-                      <div className="text p-3">
-                        <p className="mb-4">Working with InfiniteWaveX on our e-commerce platform was a game-changer. Their technical skills combined with creative design thinking resulted in a seamless shopping experience.</p>
-                        <p className="name">Michael Chen</p>
-                        <span className="position">Operations Manager, UrbanGoods</span>
-                      </div>
+                    <div className="col-md-8">
+                      {[5, 4, 3, 2, 1].map((star) => (
+                        <div key={star} className="rating-bar d-flex align-items-center mb-2">
+                          <span className="mr-2">{star} star</span>
+                          <div className="progress flex-grow-1 mr-2">
+                            <div 
+                              className="progress-bar" 
+                              style={{width: `${(reviewStats.rating_distribution[star] / Math.max(1, reviewStats.total_reviews)) * 100}%`}}
+                            ></div>
+                          </div>
+                          <span>{reviewStats.rating_distribution[star]}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                  <div className="item">
-                    <div className="testimony-wrap text-center py-4 pb-5">
-                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}>
-                        <span className="quote d-flex align-items-center justify-content-center">
-                          <i className="icon-quote-left"></i>
-                        </span>
-                      </div>
-                      <div className="text p-3">
-                        <p className="mb-4">The 3D visualization tools developed by InfiniteWaveX have revolutionized how we present our architectural designs to clients. The immersive experience sets us apart from competitors.</p>
-                        <p className="name">Emily Rodriguez</p>
-                        <span className="position">Principal Architect, DesignSpace</span>
-                      </div>
+                  <button 
+                    className="btn btn-primary mt-3"
+                    onClick={() => setShowReviewForm(true)}
+                  >
+                    Write a Review
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Review Form Modal */}
+            {showReviewForm && (
+              <div className="modal show d-block" tabIndex="-1" role="dialog" style={{backgroundColor: 'rgba(0,0,0,0.5)'}}>
+                <div className="modal-dialog modal-lg" role="document">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title">Write a Review</h5>
+                      <button type="button" className="close" onClick={() => setShowReviewForm(false)}>
+                        <span>&times;</span>
+                      </button>
                     </div>
-                  </div>
-                  <div className="item">
-                    <div className="testimony-wrap text-center py-4 pb-5">
-                      <div className="user-img mb-4" style={{backgroundImage: "url(/images/logo.png)"}}>
-                        <span className="quote d-flex align-items-center justify-content-center">
-                          <i className="icon-quote-left"></i>
-                        </span>
-                      </div>
-                      <div className="text p-3">
-                        <p className="mb-4">InfiniteWaveX's data analytics solution provided insights we didn't even know were possible. Their team understood our business needs and delivered a custom solution that drives our decision-making.</p>
-                        <p className="name">David Kim</p>
-                        <span className="position">CTO, DataDrive Inc.</span>
-                      </div>
+                    <div className="modal-body">
+                      <form onSubmit={(e) => {
+                        e.preventDefault();
+                        submitReview();
+                      }}>
+                        <div className="form-group">
+                          <label>Name *</label>
+                          <input 
+                            type="text" 
+                            className="form-control" 
+                            name="name" 
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            required 
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label>Email *</label>
+                          <input 
+                            type="email" 
+                            className="form-control" 
+                            name="email" 
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            required 
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label>Rating *</label>
+                          <div>
+                            <StarRating 
+                              rating={selectedRating} 
+                              onRatingChange={setSelectedRating} 
+                              editable={true} 
+                            />
+                            <div className="mt-2">
+                              {selectedRating === 0 ? 'Please select a rating' : `${selectedRating} star${selectedRating > 1 ? 's' : ''} selected`}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label>Title</label>
+                          <input 
+                            type="text" 
+                            className="form-control" 
+                            name="title" 
+                            value={formData.title}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label>Review *</label>
+                          <textarea 
+                            className="form-control" 
+                            name="description" 
+                            rows="4" 
+                            value={formData.description}
+                            onChange={handleInputChange}
+                            required
+                          ></textarea>
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" onClick={() => setShowReviewForm(false)}>Cancel</button>
+                          <button type="submit" className="btn btn-primary">Submit Review</button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
               </div>
+            )}
+
+            {/* Filters and Search */}
+            <div className="row mb-4">
+              <div className="col-md-6">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Search reviews..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="col-md-3">
+                <select 
+                  className="form-control"
+                  value={filterRating}
+                  onChange={(e) => setFilterRating(parseInt(e.target.value))}
+                >
+                  <option value={0}>All Ratings</option>
+                  <option value={5}>5 Stars</option>
+                  <option value={4}>4 Stars</option>
+                  <option value={3}>3 Stars</option>
+                  <option value={2}>2 Stars</option>
+                  <option value={1}>1 Star</option>
+                </select>
+              </div>
+              <div className="col-md-3">
+                <select 
+                  className="form-control"
+                  value={`${sortBy}-${sortOrder}`}
+                  onChange={(e) => {
+                    const [sortBy, sortOrder] = e.target.value.split('-');
+                    setSortBy(sortBy);
+                    setSortOrder(sortOrder);
+                  }}
+                >
+                  <option value="created_at-desc">Newest First</option>
+                  <option value="created_at-asc">Oldest First</option>
+                  <option value="rating-desc">Highest Rated</option>
+                  <option value="rating-asc">Lowest Rated</option>
+                  <option value="helpful_count-desc">Most Helpful</option>
+                </select>
+              </div>
             </div>
+
+            {/* Reviews List */}
+            {reviews.map((review) => (
+              <div key={review._id} className="review-item mb-4 p-3 border rounded">
+                <div className="d-flex justify-content-between align-items-center">
+                  <h4>{review.name}</h4>
+                  <StarRating rating={review.rating} />
+                </div>
+                {review.title && <h5>{review.title}</h5>}
+                <p className="mb-2">{review.description}</p>
+                <div className="d-flex justify-content-between align-items-center">
+                  <small className="text-muted">
+                    {new Date(review.created_at).toLocaleDateString()}
+                  </small>
+                  <div>
+                    <button 
+                      className="btn btn-sm btn-outline-primary mr-2"
+                      onClick={() => markHelpful(review._id)}
+                    >
+                      Helpful ({review.helpful_count})
+                    </button>
+                    <button 
+                      className="btn btn-sm btn-outline-secondary"
+                      onClick={() => {
+                        if (window.confirm('Report this review as inappropriate?')) {
+                          reportReview(review._id);
+                        }
+                      }}
+                    >
+                      Report
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {reviews.length === 0 && (
+              <div className="text-center py-4">
+                <p>No reviews yet. Be the first to leave a review!</p>
+              </div>
+            )}
+
           </div>
         </section>
 
