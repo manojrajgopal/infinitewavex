@@ -37,7 +37,7 @@ app.include_router(
 
 @app.get("/")
 async def root():
-    return {"message": "InfiniteWaveX API is running"}
+    return {"status": "ok", "message": "InfiniteWaveX API is running"}
 
 if __name__ == "__main__":
     import uvicorn
