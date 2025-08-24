@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
 
-from routes import (project_requests, newsletter, contact)
+from routes import (project_requests, newsletter, contact, reviews)
 
 load_dotenv()
 
@@ -39,6 +39,12 @@ app.include_router(
     contact.router,
     prefix="/api/contact",
     tags=["Contact"]
+)
+
+app.include_router(
+    reviews.router,
+    prefix="/api/reviews",
+    tags=["Reviews"]
 )
 
 @app.get("/")
