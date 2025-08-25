@@ -7,6 +7,7 @@ import Copyright from '../Copyright';
 import ThreeJSParticles from '../ThreeJSParticles';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+const API_SECRET_KEY = process.env.REACT_APP_API_SECRET_KEY;
 
 const Contact = () => {
     const location = useLocation();
@@ -102,7 +103,10 @@ const Contact = () => {
             
             const response = await fetch(`${BACKEND_URL}/api/contact/`, {
                 method: 'POST',
-                body: formDataToSend
+                body: formDataToSend,
+                headers: {
+                    'X-API-Key': API_SECRET_KEY
+                }
             });
             
             if (response.ok) {

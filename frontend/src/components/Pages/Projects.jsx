@@ -8,6 +8,7 @@ import ThreeJSParticles from '../ThreeJSParticles';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+const API_SECRET_KEY = process.env.REACT_APP_API_SECRET_KEY;
 
 const Projects = () => {
   const [email, setEmail] = useState('');
@@ -70,6 +71,7 @@ const Projects = () => {
         {
           headers: {
             'Content-Type': 'application/json',
+            'X-API-Key': API_SECRET_KEY
           },
         }
       );

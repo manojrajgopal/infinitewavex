@@ -9,6 +9,7 @@ import ThreeJSParticles from '../ThreeJSParticles';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+const API_SECRET_KEY = process.env.REACT_APP_API_SECRET_KEY;
 
 const StarRating = ({ rating, onRatingChange, editable = false }) => {
   const [hoverRating, setHoverRating] = useState(0);
@@ -66,6 +67,9 @@ const Testimonials = () => {
           sort_order: sortOrder,
           page: pageNum,
           limit: 10
+        },
+        headers: {
+          'X-API-Key': API_SECRET_KEY
         }
       });
       
@@ -86,7 +90,11 @@ const Testimonials = () => {
 
   const fetchReviewStats = async () => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/api/reviews/stats`);
+      const response = await axios.get(`${BACKEND_URL}/api/reviews/stats`,{
+        headers: {
+          'X-API-Key': API_SECRET_KEY
+        }
+      });
       setReviewStats(response.data);
     } catch (error) {
       console.error('Error fetching review stats:', error);
@@ -105,7 +113,11 @@ const Testimonials = () => {
         rating: selectedRating
       };
       
-      await axios.post(`${BACKEND_URL}/api/reviews`, reviewData);
+      await axios.post(`${BACKEND_URL}/api/reviews`, reviewData, {
+        headers: {
+          'X-API-Key': API_SECRET_KEY
+        }
+      });
       setShowReviewForm(false);
       setSelectedRating(0);
       setFormData({
@@ -129,7 +141,11 @@ const Testimonials = () => {
 
   const markHelpful = async (reviewId) => {
     try {
-      await axios.patch(`${BACKEND_URL}/api/reviews/${reviewId}/helpful`);
+      await axios.patch(`${BACKEND_URL}/api/reviews/${reviewId}/helpful`, {}, {
+        headers: {
+          'X-API-Key': API_SECRET_KEY
+        }
+      });
       fetchReviews(page, false); // Refresh current page
     } catch (error) {
       console.error('Error marking review as helpful:', error);
@@ -138,7 +154,11 @@ const Testimonials = () => {
 
   const reportReview = async (reviewId) => {
     try {
-      await axios.patch(`${BACKEND_URL}/api/reviews/${reviewId}/report`);
+      await axios.patch(`${BACKEND_URL}/api/reviews/${reviewId}/report`, {}, {
+        headers: {
+          'X-API-Key': API_SECRET_KEY
+        }
+      });
       alert('Review reported. Our team will review it.');
     } catch (error) {
       console.error('Error reporting review:', error);

@@ -8,6 +8,7 @@ import ThreeJSParticles from '../ThreeJSParticles';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+const API_SECRET_KEY = process.env.REACT_APP_API_SECRET_KEY;
 
 // Confirmation Modal Component
 const ConfirmationModal = ({ isOpen, onClose, onConfirm, isLoading }) => {
@@ -293,11 +294,10 @@ const ProjectRequest = () => {
         {
           headers: {
             'Content-Type': 'multipart/form-data',
+            'X-API-Key': API_SECRET_KEY
           },
         }
       );
-      
-      console.log('Form submitted successfully:', response.data);
       
       // Show success modal
       setIsSuccess(true);
