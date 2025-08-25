@@ -16,8 +16,8 @@ app = FastAPI(
 )
 
 # Add HTTPS redirection middleware for production
-# if os.getenv("RENDER", "").lower() == "true" or os.getenv("ENVIRONMENT") == "production":
-#     app.add_middleware(HTTPSRedirectMiddleware)
+if os.getenv("RENDER", "").lower() == "true" or os.getenv("ENVIRONMENT") == "production":
+    app.add_middleware(HTTPSRedirectMiddleware)
 
 # Security middleware - Add this BEFORE other middleware
 @app.middleware("http")
