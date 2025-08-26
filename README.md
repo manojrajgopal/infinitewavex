@@ -5,7 +5,16 @@
 # 🌊 InfiniteWaveX
 ## Shaping Dreams with Timeless Waves.
 
-<img width="1536" height="1024" alt="tagline" src="https://github.com/user-attachments/assets/1e452ed6-35f9-494b-b527-23459ca14a52" />
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/1e452ed6-35f9-494b-b527-23459ca14a52" 
+    width="1536" 
+    height="1024" 
+    alt="tagline" 
+    style="border-radius: 20px;"
+  />
+</p>
+
 
 ### Our Mission  
 To merge **creativity and technology** into powerful solutions that transform ideas into experiences, helping businesses and individuals stand out in the digital era.  
