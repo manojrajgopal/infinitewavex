@@ -1,5 +1,5 @@
 # 🌊 InfiniteWaveX
-## Revolutionizing design with technology and creativity
+## Shaping Dreams with Timeless Waves.
 
 ### Our Mission  
 To merge **creativity and technology** into powerful solutions that transform ideas into experiences, helping businesses and individuals stand out in the digital era.  
