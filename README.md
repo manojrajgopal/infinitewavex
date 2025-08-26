@@ -1,4 +1,8 @@
-<img width="100" height="100" alt="logo" src="https://github.com/user-attachments/assets/f7769feb-0147-4b5c-aba4-d36e94db9744" /> # 🌊 InfiniteWaveX
+<p align="center">
+  <img width="300" height="300" alt="logo" src="https://github.com/user-attachments/assets/f7769feb-0147-4b5c-aba4-d36e94db9744" />
+</p>
+
+# 🌊 InfiniteWaveX
 ## Shaping Dreams with Timeless Waves.
 
 <img width="1536" height="1024" alt="tagline" src="https://github.com/user-attachments/assets/1e452ed6-35f9-494b-b527-23459ca14a52" />
