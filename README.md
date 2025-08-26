@@ -1,5 +1,9 @@
+<img width="1024" height="1024" alt="logo" src="https://github.com/user-attachments/assets/f7769feb-0147-4b5c-aba4-d36e94db9744" />
+
 # 🌊 InfiniteWaveX
 ## Shaping Dreams with Timeless Waves.
+
+<img width="1536" height="1024" alt="tagline" src="https://github.com/user-attachments/assets/1e452ed6-35f9-494b-b527-23459ca14a52" />
 
 ### Our Mission  
 To merge **creativity and technology** into powerful solutions that transform ideas into experiences, helping businesses and individuals stand out in the digital era.  
