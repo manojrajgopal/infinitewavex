@@ -358,7 +358,7 @@ const AICallDialer = () => {
                                   type="text"
                                   className="form-control"
                                   id="phoneNumber"
-                                  placeholder="Enter phone number (e.g., (123) 456-7890)"
+                                  placeholder="Enter phone number (e.g., +919876543210)"
                                   value={phoneNumber}
                                   onChange={handlePhoneChange}
                                   disabled={isCalling}
