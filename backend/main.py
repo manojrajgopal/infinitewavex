@@ -1,11 +1,11 @@
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request, HTTPException, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 import os
 
-from routes import (project_requests, newsletter, contact, reviews)
+from routes import (project_requests, newsletter, contact, reviews, AICallDialer)
 
 load_dotenv()
 
@@ -19,11 +19,32 @@ app = FastAPI(
 if os.getenv("RENDER", "").lower() == "true" or os.getenv("ENVIRONMENT") == "production":
     app.add_middleware(HTTPSRedirectMiddleware)
 
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    api_key = websocket.query_params.get("api_key")
+    expected_key = os.getenv("API_SECRET_KEY")
+
+    if api_key != expected_key:
+        await websocket.close(code=1008)  # policy violation
+        return
+
+    await websocket.accept()
+    # From here you can send/receive messages
+    try:
+        while True:
+            data = await websocket.receive_text()
+            await websocket.send_text(f"Echo: {data}")
+    except Exception as e:
+        print("WebSocket closed:", e)
+        
 # Security middleware - Add this BEFORE other middleware
 @app.middleware("http")
 async def api_key_middleware(request: Request, call_next):
     # Skip authentication for these endpoints
     skip_paths = ["/", "/docs", "/redoc", "/openapi.json", "/favicon.ico"]
+    
+    if request.url.path.startswith("/api/ai-call-dialer/"):
+        return await call_next(request)
     
     if request.url.path in skip_paths:
         return await call_next(request)
@@ -84,6 +105,12 @@ app.include_router(
     reviews.router,
     prefix="/api/reviews",
     tags=["Reviews"]
+)
+
+app.include_router(
+    AICallDialer.router,
+    prefix="/api/ai-call-dialer",
+    tags=["AI Call Dialer"]
 )
 
 @app.get("/", include_in_schema=True)

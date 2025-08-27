@@ -10,7 +10,7 @@ import Career from './components/Pages/Career';
 import Testimonials from './components/Pages/Testimonials';
 import News from './components/Pages/News';
 import ProjectRequest from './components/Pages/ProjectRequest';
-
+import AICallDialer from './components/AICallDialer';
 
 import './App.css';
 import './assets/css/bootstrap.min.css';
@@ -54,6 +54,7 @@ function App() {
           <Route path="/projectrequest" element={<ProjectRequest />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/ai-call" element={<AICallDialer />} />
           <Route path="*" element={<Home />} />
           
         </Routes>
