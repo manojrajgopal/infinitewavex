@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import Navigation from './Navigation';
-import Footer from './Footer';
-import Copyright from './Copyright';
-import ThreeJSParticles from './ThreeJSParticles';
+import Navigation from '../Navigation';
+import Footer from '../Footer';
+import Copyright from '../Copyright';
+import ThreeJSParticles from '../ThreeJSParticles';
 import axios from 'axios';
 
 const AICallDialer = () => {

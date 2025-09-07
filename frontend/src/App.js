@@ -10,7 +10,9 @@ import Career from './components/Pages/Career';
 import Testimonials from './components/Pages/Testimonials';
 import News from './components/Pages/News';
 import ProjectRequest from './components/Pages/ProjectRequest';
-import AICallDialer from './components/AICallDialer';
+import AICallDialer from './components/Pages/AICallDialer';
+import AIImage from './components/Pages/AIImage';
+import AIFactory from "./components/Pages/AIFactory";
 
 import './App.css';
 import './assets/css/bootstrap.min.css';
@@ -55,6 +57,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/ai-call" element={<AICallDialer />} />
+          <Route path="/ai-image" element={<AIImage />} />
+          <Route path="/ai-factory" element={<AIFactory />} />
           <Route path="*" element={<Home />} />
           
         </Routes>
