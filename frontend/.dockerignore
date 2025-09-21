@@ -1,0 +1,19 @@
+node_modules/
+build/
+dist/
+
+# Env
+.env
+*.env
+
+# Logs
+*.log
+*.tmp
+
+# Editors
+.vscode/
+.idea/
+
+# Docker
+.dockerignore
+Dockerfile

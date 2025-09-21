@@ -1,0 +1,35 @@
+# Python cache & env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+venv311/
+
+# Logs
+*.log
+*.tmp
+
+# ML / Models (if any)
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.h5
+*.bin
+models/lora_custom/
+checkpoints/
+
+# Env files
+.env
+*.env
+
+# Editors
+.vscode/
+.idea/
+
+# Docker
+.dockerignore
+Dockerfile

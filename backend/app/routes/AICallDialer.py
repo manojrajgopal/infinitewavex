@@ -2,7 +2,7 @@ from fastapi import APIRouter, Form, Request, WebSocket, WebSocketDisconnect
 from fastapi.responses import Response
 from twilio.rest import Client
 from twilio.twiml.voice_response import VoiceResponse, Gather
-import openai
+import openai  # We'll keep this import for compatibility
 import os
 import logging
 from dotenv import load_dotenv
@@ -12,6 +12,7 @@ import requests
 import asyncio
 import json
 from database import get_database
+import google.generativeai as genai  # Add Gemini import
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -25,8 +26,21 @@ TWILIO_AUTH = os.getenv("TWILIO_AUTH")
 TWILIO_NUMBER = os.getenv("TWILIO_NUMBER")
 client = Client(TWILIO_SID, TWILIO_AUTH) if TWILIO_SID and TWILIO_AUTH else None
 
-# OpenAI API key
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Gemini API configuration
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
+    # For compatibility, we'll set openai.api_key to a dummy value
+    openai.api_key = "gemini-replacement"
+else:
+    logger.error("GEMINI_API_KEY not found in environment variables")
+
+# Create a Gemini model instance
+try:
+    gemini_model = genai.GenerativeModel('gemini-pro') if GEMINI_API_KEY else None
+except Exception as e:
+    logger.error(f"Failed to initialize Gemini model: {str(e)}")
+    gemini_model = None
 
 class ConnectionManager:
     def __init__(self):
@@ -82,7 +96,7 @@ def get_conversation_context(call_sid):
     if call_sid not in conversations:
         conversations[call_sid] = {
             "messages": [
-                {"role": "system", "content": "You are a friendly AI assistant having a phone conversation. Keep responses concise (20-30 words max) and natural for speech."}
+                {"role": "user", "parts": ["You are a friendly AI assistant having a phone conversation. Keep responses concise (20-30 words max) and natural for speech."]}
             ],
             "start_time": datetime.now(),
             "last_activity": datetime.now()
@@ -94,18 +108,52 @@ def update_conversation_context(call_sid, role, content):
     if call_sid not in conversations:
         conversations[call_sid] = {
             "messages": [
-                {"role": "system", "content": "You are a friendly AI assistant having a phone conversation. Keep responses concise (20-30 words max) and natural for speech."}
+                {"role": "user", "parts": ["You are a friendly AI assistant having a phone conversation. Keep responses concise (20-30 words max) and natural for speech."]}
             ],
             "start_time": datetime.now(),
             "last_activity": datetime.now()
         }
     
-    conversations[call_sid]["messages"].append({"role": role, "content": content})
+    # Gemini uses a different message format
+    conversations[call_sid]["messages"].append({"role": role, "parts": [content]})
     conversations[call_sid]["last_activity"] = datetime.now()
     
     # Keep only last 6 messages to avoid context overflow
     if len(conversations[call_sid]["messages"]) > 6:
         conversations[call_sid]["messages"] = conversations[call_sid]["messages"][-6:]
+
+# Helper function to generate responses using Gemini
+def generate_gemini_response(messages, max_tokens=100):
+    """Generate a response using Gemini API"""
+    if not gemini_model:
+        return "I'm currently unavailable. Please try again later."
+    
+    try:
+        # Convert messages to Gemini format
+        # The first message is the system prompt
+        conversation_history = messages[1:] if len(messages) > 1 else messages
+        
+        # Build the prompt with conversation history
+        prompt_parts = []
+        for msg in conversation_history:
+            role = "user" if msg["role"] == "user" else "model"
+            prompt_parts.append(f"{role}: {msg['parts'][0]}")
+        
+        prompt = "\n".join(prompt_parts)
+        
+        # Generate response
+        response = gemini_model.generate_content(
+            prompt,
+            generation_config=genai.types.GenerationConfig(
+                max_output_tokens=max_tokens,
+                temperature=0.7
+            )
+        )
+        
+        return response.text
+    except Exception as e:
+        logger.error(f"Error generating Gemini response: {str(e)}")
+        return "I'm having trouble responding right now. Please try again."
 
 # Add this endpoint to handle incoming calls
 @router.post("/incoming_call")
@@ -122,23 +170,18 @@ async def handle_incoming_call(request: Request):
         
         logger.info(f"📞 Incoming call from: {from_number}, Call SID: {call_sid}")
         
-        # Generate welcome message using OpenAI
+        # Generate welcome message using Gemini
         welcome_messages = [
-            {"role": "system", "content": "You are a friendly AI assistant answering an incoming phone call. Greet the caller warmly and ask how you can help them. Keep it concise (10-20 words)."},
-            {"role": "user", "content": "Create a welcoming greeting for an incoming call."}
+            {"role": "user", "parts": ["You are a friendly AI assistant answering an incoming phone call. Greet the caller warmly and ask how you can help them. Keep it concise (10-20 words)."]},
+            {"role": "user", "parts": ["Create a welcoming greeting for an incoming call."]}
         ]
         
-        response = openai.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=welcome_messages,
-            max_tokens=50
-        )
-        welcome_text = response.choices[0].message.content
+        welcome_text = generate_gemini_response(welcome_messages, max_tokens=50)
         
         logger.info(f"🤖 Welcome message: {welcome_text}")
         
         # Initialize conversation context for this call
-        update_conversation_context(call_sid, "assistant", welcome_text)
+        update_conversation_context(call_sid, "model", welcome_text)
         
         # Create TwiML response
         vr = VoiceResponse()
@@ -233,18 +276,13 @@ def make_call(to_number: str = Form(...), message: str = Form(...)):
         logger.info(f"📞 Initiating call to: {to_number}")
         logger.info(f"💬 Initial message: {message}")
         
-        # Generate initial AI response
+        # Generate initial AI response using Gemini
         initial_messages = [
-            {"role": "system", "content": "You are a friendly AI assistant having a phone conversation. Keep responses concise (20-30 words max) and natural for speech."},
-            {"role": "user", "content": message}
+            {"role": "user", "parts": ["You are a friendly AI assistant having a phone conversation. Keep responses concise (20-30 words max) and natural for speech."]},
+            {"role": "user", "parts": [message]}
         ]
         
-        response = openai.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=initial_messages,
-            max_tokens=100
-        )
-        ai_text = response.choices[0].message.content
+        ai_text = generate_gemini_response(initial_messages, max_tokens=100)
         logger.info(f"🤖 AI Response: {ai_text}")
 
         # Get the current base URL
@@ -334,14 +372,8 @@ async def process_speech(request: Request, call_sid: str):
             messages = get_conversation_context(call_sid)
             update_conversation_context(call_sid, "user", speech_result)
             
-            response = openai.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=messages,
-                max_tokens=100,
-                temperature=0.7
-            )
-            ai_text = response.choices[0].message.content
-            update_conversation_context(call_sid, "assistant", ai_text)
+            ai_text = generate_gemini_response(messages, max_tokens=100)
+            update_conversation_context(call_sid, "model", ai_text)
             
             logger.info(f"🤖 AI responding: {ai_text}")
             
