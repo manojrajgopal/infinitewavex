@@ -21,7 +21,6 @@ googleapis-common-protos==1.70.0
 h11==0.16.0
 httplib2==0.22.0
 idna==3.10
-openai
 oauthlib==3.3.1
 passlib==1.7.4
 pip==25.2

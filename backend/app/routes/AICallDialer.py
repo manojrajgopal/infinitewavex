@@ -2,7 +2,6 @@ from fastapi import APIRouter, Form, Request, WebSocket, WebSocketDisconnect
 from fastapi.responses import Response
 from twilio.rest import Client
 from twilio.twiml.voice_response import VoiceResponse, Gather
-import openai  # We'll keep this import for compatibility
 import os
 import logging
 from dotenv import load_dotenv
@@ -31,7 +30,6 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
     # For compatibility, we'll set openai.api_key to a dummy value
-    openai.api_key = "gemini-replacement"
 else:
     logger.error("GEMINI_API_KEY not found in environment variables")
 
