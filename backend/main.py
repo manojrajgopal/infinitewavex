@@ -5,9 +5,7 @@ from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 import os
 
-# from routes import (project_requests, newsletter, contact, reviews, AICallDialer)
-
-from routes import (newsletter, contact, reviews, AICallDialer)
+from routes import (project_requests, newsletter, contact, reviews, AICallDialer)
 
 load_dotenv()
 
@@ -85,11 +83,11 @@ app.add_middleware(
 )
 
 # Include routers
-"""app.include_router(
-    project_requests.router, 
-    prefix="/api/project-requests", 
+app.include_router(
+    project_requests.router,
+    prefix="/api/project-requests",
     tags=["Project Requests"]
-)"""
+)
 
 app.include_router(
     newsletter.router,
