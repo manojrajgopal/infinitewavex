@@ -8,7 +8,7 @@ import gridfs
 
 from database import get_database
 from models.project_request import ProjectRequest, PyObjectId
-from utils.email_service import send_project_request_email
+from utils.email_service import send_project_request_email, send_project_confirmation_email
 
 router = APIRouter()
 
@@ -57,14 +57,20 @@ async def create_project_request(
     
     # Send email notification with file attachments
     email_sent = send_project_request_email(project_data, db)
-
+    
+    # Send confirmation email to the user (non-critical)
+    confirmation_email_sent = send_project_confirmation_email(project_data)
+    
+    # Only fail if the main notification email fails
+    # Confirmation email failure shouldn't block the request submission
     if not email_sent:
         raise HTTPException(status_code=500, detail="Project request submitted but failed to send email notification")
 
     return {
         "message": "Project request submitted successfully",
         "id": str(result.inserted_id),
-        "email_sent": email_sent
+        "email_sent": email_sent,
+        "confirmation_email_sent": confirmation_email_sent
     }
 
 @router.get("/", response_model=List[ProjectRequest])

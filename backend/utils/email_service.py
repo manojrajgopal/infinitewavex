@@ -106,6 +106,76 @@ def create_message_with_attachments(sender, to, subject, message_text, attachmen
     raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
     return {'raw': raw_message}
 
+def send_project_confirmation_email(project_request):
+    """Send confirmation email to the client who submitted the project request"""
+    try:
+        service = get_gmail_service()
+        if not service:
+            print("Failed to create Gmail service")
+            return False
+        
+        sender = os.getenv("EMAIL_ADDRESS")
+        recipient = project_request["email"]
+        
+        subject = f"Project Request Received: {project_request['project_title']}"
+        
+        # Create HTML confirmation email content
+        html_content = f"""
+        <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6;">
+            <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                <h2 style="color: #333; border-bottom: 2px solid #4CAF50; padding-bottom: 10px;">
+                    Project Request Received
+                </h2>
+                
+                <p>Dear {project_request['name']},</p>
+                
+                <p>Thank you for choosing InfiniteWaveX! We have received your project request and our team will review it carefully.</p>
+                
+                <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                    <h3 style="color: #0275d8; margin-top: 0;">Project Details:</h3>
+                    <p><strong>Project Title:</strong> {project_request['project_title']}</p>
+                    <p><strong>Customer Type:</strong> {project_request['customer_type']}</p>
+                    <p><strong>Budget:</strong> {project_request.get('budget', 'Not specified')}</p>
+                    <p><strong>Deadline:</strong> {project_request.get('deadline', 'Not specified')}</p>
+                </div>
+                
+                <div style="background-color: #e8f4fc; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    <h3 style="color: #0275d8; margin-top: 0;">Your Project Description:</h3>
+                    <p style="white-space: pre-wrap;">{project_request['details']}</p>
+                </div>
+                
+                <p><strong>What happens next?</strong></p>
+                <ul>
+                    <li>Our team will review your project requirements</li>
+                    <li>We'll prepare a detailed proposal for your project</li>
+                    <li>We'll schedule a consultation call to discuss your project in detail</li>
+                    <li>You'll receive our response within 24-48 hours</li>
+                </ul>
+                
+                <p>If you have any immediate questions, please don't hesitate to reach out to us.</p>
+                
+                <p>Best regards,<br/>The InfiniteWaveX Team</p>
+                
+                <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd; text-align: center;">
+                    
+                        InfiniteWaveX - Bringing your ideas to life
+                    
+                </div>
+            </div>
+        </body>
+        </html>
+        """
+        
+        message = create_message_with_attachments(sender, recipient, subject, html_content)
+        result = send_message(service, "me", message)
+        
+        return result is not None
+        
+    except Exception as e:
+        print(f"Error sending project confirmation email: {e}")
+        return False
+
 def send_project_request_email(project_request, db):
     """Send email notification for new project request using Gmail API with attachments"""
     try:
