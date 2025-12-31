@@ -52,8 +52,6 @@ async def api_key_middleware(request: Request, call_next):
     # Get API key from header
     api_key = request.headers.get("X-API-Key")
     expected_key = os.getenv("API_SECRET_KEY")
-    
-    print("Expected:", expected_key, "Got:", api_key)
 
     # Validate API key
     if not expected_key:

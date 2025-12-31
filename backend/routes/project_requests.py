@@ -57,7 +57,10 @@ async def create_project_request(
     
     # Send email notification with file attachments
     email_sent = send_project_request_email(project_data, db)
-    
+
+    if not email_sent:
+        raise HTTPException(status_code=500, detail="Project request submitted but failed to send email notification")
+
     return {
         "message": "Project request submitted successfully",
         "id": str(result.inserted_id),
