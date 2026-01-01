@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './components/Pages/Home';
 import Photography from './components/Pages/Gallery';
 import Projects from './components/Pages/Projects';
