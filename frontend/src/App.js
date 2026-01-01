@@ -14,7 +14,7 @@ import AICallDialer from './components/Pages/AICallDialer';
 import AIImage from './components/Pages/AIImage';
 import AIFactory from "./components/Pages/AIFactory";
 import AdminLogin from "./components/Admin/AdminLogin";
-import AdminDashboardHome from './components/Admin/AdminDashboardHome';
+import AdminDashboard from './components/Admin/AdminDashboard';
 import AdminProjectRequests from './components/Admin/AdminProjectRequests';
 import AdminContactMessages from './components/Admin/AdminContactMessages';
 import AdminAnalytics from './components/Admin/AdminAnalytics';
@@ -68,7 +68,7 @@ function App() {
 
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminLogin />} />
-          <Route path="/admin/dashboard" element={<AdminDashboardHome />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/projectRequest" element={<AdminProjectRequests />} />
           <Route path="/admin/contactMessages" element={<AdminContactMessages />} />
           <Route path="/admin/analytics" element={<AdminAnalytics />} />
