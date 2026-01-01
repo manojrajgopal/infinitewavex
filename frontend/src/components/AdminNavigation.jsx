@@ -1,14 +1,14 @@
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
-const Navigation = () => {
+const AdminNavigation = () => {
   
   const location = useLocation();
   const navigate = useNavigate();
   
   // helper: check if route matches (supports dynamic paths like /projects/123)
   const isActivePath = (path) => {
-    if (path === "/") {
-      return location.pathname === "/";
+    if (path === "/admin/") {
+      return location.pathname === "/admin/";
     }
     return location.pathname.startsWith(path);
   };
@@ -37,28 +37,29 @@ const Navigation = () => {
 
       <nav id="colorlib-main-menu" role="navigation">
         <ul>
-          <li className={isActivePath("/") ? "colorlib-active" : ""}>
-            <NavLink to="/" onClick={handleRedirect("/")}>Home</NavLink>
+          <li className={isActivePath("/admin/dashboard") ? "colorlib-active" : ""}>
+            <NavLink to="/admin/dashboard" onClick={handleRedirect("/admin/dashboard")}>Admin Dashboard</NavLink>
           </li>
-          <li className={isActivePath("/projects") ? "colorlib-active" : ""}>
-            <NavLink to="/projects" onClick={handleRedirect("/projects")}>Projects</NavLink>
+          <li className={isActivePath("/admin/projectRequest") ? "colorlib-active" : ""}>
+            <NavLink to="/admin/projectRequest" onClick={handleRedirect("/admin/projectRequest")}>Project Requests</NavLink>
           </li>
-          <li className={isActivePath("/ai-factory") ? "colorlib-active" : ""}>
-            <NavLink to="/ai-factory" onClick={handleRedirect("/ai-factory")}>AI Factory</NavLink>
+          <li className={isActivePath("/admin/contactMessages") ? "colorlib-active" : ""}>
+            <NavLink to="/admin/contactMessages" onClick={handleRedirect("/admin/contactMessages")}>Contact Messages</NavLink>
           </li>
-          <li className={isActivePath("/gallery") ? "colorlib-active" : ""}>
-            <NavLink to="/gallery" onClick={handleRedirect("/gallery")}>Gallery</NavLink>
+          <li className={isActivePath("/admin/analytics") ? "colorlib-active" : ""}>
+            <NavLink to="/admin/analytics" onClick={handleRedirect("/admin/analytics")}>Analytics</NavLink>
           </li>
-          <li className={isActivePath("/projectrequest") ? "colorlib-active" : ""}>
-            <NavLink to="/projectrequest" onClick={handleRedirect("/projectrequest")}>Project Request</NavLink>
+          <li className={isActivePath("/admin/userActivity") ? "colorlib-active" : ""}>
+            <NavLink to="/admin/userActivity" onClick={handleRedirect("/admin/userActivity")}>User Activity</NavLink>
           </li>
-          <li className={isActivePath("/career") ? "colorlib-active" : ""}>
-            <NavLink to="/career" onClick={handleRedirect("/career")}>Career</NavLink>
+          <li className={isActivePath("/admin/systemLogs") ? "colorlib-active" : ""}>
+            <NavLink to="/admin/systemLogs" onClick={handleRedirect("/admin/systemLogs")}>System Logs</NavLink>
           </li>
-          <li className={isActivePath("/leadershipSpotlight") ? "colorlib-active" : ""}>
-            <NavLink to="/leadershipSpotlight" onClick={handleRedirect("/leadershipSpotlight")}>Leadership Spotlight</NavLink>
+          <li className={isActivePath("/admin/profile") ? "colorlib-active" : ""}>
+            <NavLink to="/admin/profile" onClick={handleRedirect("/admin/profile")}>Admin Profile</NavLink>
           </li>
-          <li className={isActivePath("/testimonials") ? "colorlib-active" : ""}>
+
+          {/* <li className={isActivePath("/testimonials") ? "colorlib-active" : ""}>
             <NavLink to="/testimonials" onClick={handleRedirect("/testimonials")}>Testimonials</NavLink>
           </li>
           <li className={isActivePath("/news") ? "colorlib-active" : ""}>
@@ -69,11 +70,12 @@ const Navigation = () => {
           </li>
           <li className={isActivePath("/contact") ? "colorlib-active" : ""}>
             <NavLink to="/contact" onClick={handleRedirect("/contact")}>Contact</NavLink>
-          </li>
+          </li> */}
+
         </ul>
       </nav>
     </>
   );
 };
 
-export default Navigation;
+export default AdminNavigation;
