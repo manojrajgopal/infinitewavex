@@ -73,7 +73,9 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
-        "https://infinitewavex.onrender.com"
+        "https://infinitewavex.onrender.com",
+        "https://infinitewavex.site/",
+        "https://www.infinitewavex.site"
     ],
     allow_credentials=True,
     allow_methods=["*"],
