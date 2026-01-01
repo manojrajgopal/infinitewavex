@@ -13,6 +13,8 @@ import ProjectRequest from './components/Pages/ProjectRequest';
 import AICallDialer from './components/Pages/AICallDialer';
 import AIImage from './components/Pages/AIImage';
 import AIFactory from "./components/Pages/AIFactory";
+import AdminLogin from "./components/Admin/AdminLogin";
+import AdminDashboard from "./components/Admin/AdminDashboard";
 
 import './App.css';
 import './assets/css/bootstrap.min.css';
@@ -54,13 +56,13 @@ function App() {
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/news" element={<News />} />
           <Route path="/projectrequest" element={<ProjectRequest />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/ai-call" element={<AICallDialer />} />
           <Route path="/ai-image" element={<AIImage />} />
           <Route path="/ai-factory" element={<AIFactory />} />
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="*" element={<Home />} />
-          
         </Routes>
       <ScriptReloader />
     </>
