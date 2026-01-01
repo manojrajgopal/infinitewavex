@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import Navigation from '../Navigation';
+import AIFactoryNavigation from '../AIFactoryNavigation';
 import Footer from '../Footer';
 import Copyright from '../Copyright';
 import ThreeJSParticles from '../ThreeJSParticles';
@@ -116,7 +116,7 @@ const AIFactory = () => {
           <a href="#" onClick={() => window.location.href = '/'}>InfWX<span>.</span></a>
         </h1>
 
-        <Navigation />
+        <AIFactoryNavigation />
 
         <Copyright />
 
@@ -240,6 +240,33 @@ const AIFactory = () => {
                   <div className="text text-center">
                     <h3>Custom AI Solutions</h3>
                     <span>Tailored AI development</span>
+                  </div>
+                </a>
+              </div>
+              <div className="col-md-3">
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/security_ai.jpg)"}}>
+                  <div className="overlay"></div>
+                  <div className="text text-center">
+                    <h3>AI Security Solutions</h3>
+                    <span>Threat detection, fraud prevention, and risk analysis</span>
+                  </div>
+                </a>
+              </div>
+              <div className="col-md-3">
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/recommendation_ai.jpg)"}}>
+                  <div className="overlay"></div>
+                  <div className="text text-center">
+                    <h3>AI Recommendation Systems</h3>
+                    <span>Personalized content and product recommendations</span>
+                  </div>
+                </a>
+              </div>
+              <div className="col-md-3">
+                <a href="/#/" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/data_engineering_ai.jpg)"}}>
+                  <div className="overlay"></div>
+                  <div className="text text-center">
+                    <h3>AI Data Engineering</h3>
+                    <span>Data pipelines, preprocessing, and AI-ready architectures</span>
                   </div>
                 </a>
               </div>
