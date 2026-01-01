@@ -17,7 +17,7 @@ class PyObjectId(ObjectId):
         return ObjectId(v)
 
 class NewsletterSubscriber(BaseModel):
-    id: Optional[PyObjectId] = Field(default=None, alias="_id")
+    id: Optional[str] = Field(default=None, alias="_id")
     email: EmailStr
     subscribed_at: Optional[datetime] = None
     is_active: Optional[bool] = True
