@@ -29,14 +29,15 @@ class ProjectRequest(BaseModel):
     budget: Optional[float] = None
     deadline: Optional[str] = None
     details: str
-    file_ids: Optional[List[str]] = []  # Changed from files to file_ids
+    file_ids: Optional[List[str]] = []
     created_at: Optional[datetime] = None
     status: Optional[str] = "new"
 
-    model_config = ConfigDict(
-        arbitrary_types_allowed=True,
-        json_encoders={ObjectId: str},
-        json_schema_extra={
+    class Config:
+        allow_population_by_field_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
+        schema_extra = {
             "example": {
                 "customer_type": "individual",
                 "project_title": "Website Development",
@@ -49,4 +50,3 @@ class ProjectRequest(BaseModel):
                 "status": "new"
             }
         }
-    )
