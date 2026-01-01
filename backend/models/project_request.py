@@ -21,7 +21,7 @@ class PyObjectId(ObjectId):
         return handler(source_type)
 
 class ProjectRequest(BaseModel):
-    id: Optional[PyObjectId] = Field(default=None, alias="_id")
+    id: Optional[str] = Field(default=None, alias="_id")
     customer_type: str
     project_title: str
     name: str
