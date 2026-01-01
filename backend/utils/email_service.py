@@ -12,6 +12,11 @@ import json
 from dotenv import load_dotenv
 from bson import ObjectId
 import gridfs
+import logging
+
+# Suppress the file_cache warning
+logging.getLogger('googleapiclient.discovery_cache').setLevel(logging.ERROR)
+logging.getLogger('google.auth.transport.requests').setLevel(logging.ERROR)
 
 load_dotenv()
 
@@ -226,21 +231,50 @@ def send_project_request_email(project_request, db):
         # Get file attachments from MongoDB
         attachments = []
         fs = gridfs.GridFS(db)
-        
+        total_size = 0
+        max_attachment_size = 20 * 1024 * 1024  # 20MB limit
+
         if 'file_ids' in project_request and project_request['file_ids']:
             for file_id in project_request['file_ids']:
                 try:
                     file_obj = fs.get(ObjectId(file_id))
-                    attachments.append((
-                        file_obj.filename,
-                        file_obj.read(),
-                        file_obj.content_type
-                    ))
+                    file_size = file_obj.length
+                    if total_size + file_size <= max_attachment_size:
+                        content = file_obj.read()
+                        attachments.append((
+                            file_obj.filename,
+                            content,
+                            file_obj.content_type
+                        ))
+                        total_size += file_size
+                    else:
+                        print(f"File {file_obj.filename} ({file_size} bytes) exceeds attachment size limit. Skipping attachment.")
                 except:
                     print(f"Could not retrieve file with ID: {file_id}")
+
+        # If some files were skipped due to size, add a note to the email
+        file_count = len(project_request.get('file_ids', []))
+        attachment_count = len(attachments)
+        if attachment_count < file_count:
+            note_html = f"""
+            <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                <p style="color: #856404; margin: 0;"><strong>Note:</strong> {file_count - attachment_count} attached file(s) were too large to include in this email. Please access them through the admin panel.</p>
+            </div>
+            """
+            # Insert the note before the closing div
+            html_content = html_content.replace(
+                "<p><strong>Submitted on:</strong> {project_request['created_at']}</p>",
+                f"<p><strong>Submitted on:</strong> {project_request['created_at']}</p>{note_html}"
+            )
+        
+        # Debug information
+        print(f"Sending email with {len(attachments)} attachments (total size: {total_size} bytes) for project request {project_request.get('_id', 'unknown')}")
+        print(f"File count: {file_count}, Attachment count: {attachment_count}")
         
         message = create_message_with_attachments(sender, RECIPIENTS, subject, html_content, attachments)
+        print("Email message created successfully")
         result = send_message(service, "me", message)
+        print(f"Email send result: {result is not None}")
         
         return result is not None
         
@@ -370,6 +404,7 @@ def send_message(service, user_id, message):
       Sent Message.
     """
     try:
+        print(f"Attempting to send email to {user_id}")
         message = (service.users().messages().send(userId=user_id, body=message)
                    .execute())
         print(f'Message Id: {message["id"]}')

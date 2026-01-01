@@ -145,7 +145,7 @@ const AIFactory = () => {
                 </a>
             </div>
               <div className="col-md-3">
-                <a href="/#/ai-call-dialer" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/ai_call.jpg)"}}>
+                <a href="/#/ai-call" className="photography-entry img d-flex justify-content-center align-items-center" style={{backgroundImage: "url(/images/ai_call.jpg)"}}>
                   <div className="overlay"></div>
                   <div className="text text-center">
                     <h3>AI Call Dialer</h3>
