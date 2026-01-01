@@ -422,7 +422,7 @@ const AdminContactMessages = () => {
       </aside>
 
       <div id="colorlib-main">
-        <div className="hero-wrap js-fullheight" style={{backgroundImage: "url(/images/contact_bg.jpg)"}} data-stellar-background-ratio="0.5">
+        <div className="hero-wrap js-fullheight" style={{backgroundImage: "url(/images/adminContact_bg.jpg)"}} data-stellar-background-ratio="0.5">
           <div className="overlay"></div>
           <div className="js-fullheight d-flex justify-content-center align-items-center">
             <div className="col-md-8 text text-center">
