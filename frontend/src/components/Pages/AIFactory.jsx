@@ -36,7 +36,6 @@ const AIFactory = () => {
     const scripts = [
         // Load jQuery first
         '/js/jquery.min.js',
-        '/js/jquery-migrate-3.0.1.min.js',
         // Then other dependencies
         '/js/popper.min.js',
         '/js/bootstrap.min.js',

@@ -18,8 +18,15 @@
     <script src="/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery-migrate-3.0.1.min.js"></script>
 
+    <script>
+      window.addEventListener('error', function (e) {
+        if (e.message && e.message.includes('adsbygoogle')) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      });
+    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2351364697510603"
      crossorigin="anonymous"></script>
      

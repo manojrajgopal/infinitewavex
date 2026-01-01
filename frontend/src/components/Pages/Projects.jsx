@@ -119,7 +119,6 @@ const Projects = () => {
 
     const scripts = [
       '/js/jquery.min.js',
-      '/js/jquery-migrate-3.0.1.min.js',
       '/js/popper.min.js',
       '/js/bootstrap.min.js',
       '/js/jquery.easing.1.3.js',
