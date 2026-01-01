@@ -1,42 +1,26 @@
+// src/components/Admin/AdminLogin.jsx
 import React, { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { useNavigate } from 'react-router-dom';
-import { useAdminAuth } from './AdminAuthContext';
 import ThreeJSParticles from '../ThreeJSParticles';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const { login, isAuthenticated } = useAdminAuth();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) {
+    // Check if already logged in
+    const token = localStorage.getItem('adminToken');
+    if (token) {
       navigate('/admin/dashboard');
     }
-  }, [isAuthenticated, navigate]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    setIsLoading(true);
-
-    const result = login(email, password);
-    
-    if (result.success) {
-      navigate('/admin/dashboard');
-    } else {
-      setError(result.message || 'Invalid credentials');
-    }
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
     if (window.AOS) window.AOS.init();
     const scriptElements = [];
-
+    
     const loadScript = (src) => {
       return new Promise((resolve, reject) => {
         if (document.querySelector(`script[src="${src}"]`)) {
@@ -84,7 +68,6 @@ const AdminLogin = () => {
       window.__themeScriptsLoaded = true;
       loadScripts();
     }
-    loadScripts();
 
     return () => {
       scriptElements.forEach(script => {
@@ -93,10 +76,30 @@ const AdminLogin = () => {
         }
       });
     };
-  }, []);
+  }, [navigate]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    // Simple validation - in production, connect to backend
+    if (email === 'admin@infinitewavex.com' && password === 'Admin@123') {
+      // Simulate API call
+      setTimeout(() => {
+        const token = 'admin_' + Date.now();
+        localStorage.setItem('adminToken', token);
+        localStorage.setItem('adminEmail', email);
+        navigate('/admin/dashboard');
+      }, 1000);
+    } else {
+      setError('Invalid email or password');
+      setLoading(false);
+    }
+  };
 
   return (
-    <div id="colorlib-page">
+    <div id="colorlib-page" style={{ minHeight: '100vh' }}>
       <ThreeJSParticles />
       <Helmet>
         <title>InfiniteWaveX - Admin Login</title>
@@ -118,93 +121,191 @@ const AdminLogin = () => {
         <link rel="stylesheet" href="/css/flaticon.css" />
         <link rel="stylesheet" href="/css/icomoon.css" />
         <link rel="stylesheet" href="/css/style.css" />
+        
+        <style>
+          {`
+            .admin-login-container {
+              min-height: 100vh;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 20px;
+            }
+            
+            .login-card {
+              background: rgba(255, 255, 255, 0.95);
+              backdrop-filter: blur(10px);
+              border-radius: 20px;
+              padding: 40px;
+              box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+              border: 1px solid rgba(255, 255, 255, 0.3);
+              width: 100%;
+              max-width: 450px;
+              position: relative;
+              z-index: 10;
+            }
+            
+            .login-header {
+              text-align: center;
+              margin-bottom: 30px;
+            }
+            
+            .login-logo {
+              width: 80px;
+              height: 80px;
+              margin: 0 auto 20px;
+              background-image: url('/images/logo.png');
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center;
+            }
+            
+            .login-title {
+              font-size: 24px;
+              font-weight: 600;
+              color: #333;
+              margin-bottom: 5px;
+            }
+            
+            .login-subtitle {
+              color: #666;
+              font-size: 14px;
+            }
+            
+            .form-group {
+              margin-bottom: 20px;
+            }
+            
+            .form-control {
+              height: 50px;
+              border-radius: 8px;
+              border: 1px solid #ddd;
+              padding: 0 15px;
+              font-size: 14px;
+              transition: all 0.3s;
+            }
+            
+            .form-control:focus {
+              border-color: #007bff;
+              box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+            
+            .btn-login {
+              width: 100%;
+              height: 50px;
+              background: linear-gradient(45deg, #007bff, #0056b3);
+              border: none;
+              border-radius: 8px;
+              color: white;
+              font-weight: 600;
+              font-size: 16px;
+              cursor: pointer;
+              transition: all 0.3s;
+            }
+            
+            .btn-login:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+            }
+            
+            .btn-login:disabled {
+              opacity: 0.7;
+              cursor: not-allowed;
+            }
+            
+            .error-message {
+              color: #dc3545;
+              font-size: 14px;
+              margin-top: 10px;
+              text-align: center;
+            }
+            
+            .back-to-home {
+              text-align: center;
+              margin-top: 20px;
+            }
+            
+            .back-to-home a {
+              color: #007bff;
+              text-decoration: none;
+              font-size: 14px;
+            }
+            
+            .back-to-home a:hover {
+              text-decoration: underline;
+            }
+            
+            @media (max-width: 768px) {
+              .login-card {
+                padding: 30px 20px;
+                margin: 20px;
+              }
+            }
+          `}
+        </style>
       </Helmet>
 
-      <a href="#" className="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-      
-      <div id="colorlib-main" style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
-        <section className="ftco-section" style={{ padding: '6em 0' }}>
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-md-6 col-lg-5">
-                <div 
-                  className="login-wrap p-4 p-md-5"
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.15)',
-                    backdropFilter: 'blur(10px)',
-                    borderRadius: '20px',
-                    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-                    border: '1px solid rgba(255, 255, 255, 0.18)'
-                  }}
-                >
-                  <div className="text-center mb-4">
-                    <h2 className="text-white">Admin Login</h2>
-                    <p className="text-white-50">Access the Admin Dashboard</p>
-                  </div>
-
-                  {error && (
-                    <div className="alert alert-danger" role="alert">
-                      {error}
-                    </div>
-                  )}
-
-                  <form onSubmit={handleSubmit} className="signin-form">
-                    <div className="form-group mb-3">
-                      <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        style={{
-                          background: 'rgba(255, 255, 255, 0.1)',
-                          border: '1px solid rgba(255, 255, 255, 0.2)',
-                          color: '#fff'
-                        }}
-                      />
-                    </div>
-                    <div className="form-group mb-4">
-                      <input
-                        type="password"
-                        className="form-control"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        style={{
-                          background: 'rgba(255, 255, 255, 0.1)',
-                          border: '1px solid rgba(255, 255, 255, 0.2)',
-                          color: '#fff'
-                        }}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <button
-                        type="submit"
-                        className="btn btn-primary btn-block"
-                        disabled={isLoading}
-                        style={{
-                          background: 'linear-gradient(45deg, #667eea, #764ba2)',
-                          border: 'none',
-                          padding: '12px',
-                          fontSize: '16px',
-                          fontWeight: '600'
-                        }}
-                      >
-                        {isLoading ? 'Logging in...' : 'Login'}
-                      </button>
-                    </div>
-                  </form>
-
-                  <div className="text-center mt-4">
-                    <a href="/" className="text-white-50">← Back to Home</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div className="admin-login-container">
+        <div className="login-card ftco-animate">
+          <div className="login-header">
+            <div className="login-logo"></div>
+            <h2 className="login-title">Admin Dashboard</h2>
+            <p className="login-subtitle">InfiniteWaveX Management System</p>
           </div>
-        </section>
+          
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            
+            <div className="form-group">
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            
+            {error && (
+              <div className="error-message">
+                <i className="fa fa-exclamation-circle"></i> {error}
+              </div>
+            )}
+            
+            <div className="form-group">
+              <button 
+                type="submit" 
+                className="btn-login"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <span className="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
+                    Signing In...
+                  </>
+                ) : 'Sign In'}
+              </button>
+            </div>
+          </form>
+          
+          <div className="back-to-home">
+            <Link to="/">← Back to Home</Link>
+          </div>
+          
+          <div className="mt-4 text-center" style={{ fontSize: '12px', color: '#999' }}>
+            <p>Default credentials: admin@infinitewavex.com / Admin@123</p>
+          </div>
+        </div>
       </div>
 
       <div id="ftco-loader" className="show fullscreen">
