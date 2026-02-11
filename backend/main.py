@@ -41,7 +41,7 @@ async def websocket_endpoint(websocket: WebSocket):
 @app.middleware("http")
 async def api_key_middleware(request: Request, call_next):
     # Skip authentication for these endpoints
-    skip_paths = ["/", "/docs", "/redoc", "/openapi.json", "/favicon.ico"]
+    skip_paths = ["/", "/docs", "/redoc", "/openapi.json", "/favicon.ico", "/api/health"]
     
     if request.url.path.startswith("/api/ai-call-dialer/"):
         return await call_next(request)
@@ -117,6 +117,11 @@ app.include_router(
 @app.head("/")
 async def root():
     return {"status": "ok", "message": "InfiniteWaveX API is running"}
+
+@app.get("/api/health", include_in_schema=True)
+async def health_check():
+    """Health check endpoint for frontend heartbeat - no authentication required"""
+    return {"status": "healthy", "timestamp": "2024-01-01T00:00:00Z"}
 
 if __name__ == "__main__":
     import uvicorn

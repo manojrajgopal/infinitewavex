@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Routes, Route, useLocation } from 'react-router-dom';
+import useBackendHeartbeat from './hooks/useBackendHeartbeat';
 import Home from './components/Pages/Home';
 import Photography from './components/Pages/Gallery';
 import Projects from './components/Pages/Projects';
@@ -41,6 +42,9 @@ function ScriptReloader() {
 }
 
 function App() {
+  // Call backend every 5 minutes when frontend is open (fire-and-forget, no waiting)
+  useBackendHeartbeat(process.env.REACT_APP_BACKEND_URL, 300000);
+  
   return (
       <>
         <Routes>
