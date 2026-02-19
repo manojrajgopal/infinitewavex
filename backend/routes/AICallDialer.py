@@ -11,7 +11,7 @@ import requests
 import asyncio
 import json
 from database import get_database
-import google.generativeai as genai  # Add Gemini import
+# import google.generativeai as genai  # Add Gemini import
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -25,20 +25,16 @@ TWILIO_AUTH = os.getenv("TWILIO_AUTH")
 TWILIO_NUMBER = os.getenv("TWILIO_NUMBER")
 client = Client(TWILIO_SID, TWILIO_AUTH) if TWILIO_SID and TWILIO_AUTH else None
 
-# Gemini API configuration
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
-    # For compatibility, we'll set openai.api_key to a dummy value
-else:
-    logger.error("GEMINI_API_KEY not found in environment variables")
 
-# Create a Gemini model instance
-try:
-    gemini_model = genai.GenerativeModel('gemini-pro') if GEMINI_API_KEY else None
-except Exception as e:
-    logger.error(f"Failed to initialize Gemini model: {str(e)}")
-    gemini_model = None
+# OpenRouter API configuration
+OPENROUTER_API_KEY = os.getenv("TEST_OPENROUTER_AI_API_KEY")
+OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
+OPENROUTER_MODEL = "google/gemini-2.0-flash-001"  # Free model on OpenRouter
+
+if not OPENROUTER_API_KEY:
+    logger.error("TEST_OPENROUTER_AI_API_KEY not found in environment variables")
+
+gemini_model = None  # Using OpenRouter instead
 
 class ConnectionManager:
     def __init__(self):
@@ -71,17 +67,12 @@ async def websocket_endpoint(websocket: WebSocket):
 
 # Get base URL based on environment
 def get_base_url():
-    if os.getenv("RENDER", "").lower() == "true" or os.getenv("ENVIRONMENT") == "production":
+    if os.getenv("ENVIRONMENT") == "production":
         # In production, use the Render URL
         return f"https://{os.getenv('RENDER_EXTERNAL_HOSTNAME', 'your-render-app.onrender.com')}"
     else:
         # In development, try to get ngrok URL or use localhost
         try:
-            response = requests.get("http://127.0.0.1:4040/api/tunnels", timeout=2)
-            tunnels = response.json()["tunnels"]
-            for tunnel in tunnels:
-                if tunnel["proto"] == "https":
-                    return tunnel["public_url"]
             return os.getenv("BASE_URL", "http://localhost:8000")
         except:
             return os.getenv("BASE_URL", "http://localhost:8000")
@@ -120,37 +111,61 @@ def update_conversation_context(call_sid, role, content):
     if len(conversations[call_sid]["messages"]) > 6:
         conversations[call_sid]["messages"] = conversations[call_sid]["messages"][-6:]
 
-# Helper function to generate responses using Gemini
+# Helper function to generate responses using OpenRouter (replaces Gemini)
 def generate_gemini_response(messages, max_tokens=100):
-    """Generate a response using Gemini API"""
-    if not gemini_model:
+    """Generate a response using OpenRouter API (compatible with OpenAI)"""
+    if not OPENROUTER_API_KEY:
+        logger.error("OpenRouter API key not configured")
         return "I'm currently unavailable. Please try again later."
     
     try:
-        # Convert messages to Gemini format
         # The first message is the system prompt
-        conversation_history = messages[1:] if len(messages) > 1 else messages
+        openrouter_messages = []
         
-        # Build the prompt with conversation history
-        prompt_parts = []
-        for msg in conversation_history:
-            role = "user" if msg["role"] == "user" else "model"
-            prompt_parts.append(f"{role}: {msg['parts'][0]}")
+        for msg in messages:
+            role = msg.get("role", "user")
+            if role == "model":
+                role = "assistant"
+            content = msg.get("parts", [msg.get("content", "")])[0]
+            openrouter_messages.append({"role": role, "content": content})
         
-        prompt = "\n".join(prompt_parts)
+        # Prepare headers
+        headers = {
+            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+            "Content-Type": "application/json",
+            "HTTP-Referer": "https://infinitewavex.com",
+            "X-Title": "InfiniteWaveX AI Call"
+        }
         
-        # Generate response
-        response = gemini_model.generate_content(
-            prompt,
-            generation_config=genai.types.GenerationConfig(
-                max_output_tokens=max_tokens,
-                temperature=0.7
-            )
+        # Prepare request payload
+        payload = {
+            "model": OPENROUTER_MODEL,
+            "messages": openrouter_messages,
+            "max_tokens": max_tokens,
+            "temperature": 0.7
+        }
+        
+        # Make API request
+        response = requests.post(
+            OPENROUTER_API_URL,
+            headers=headers,
+            json=payload,
+            timeout=30
         )
         
-        return response.text
+        if response.status_code == 200:
+            result = response.json()
+            if "choices" in result and len(result["choices"]) > 0:
+                return result["choices"][0]["message"]["content"]
+            else:
+                logger.error(f"Unexpected OpenRouter response format: {result}")
+                return "I'm having trouble responding right now. Please try again."
+        else:
+            logger.error(f"OpenRouter API error: {response.status_code} - {response.text}")
+            return "I'm having trouble responding right now. Please try again."
+            
     except Exception as e:
-        logger.error(f"Error generating Gemini response: {str(e)}")
+        logger.error(f"Error generating OpenRouter response: {str(e)}")
         return "I'm having trouble responding right now. Please try again."
 
 # Add this endpoint to handle incoming calls
