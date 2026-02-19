@@ -7,5 +7,6 @@ services:
     staticPublishPath: build
     routes:
       - type: rewrite
-        source: /*
+        source: "/*"
         destination: /index.html
+        status: 200
