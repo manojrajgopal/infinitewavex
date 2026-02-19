@@ -28,10 +28,30 @@ import './assets/css/flaticon.css';
 import './assets/css/jquery.timepicker.css';
 import './assets/css/bootstrap-datepicker.css';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Small delay to ensure the new page has rendered
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  return null;
+}
+
 function ScriptReloader() {
   const location = useLocation();
 
   useEffect(() => {
+    // Scroll to top of page on route change
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    
     if (window.AOS) window.AOS.init();
     if (window.$ && window.$('.owl-carousel').length) {
       window.$('.owl-carousel').owlCarousel();
@@ -47,6 +67,7 @@ function App() {
   
   return (
       <>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Photography />} />
