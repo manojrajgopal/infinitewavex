@@ -28,7 +28,7 @@ async def create_review(review: Review):
         )
     
     # Prepare review data
-    review_data = review.model_dump(exclude={"id"})
+    review_data = review.dict(exclude={"id"})
     review_data["created_at"] = datetime.utcnow()
     review_data["updated_at"] = datetime.utcnow()
     review_data["helpful_count"] = 0
